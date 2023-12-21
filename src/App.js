@@ -1,13 +1,8 @@
 import "./App.css";
-import ScrollPage from "./pages/ScrollPage.jsx";
+import Router from "./Router";
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <ScrollPage />
-      </header>
-    </div>
-  );
+  return <Router key="router" />;
 }
 
 export default App;
