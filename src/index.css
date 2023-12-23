@@ -3,12 +3,26 @@
   font-weight: bold;
   src: url("./fonts/GowunBatang-Bold.ttf") format("truetype");
 }
-@font-face {
-  font-family: "GoldenPlains-Demo";
-  font-weight: normal;
-  src: url("./fonts/GoldenPlains-Demo.ttf") format("truetype");
-}
 
+@font-face {
+  font-family: "Effluent";
+  font-weight: normal;
+  src: url("./fonts/Effluent.ttf") format("truetype");
+}
+@font-face {
+  font-family: "ClimateCrisisKR-1979";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
 body {
   margin: 0;
   font-family: "GowunBatang-Regular";
