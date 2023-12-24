@@ -1,5 +1,13 @@
 import styled from "styled-components";
 import { Image, Row, Col } from "antd";
+import {
+  UserOutlined,
+  ContactsOutlined,
+  HomeOutlined,
+  MailOutlined,
+  RocketOutlined,
+  GithubOutlined,
+} from "@ant-design/icons";
 function Produce() {
   return (
     <Container>
@@ -23,14 +31,75 @@ function Produce() {
             <br />
             저는 플러터를 좋아하고
             <br />
-            부지런한 개발자 김승원입니다.
+            부지런한 개발자 김승원 입니다.
           </p>
         </Circle>
+        <BoxContainer>
+          <Box>
+            <TitleComponent IconComponent={ColDiv} text="ABOUT" />
+            <ContainerComponent IconComponent={UserOutlined} text="김승원" />
+            <ContainerComponent
+              IconComponent={ContactsOutlined}
+              text="1997.06.02"
+            />
+            <ContainerComponent
+              IconComponent={HomeOutlined}
+              text="서울 강서구 마곡동"
+            />
+            <ContainerComponent
+              IconComponent={MailOutlined}
+              text="soonger3300@gmail.com"
+            />
+            <ContainerComponent
+              IconComponent={RocketOutlined}
+              text="한양여자대학교 - 니트패션디자인과"
+            />
+            <LinkComponent IconComponent={GithubOutlined} text="Github" />
+          </Box>
+          <Box>
+            <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
+            <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
+            <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
+          </Box>
+        </BoxContainer>
+        <Text2Container />
       </Body>
     </Container>
   );
 }
 export default Produce;
+
+export const ContainerComponent = ({ IconComponent, text }) => (
+  <DivContainer>
+    {IconComponent && <IconComponent />}
+    <span style={{ paddingRight: "5px" }} />
+    <p>{text}</p>
+  </DivContainer>
+);
+export const TitleComponent = ({ text }) => (
+  <DivContainer>
+    <ColDiv />
+    <span style={{ paddingRight: "10px" }} />
+    <Title>{text}</Title>
+  </DivContainer>
+);
+export const LinkComponent = ({ IconComponent, text }) => (
+  <DivContainer>
+    <IconComponent />
+    <span style={{ paddingRight: "5px" }} />
+    <p>
+      <a
+        href="https://github.com/so0ng0970"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#2e302f" }}
+      >
+        {text}
+      </a>
+    </p>
+  </DivContainer>
+);
+
 export const Header = styled.div`
   width: 100%;
   display: flex;
@@ -53,6 +122,7 @@ export const Num = styled.p`
   }
 `;
 export const Container = styled.div`
+  overflow: hidden;
   background-image: url("assets/images/background1.jpg");
   background-size: cover;
   display: flex;
@@ -81,8 +151,8 @@ export const Portfolio = styled.h1`
 
 export const Text2Container = styled.div`
   position: absolute;
-  top: -35px;
-  right: 10px;
+  top: -120px;
+  right: 120px;
   background-image: url("assets/images/text.png");
   background-size: cover;
   background-position: center;
@@ -93,6 +163,7 @@ export const Text2Container = styled.div`
   @media (max-width: 790px) {
     top: 0px;
     width: 30px;
+    right: 60px;
     height: 300px;
   }
 `;
@@ -116,7 +187,7 @@ export const ProfileContainer = styled.div`
 
   @media (max-width: 790px) {
     width: 300px;
-    height: 350px;
+    height: 300px;
   }
 `;
 
@@ -128,13 +199,12 @@ export const ProfileImage = styled.div`
   height: 100%;
 `;
 export const Circle = styled.div`
-  font-family: "SBAggroB";
+  padding: 15px;
   width: 200px;
   height: 200px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: start;
   top: 70px;
   right: 100px;
   border-radius: 50%;
@@ -143,7 +213,34 @@ export const Circle = styled.div`
   background-color: #fd6e55;
   @media (max-width: 790px) {
     right: 70px;
-    width: 250px;
+    width: 260px;
     height: 190px;
   }
+`;
+const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+`;
+export const Box = styled.div`
+  width: 250px;
+`;
+export const ColDiv = styled.div`
+  background-color: #fd6e55;
+  width: 3px;
+  height: 30px;
+`;
+
+export const DivContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 30px;
+`;
+
+export const Title = styled.p`
+  font-family: "OTF® Glusp";
+  font-size: 22px;
 `;

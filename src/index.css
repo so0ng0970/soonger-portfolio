@@ -1,10 +1,4 @@
 @font-face {
-  font-family: "GowunBatang-Regular";
-  font-weight: bold;
-  src: url("./fonts/GowunBatang-Bold.ttf") format("truetype");
-}
-
-@font-face {
   font-family: "Effluent";
   font-weight: normal;
   src: url("./fonts/Effluent.ttf") format("truetype");
@@ -23,9 +17,15 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "OTF® Glusp";
+  src: url("./fonts/OTF® Glusp.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
 body {
   margin: 0;
-  font-family: "GowunBatang-Regular";
+  font-family: "SBAggroB";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
