@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Image, Row, Col } from "antd";
+
 import {
   UserOutlined,
   ContactsOutlined,
@@ -11,6 +11,7 @@ import {
 function Produce() {
   return (
     <Container>
+      {" "}
       <Header>
         <span style={{ paddingRight: "10px" }} />
         <WelcomeText>Welcome to my</WelcomeText>
@@ -20,48 +21,80 @@ function Produce() {
         <Divider />
         <span style={{ paddingRight: "30px" }} />
         <Num>01</Num>
-      </Header>
+      </Header>{" "}
       <Body>
-        <ProfileContainer>
-          <ProfileImage />
-        </ProfileContainer>
-        <Circle>
-          <p>
-            안녕하세요.
-            <br />
-            저는 플러터를 좋아하고
-            <br />
-            부지런한 개발자 김승원 입니다.
-          </p>
-        </Circle>
-        <BoxContainer>
-          <Box>
-            <TitleComponent IconComponent={ColDiv} text="ABOUT" />
-            <ContainerComponent IconComponent={UserOutlined} text="김승원" />
-            <ContainerComponent
-              IconComponent={ContactsOutlined}
-              text="1997.06.02"
-            />
-            <ContainerComponent
-              IconComponent={HomeOutlined}
-              text="서울 강서구 마곡동"
-            />
-            <ContainerComponent
-              IconComponent={MailOutlined}
-              text="soonger3300@gmail.com"
-            />
-            <ContainerComponent
-              IconComponent={RocketOutlined}
-              text="한양여자대학교 - 니트패션디자인과"
-            />
-            <LinkComponent IconComponent={GithubOutlined} text="Github" />
-          </Box>
-          <Box>
-            <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
-            <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
-            <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
-          </Box>
-        </BoxContainer>
+        <ProfileCircleContainer>
+          <ProfileContainer>
+            <ProfileImage />
+          </ProfileContainer>
+          <Circle>
+            <p>
+              안녕하세요.
+              <br />
+              저는 플러터를 좋아하고
+              <br />
+              부지런한 개발자 김승원 입니다.
+            </p>
+          </Circle>
+        </ProfileCircleContainer>
+        <AllBoxContainer>
+          <BoxContainer>
+            <Box>
+              <TitleComponent IconComponent={ColDiv} text="ABOUT" />
+              <ContainerComponent IconComponent={UserOutlined} text="김승원" />
+              <ContainerComponent
+                IconComponent={ContactsOutlined}
+                text="1997.06.02"
+              />
+              <ContainerComponent
+                IconComponent={HomeOutlined}
+                text="서울 강서구 마곡동"
+              />
+              <ContainerComponent
+                IconComponent={MailOutlined}
+                text="soonger3300@gmail.com"
+              />
+              <ContainerComponent
+                IconComponent={RocketOutlined}
+                text="한양여자대학교 - 니트패션디자인과"
+              />
+              <LinkComponent IconComponent={GithubOutlined} text="Github" />
+            </Box>
+            <Box>
+              <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
+              <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
+              <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
+            </Box>
+          </BoxContainer>
+          <BoxContainer>
+            <Box>
+              <TitleComponent IconComponent={ColDiv} text="ABOUT" />
+              <ContainerComponent IconComponent={UserOutlined} text="김승원" />
+              <ContainerComponent
+                IconComponent={ContactsOutlined}
+                text="1997.06.02"
+              />
+              <ContainerComponent
+                IconComponent={HomeOutlined}
+                text="서울 강서구 마곡동"
+              />
+              <ContainerComponent
+                IconComponent={MailOutlined}
+                text="soonger3300@gmail.com"
+              />
+              <ContainerComponent
+                IconComponent={RocketOutlined}
+                text="한양여자대학교 - 니트패션디자인과"
+              />
+              <LinkComponent IconComponent={GithubOutlined} text="Github" />
+            </Box>
+            <Box>
+              <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
+              <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
+              <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
+            </Box>
+          </BoxContainer>
+        </AllBoxContainer>
         <Text2Container />
       </Body>
     </Container>
@@ -176,16 +209,24 @@ export const Body = styled.div`
   align-items: center;
   position: relative;
   @media (max-width: 790px) {
+    flex-direction: column;
     margin-left: 45px;
     margin-top: 10px;
   }
 `;
-
+const ProfileCircleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 790px) {
+    flex-direction: row;
+  }
+`;
 export const ProfileContainer = styled.div`
   width: 300px;
   height: 400px;
 
   @media (max-width: 790px) {
+    margin-left: 45px;
     width: 300px;
     height: 300px;
   }
@@ -197,6 +238,10 @@ export const ProfileImage = styled.div`
   background-position: center;
   width: 100%;
   height: 100%;
+  @media (max-width: 790px) {
+    width: 200px;
+    height: 280px;
+  }
 `;
 export const Circle = styled.div`
   padding: 15px;
@@ -212,20 +257,27 @@ export const Circle = styled.div`
   position: relative;
   background-color: #fd6e55;
   @media (max-width: 790px) {
-    right: 70px;
-    width: 260px;
-    height: 190px;
+    top: 110px;
+    right: 180px;
+    width: 140px;
+    height: 140px;
   }
+`;
+const AllBoxContainer = styled.div`
+  justify-content: space-around;
+  display: flex;
+  height: 100%;
+  width: 900px;
 `;
 const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   height: 100%;
 `;
 export const Box = styled.div`
-  width: 250px;
+  width: 70%;
+  max-width: 250px;
 `;
 export const ColDiv = styled.div`
   background-color: #fd6e55;
