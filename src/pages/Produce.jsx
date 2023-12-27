@@ -54,10 +54,7 @@ function Produce() {
                 IconComponent={MailOutlined}
                 text="soonger3300@gmail.com"
               />
-              <ContainerComponent
-                IconComponent={RocketOutlined}
-                text="한양여자대학교 - 니트패션디자인과"
-              />
+
               <LinkComponent IconComponent={GithubOutlined} text="Github" />
             </Box>
             <Box>
@@ -68,25 +65,8 @@ function Produce() {
           </BoxContainer>
           <BoxContainer>
             <Box>
-              <TitleComponent IconComponent={ColDiv} text="ABOUT" />
-              <ContainerComponent IconComponent={UserOutlined} text="김승원" />
-              <ContainerComponent
-                IconComponent={ContactsOutlined}
-                text="1997.06.02"
-              />
-              <ContainerComponent
-                IconComponent={HomeOutlined}
-                text="서울 강서구 마곡동"
-              />
-              <ContainerComponent
-                IconComponent={MailOutlined}
-                text="soonger3300@gmail.com"
-              />
-              <ContainerComponent
-                IconComponent={RocketOutlined}
-                text="한양여자대학교 - 니트패션디자인과"
-              />
-              <LinkComponent IconComponent={GithubOutlined} text="Github" />
+              <TitleComponent IconComponent={ColDiv} text="SKILLS" />
+              <LogoComponent url="dart" />
             </Box>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
@@ -108,6 +88,14 @@ export const ContainerComponent = ({ IconComponent, text }) => (
     <span style={{ paddingRight: "5px" }} />
     <p>{text}</p>
   </DivContainer>
+);
+
+export const LogoComponent = ({ url }) => (
+  <LogoContainer>
+    <Logo
+      src={`https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/${url}.svg`}
+    />
+  </LogoContainer>
 );
 export const TitleComponent = ({ text }) => (
   <DivContainer>
@@ -155,7 +143,9 @@ export const Num = styled.p`
   }
 `;
 export const Container = styled.div`
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-scrollbar-button: none;
   background-image: url("assets/images/background1.jpg");
   background-size: cover;
   display: flex;
@@ -163,6 +153,12 @@ export const Container = styled.div`
   height: 100vh;
   flex-direction: column;
   align-items: flex-start;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 790px) {
+    height: 1000px;
+  }
 `;
 export const line = styled.div`
   background-image: url("assets/images/background1.jpg");
@@ -193,6 +189,10 @@ export const Text2Container = styled.div`
   height: 500px;
   display: flex;
   flex-direction: row;
+  @media (max-width: 1220px) {
+    width: 0px;
+    height: 0px;
+  }
   @media (max-width: 790px) {
     top: 0px;
     width: 30px;
@@ -203,7 +203,6 @@ export const Text2Container = styled.div`
 export const Body = styled.div`
   width: 100%;
   margin-top: 100px;
-  /* background-color: blue; */
   margin-left: 100px;
   display: flex;
   align-items: center;
@@ -238,9 +237,80 @@ export const ProfileImage = styled.div`
   background-position: center;
   width: 100%;
   height: 100%;
+  @media (max-width: 1500px) {
+    width: 30vh;
+    height: 35vh;
+  }
   @media (max-width: 790px) {
     width: 200px;
     height: 280px;
+  }
+`;
+
+export const AllBoxContainer = styled.div`
+  /* background-color: #fd6e55; */
+  justify-content: space-around;
+  display: flex;
+  height: 50vh;
+  width: 50%;
+  @media (max-width: 1500px) {
+    width: 80vh;
+    font-size: 1.2vw;
+  }
+  @media (max-width: 1220px) {
+    width: 30vh;
+    font-size: 1.2vw;
+  }
+  @media (max-width: 790px) {
+    margin-top: 10px;
+    width: 400px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+export const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  @media (max-width: 790px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+`;
+export const Box = styled.div`
+  @media (max-width: 790px) {
+    margin-bottom: 10px;
+  }
+`;
+export const ColDiv = styled.div`
+  background-color: #fd6e55;
+  width: 3px;
+  height: 30px;
+  @media (max-width: 790px) {
+    height: 15px;
+  }
+`;
+
+export const DivContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 30px;
+  @media (max-width: 790px) {
+    font-size: 13px;
+    width: 300px;
+    height: 20px;
+  }
+`;
+
+export const Title = styled.p`
+  font-family: "OTF® Glusp";
+  font-size: 22px;
+  @media (max-width: 790px) {
+    font-size: 15px;
   }
 `;
 export const Circle = styled.div`
@@ -250,49 +320,38 @@ export const Circle = styled.div`
   display: flex;
   align-items: center;
   text-align: start;
-  top: 70px;
+  top: 150px;
   right: 100px;
   border-radius: 50%;
   border: 1px solid black;
   position: relative;
   background-color: #fd6e55;
+  @media (max-width: 1220px) {
+    font-size: 1.5vw;
+    top: 220px;
+    right: 280px;
+    width: 20vh;
+    height: 20vh;
+  }
   @media (max-width: 790px) {
+    font-size: 14px;
     top: 110px;
     right: 180px;
     width: 140px;
     height: 140px;
   }
 `;
-const AllBoxContainer = styled.div`
-  justify-content: space-around;
+export const LogoContainer = styled.div`
   display: flex;
-  height: 100%;
-  width: 900px;
-`;
-const BoxContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`;
-export const Box = styled.div`
-  width: 70%;
-  max-width: 250px;
-`;
-export const ColDiv = styled.div`
-  background-color: #fd6e55;
-  width: 3px;
-  height: 30px;
-`;
-
-export const DivContainer = styled.div`
-  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 30px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
 `;
-
-export const Title = styled.p`
-  font-family: "OTF® Glusp";
-  font-size: 22px;
+export const Logo = styled.img`
+  width: 32px;
+  height: 32px;
 `;
