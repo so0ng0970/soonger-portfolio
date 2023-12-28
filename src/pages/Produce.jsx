@@ -66,11 +66,16 @@ function Produce() {
           <BoxContainer>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="SKILLS" />
-              <LogoComponent url="dart" />
+              <LogoBox>
+                <LogoComponent url="dart" text="Dart" />
+                <LogoComponent url="flutter" text="Flutter" />
+                <LogoComponent url="javascript" text="Javascript" />
+                <LogoComponent url="react" text="React" />
+              </LogoBox>
             </Box>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
-              <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
+              <ContainerComponent text="한양여자대학교 - 니트과" />
               <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
             </Box>
           </BoxContainer>
@@ -90,12 +95,15 @@ export const ContainerComponent = ({ IconComponent, text }) => (
   </DivContainer>
 );
 
-export const LogoComponent = ({ url }) => (
-  <LogoContainer>
-    <Logo
-      src={`https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/${url}.svg`}
-    />
-  </LogoContainer>
+export const LogoComponent = ({ url, text }) => (
+  <LogosBox>
+    <LogoContainer>
+      <Logo
+        src={`https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/${url}.svg`}
+      />
+    </LogoContainer>
+    <p>{text}</p>
+  </LogosBox>
 );
 export const TitleComponent = ({ text }) => (
   <DivContainer>
@@ -216,6 +224,7 @@ export const Body = styled.div`
 const ProfileCircleContainer = styled.div`
   display: flex;
   flex-direction: row;
+
   @media (max-width: 790px) {
     flex-direction: row;
   }
@@ -238,8 +247,8 @@ export const ProfileImage = styled.div`
   width: 100%;
   height: 100%;
   @media (max-width: 1500px) {
-    width: 30vh;
-    height: 35vh;
+    width: 60%;
+    height: 70%;
   }
   @media (max-width: 790px) {
     width: 200px;
@@ -333,6 +342,13 @@ export const Circle = styled.div`
     width: 20vh;
     height: 20vh;
   }
+  @media (max-width: 1500px) {
+    font-size: 14px;
+    top: 220px;
+    right: 280px;
+    width: 25vh;
+    height: 25vh;
+  }
   @media (max-width: 790px) {
     font-size: 14px;
     top: 110px;
@@ -341,17 +357,41 @@ export const Circle = styled.div`
     height: 140px;
   }
 `;
+
+export const LogosBox = styled.div`
+  margin: 10px 30px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  @media (max-width: 790px) {
+    margin-bottom: 10px;
+  }
+`;
+export const LogoBox = styled.div`
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  @media (max-width: 790px) {
+    margin-bottom: 10px;
+  }
+`;
 export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 1px solid black;
+  background-color: white;
 `;
 export const Logo = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
 `;
