@@ -1,11 +1,11 @@
 import styled from "styled-components";
+import TypingText from "../styles/TypingText";
 
 import {
   UserOutlined,
   ContactsOutlined,
   HomeOutlined,
   MailOutlined,
-  RocketOutlined,
   GithubOutlined,
 } from "@ant-design/icons";
 function Produce() {
@@ -28,15 +28,10 @@ function Produce() {
             <ProfileImage />
           </ProfileContainer>
           <Circle>
-            <p>
-              안녕하세요.
-              <br />
-              저는 플러터를 좋아하고
-              <br />
-              부지런한 개발자 김승원 입니다.
-            </p>
+            <TypingText />
           </Circle>
         </ProfileCircleContainer>
+
         <AllBoxContainer>
           <BoxContainer>
             <Box>
@@ -60,7 +55,9 @@ function Produce() {
             <Box>
               <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
               <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
-              <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
+              <MarginBottom />
+
+              <ContainerComponent text="이노베이션 캠프(스파르타코딩클럽) - 웹 프론트엔드 수료" />
             </Box>
           </BoxContainer>
           <BoxContainer>
@@ -74,9 +71,8 @@ function Produce() {
               </LogoBox>
             </Box>
             <Box>
-              <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
-              <ContainerComponent text="한양여자대학교 - 니트과" />
-              <ContainerComponent text="이노베이션 캠프 - 웹 프론트엔드 수료" />
+              <TitleComponent IconComponent={ColDiv} text="LISENCE" />
+              <ContainerComponent text="GTQ 포토샵 - 1급" />
             </Box>
           </BoxContainer>
         </AllBoxContainer>
@@ -87,10 +83,11 @@ function Produce() {
 }
 export default Produce;
 
-export const ContainerComponent = ({ IconComponent, text }) => (
+export const ContainerComponent = ({ IconComponent, text, date }) => (
   <DivContainer>
     {IconComponent && <IconComponent />}
     <span style={{ paddingRight: "5px" }} />
+    <p>{date}</p>
     <p>{text}</p>
   </DivContainer>
 );
@@ -102,6 +99,7 @@ export const LogoComponent = ({ url, text }) => (
         src={`https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/${url}.svg`}
       />
     </LogoContainer>
+
     <p>{text}</p>
   </LogosBox>
 );
@@ -109,6 +107,7 @@ export const TitleComponent = ({ text }) => (
   <DivContainer>
     <ColDiv />
     <span style={{ paddingRight: "10px" }} />
+
     <Title>{text}</Title>
   </DivContainer>
 );
@@ -229,6 +228,7 @@ const ProfileCircleContainer = styled.div`
     flex-direction: row;
   }
 `;
+
 export const ProfileContainer = styled.div`
   width: 300px;
   height: 400px;
@@ -257,41 +257,58 @@ export const ProfileImage = styled.div`
 `;
 
 export const AllBoxContainer = styled.div`
-  /* background-color: #fd6e55; */
   justify-content: space-around;
   display: flex;
   height: 50vh;
   width: 50%;
   @media (max-width: 1500px) {
-    width: 80vh;
+    width: 30vh;
+    height: 60vh;
     font-size: 1.2vw;
+  }
+  @media (max-width: 977px) {
+    font-size: 0.5vw;
   }
   @media (max-width: 1220px) {
     width: 30vh;
     font-size: 1.2vw;
   }
+
   @media (max-width: 790px) {
     margin-top: 10px;
-    width: 400px;
+    width: 450px;
     min-height: 500px;
     display: flex;
     flex-direction: column;
   }
 `;
 export const BoxContainer = styled.div`
+  margin-left: 30px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  @media (max-width: 1220px) {
+    flex-direction: column;
+  }
+  @media (max-width: 977px) {
+    font-size: 1vw;
+    margin-left: 0px;
+  }
   @media (max-width: 790px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 `;
+export const MarginBottom = styled.div`
+  margin-bottom: 5px;
+`;
 export const Box = styled.div`
+  height: 48%;
   @media (max-width: 790px) {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `;
 export const ColDiv = styled.div`
@@ -306,7 +323,8 @@ export const ColDiv = styled.div`
 export const DivContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 300px;
+
+  width: 350px;
   height: 30px;
   @media (max-width: 790px) {
     font-size: 13px;
@@ -321,6 +339,9 @@ export const Title = styled.p`
   @media (max-width: 790px) {
     font-size: 15px;
   }
+  @media (max-width: 977px) {
+    font-size: 1.6vw;
+  }
 `;
 export const Circle = styled.div`
   padding: 15px;
@@ -332,7 +353,7 @@ export const Circle = styled.div`
   top: 150px;
   right: 100px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid #547c49;
   position: relative;
   background-color: #fd6e55;
   @media (max-width: 1220px) {
@@ -365,17 +386,20 @@ export const LogosBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 250px;
+
   @media (max-width: 790px) {
     margin-bottom: 10px;
   }
 `;
 export const LogoBox = styled.div`
   display: flex;
-
-  justify-content: center;
   align-items: center;
   justify-content: space-between;
   width: 250px;
+  @media (max-width: 1122px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
   @media (max-width: 790px) {
     margin-bottom: 10px;
   }
@@ -390,8 +414,22 @@ export const LogoContainer = styled.div`
   border-radius: 50%;
   border: 1px solid black;
   background-color: white;
+  @media (max-width: 1122px) {
+    width: 1.4vw;
+    font-size: 1vw;
+  }
 `;
 export const Logo = styled.img`
   width: 25px;
   height: 25px;
+  @media (max-width: 1122px) {
+    width: 1.4vw;
+    height: 25px;
+  }
+`;
+export const Text = styled.p`
+  font-size: 15px;
+  @media (max-width: 1122px) {
+    font-size: 1.2vw;
+  }
 `;
