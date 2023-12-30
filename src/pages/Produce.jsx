@@ -214,6 +214,9 @@ export const Body = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  @media (max-width: 977px) {
+    margin-left: 40px;
+  }
   @media (max-width: 790px) {
     flex-direction: column;
     margin-left: 45px;
@@ -232,7 +235,10 @@ const ProfileCircleContainer = styled.div`
 export const ProfileContainer = styled.div`
   width: 300px;
   height: 400px;
-
+  @media (max-width: 977px) {
+    font-size: 0.5vw;
+    width: 180px;
+  }
   @media (max-width: 790px) {
     margin-left: 45px;
     width: 300px;
@@ -247,8 +253,11 @@ export const ProfileImage = styled.div`
   width: 100%;
   height: 100%;
   @media (max-width: 1500px) {
-    width: 60%;
+    width: 200px;
     height: 70%;
+  }
+  @media (max-width: 977px) {
+    width: 200px;
   }
   @media (max-width: 790px) {
     width: 200px;
@@ -268,6 +277,7 @@ export const AllBoxContainer = styled.div`
   }
   @media (max-width: 977px) {
     font-size: 0.5vw;
+    width: 100px;
   }
   @media (max-width: 1220px) {
     width: 30vh;
@@ -294,8 +304,8 @@ export const BoxContainer = styled.div`
     flex-direction: column;
   }
   @media (max-width: 977px) {
-    font-size: 1vw;
-    margin-left: 0px;
+    font-size: 10px;
+    margin-left: 15px;
   }
   @media (max-width: 790px) {
     height: 280px;
@@ -329,6 +339,9 @@ export const DivContainer = styled.div`
 
   width: 350px;
   height: 30px;
+  @media (max-width: 977px) {
+    width: 250px;
+  }
   @media (max-width: 790px) {
     font-size: 13px;
     width: 300px;
@@ -339,11 +352,11 @@ export const DivContainer = styled.div`
 export const Title = styled.p`
   font-family: "OTF® Glusp";
   font-size: 22px;
-  @media (max-width: 790px) {
-    font-size: 14px;
-  }
   @media (max-width: 977px) {
     font-size: 16px;
+  }
+  @media (max-width: 790px) {
+    font-size: 14px;
   }
 `;
 export const Circle = styled.div`
@@ -358,7 +371,14 @@ export const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid #547c49;
   position: relative;
-  background-color: #fd6e55;
+  background-color: #fd6e55; 
+  @media (max-width: 1500px) {
+    font-size: 15px;
+    top: 220px;
+    right: 280px;
+    width: 20vh;
+    height: 20vh;
+  }
   @media (max-width: 1220px) {
     font-size: 1.5vw;
     top: 220px;
@@ -366,10 +386,11 @@ export const Circle = styled.div`
     width: 20vh;
     height: 20vh;
   }
-  @media (max-width: 1500px) {
+ 
+  @media (max-width: 977px) {
     font-size: 15px;
     top: 220px;
-    right: 280px;
+    right: 140px;
     width: 20vh;
     height: 20vh;
   }
@@ -379,7 +400,7 @@ export const Circle = styled.div`
     right: 180px;
     width: 140px;
     height: 140px;
-  }
+  }7u
 `;
 
 export const LogosBox = styled.div`
@@ -391,8 +412,10 @@ export const LogosBox = styled.div`
   width: 250px;
 
   @media (max-width: 1122px) {
+    font-size: 10px;
     width: 4vh;
   }
+
   @media (max-width: 790px) {
     margin-bottom: 10px;
     font-size: 10px;
@@ -404,10 +427,14 @@ export const LogoBox = styled.div`
   justify-content: space-between;
   width: 250px;
   @media (max-width: 1122px) {
+    width: 215px;
     margin-bottom: 10px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 976px) {
+    width: 25px;
   }
   @media (max-width: 790px) {
     display: flex;
@@ -445,4 +472,4 @@ export const Logo = styled.img`
     width: 20px;
     height: 20px;
   }
-`;    
+`;
