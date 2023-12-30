@@ -196,7 +196,7 @@ export const Text2Container = styled.div`
   height: 500px;
   display: flex;
   flex-direction: row;
-  @media (max-width: 1220px) {
+  @media (max-width: 1264px) {
     width: 0px;
     height: 0px;
   }
@@ -276,8 +276,9 @@ export const AllBoxContainer = styled.div`
 
   @media (max-width: 790px) {
     margin-top: 10px;
-    width: 450px;
-    min-height: 500px;
+    height: 430px;
+    width: 430px;
+
     display: flex;
     flex-direction: column;
   }
@@ -297,6 +298,8 @@ export const BoxContainer = styled.div`
     margin-left: 0px;
   }
   @media (max-width: 790px) {
+    height: 280px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -308,7 +311,7 @@ export const MarginBottom = styled.div`
 export const Box = styled.div`
   height: 48%;
   @media (max-width: 790px) {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 `;
 export const ColDiv = styled.div`
@@ -337,10 +340,10 @@ export const Title = styled.p`
   font-family: "OTF® Glusp";
   font-size: 22px;
   @media (max-width: 790px) {
-    font-size: 15px;
+    font-size: 14px;
   }
   @media (max-width: 977px) {
-    font-size: 1.6vw;
+    font-size: 16px;
   }
 `;
 export const Circle = styled.div`
@@ -364,11 +367,11 @@ export const Circle = styled.div`
     height: 20vh;
   }
   @media (max-width: 1500px) {
-    font-size: 14px;
+    font-size: 15px;
     top: 220px;
     right: 280px;
-    width: 25vh;
-    height: 25vh;
+    width: 20vh;
+    height: 20vh;
   }
   @media (max-width: 790px) {
     font-size: 14px;
@@ -387,8 +390,12 @@ export const LogosBox = styled.div`
   align-items: center;
   width: 250px;
 
+  @media (max-width: 1122px) {
+    width: 4vh;
+  }
   @media (max-width: 790px) {
     margin-bottom: 10px;
+    font-size: 10px;
   }
 `;
 export const LogoBox = styled.div`
@@ -397,11 +404,15 @@ export const LogoBox = styled.div`
   justify-content: space-between;
   width: 250px;
   @media (max-width: 1122px) {
-    flex-direction: column;
     margin-bottom: 10px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   @media (max-width: 790px) {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
   }
 `;
 export const LogoContainer = styled.div`
@@ -416,7 +427,12 @@ export const LogoContainer = styled.div`
   background-color: white;
   @media (max-width: 1122px) {
     width: 1.4vw;
+    height: 1.4vw;
     font-size: 1vw;
+  }
+  @media (max-width: 790px) {
+    width: 25px;
+    height: 25px;
   }
 `;
 export const Logo = styled.img`
@@ -424,12 +440,9 @@ export const Logo = styled.img`
   height: 25px;
   @media (max-width: 1122px) {
     width: 1.4vw;
-    height: 25px;
   }
-`;
-export const Text = styled.p`
-  font-size: 15px;
-  @media (max-width: 1122px) {
-    font-size: 1.2vw;
+  @media (max-width: 790px) {
+    width: 20px;
+    height: 20px;
   }
-`;
+`;    
