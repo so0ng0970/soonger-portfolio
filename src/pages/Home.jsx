@@ -1,6 +1,7 @@
 import { ScrollAnimationContainer } from "../styles/ScrollAnimaiton";
 import { Container } from "../styles/Container";
 import Produce from "./Produce";
+import Project from "./Project";
 
 function Home() {
   return (
@@ -9,17 +10,10 @@ function Home() {
         <Produce />
       </Container>
 
-      <ScrollAnimationContainer>
-        <h1>안녕</h1>
-      </ScrollAnimationContainer>
-
-      <ScrollAnimationContainer>
-        <h1>하세요</h1>
-      </ScrollAnimationContainer>
-
-      <ScrollAnimationContainer>
-        <h1>반갑습니다</h1>
-      </ScrollAnimationContainer>
+      <Container>
+        <Project />
+      </Container>
+ 
     </>
   );
 }

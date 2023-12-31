@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { ScrollAnimationContainer } from "../styles/ScrollAnimaiton";
 import TypingText from "../styles/TypingText";
 
 import {
@@ -21,7 +22,7 @@ function Produce() {
         <Divider />
         <span style={{ paddingRight: "30px" }} />
         <Num>01</Num>
-      </Header>{" "}
+      </Header>
       <Body>
         <ProfileCircleContainer>
           <ProfileContainer>
@@ -36,6 +37,7 @@ function Produce() {
           <BoxContainer>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="ABOUT" />
+              <MarginBottom />
               <ContainerComponent IconComponent={UserOutlined} text="김승원" />
               <ContainerComponent
                 IconComponent={ContactsOutlined}
@@ -49,29 +51,33 @@ function Produce() {
                 IconComponent={MailOutlined}
                 text="soonger3300@gmail.com"
               />
-
               <LinkComponent IconComponent={GithubOutlined} text="Github" />
             </Box>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="EDUCATION" />
+              <MarginBottom />
               <ContainerComponent text="한양여자대학교 - 니트패션디자인과" />
               <MarginBottom />
-
               <ContainerComponent text="이노베이션 캠프(스파르타코딩클럽) - 웹 프론트엔드 수료" />
             </Box>
           </BoxContainer>
           <BoxContainer>
             <Box>
               <TitleComponent IconComponent={ColDiv} text="SKILLS" />
-              <LogoBox>
-                <LogoComponent url="dart" text="Dart" />
-                <LogoComponent url="flutter" text="Flutter" />
-                <LogoComponent url="javascript" text="Javascript" />
-                <LogoComponent url="react" text="React" />
-              </LogoBox>
+              <MarginBottom />
+              <ScrollAnimationContainer>
+                <LogoBox>
+                  <LogoComponent url="dart" text="Dart" />
+                  <LogoComponent url="flutter" text="Flutter" />
+                  <LogoComponent url="javascript" text="Javascript" />
+                  <LogoComponent url="react" text="React" />
+                </LogoBox>
+              </ScrollAnimationContainer>
             </Box>
+
             <Box>
               <TitleComponent IconComponent={ColDiv} text="LISENCE" />
+              <MarginBottom />
               <ContainerComponent text="GTQ 포토샵 - 1급" />
             </Box>
           </BoxContainer>
@@ -84,12 +90,14 @@ function Produce() {
 export default Produce;
 
 export const ContainerComponent = ({ IconComponent, text, date }) => (
-  <DivContainer>
-    {IconComponent && <IconComponent />}
-    <span style={{ paddingRight: "5px" }} />
-    <p>{date}</p>
-    <p>{text}</p>
-  </DivContainer>
+  <ScrollAnimationContainer>
+    <DivContainer>
+      {IconComponent && <IconComponent />}
+      <span style={{ paddingRight: "5px" }} />
+      <p>{date}</p>
+      <p>{text}</p>
+    </DivContainer>
+  </ScrollAnimationContainer>
 );
 
 export const LogoComponent = ({ url, text }) => (
@@ -99,7 +107,6 @@ export const LogoComponent = ({ url, text }) => (
         src={`https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/${url}.svg`}
       />
     </LogoContainer>
-
     <p>{text}</p>
   </LogosBox>
 );
@@ -107,25 +114,26 @@ export const TitleComponent = ({ text }) => (
   <DivContainer>
     <ColDiv />
     <span style={{ paddingRight: "10px" }} />
-
     <Title>{text}</Title>
   </DivContainer>
 );
 export const LinkComponent = ({ IconComponent, text }) => (
-  <DivContainer>
-    <IconComponent />
-    <span style={{ paddingRight: "5px" }} />
-    <p>
-      <a
-        href="https://github.com/so0ng0970"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ color: "#2e302f" }}
-      >
-        {text}
-      </a>
-    </p>
-  </DivContainer>
+  <ScrollAnimationContainer>
+    <DivContainer>
+      <IconComponent />
+      <span style={{ paddingRight: "5px" }} />
+      <p>
+        <a
+          href="https://github.com/so0ng0970"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#2e302f" }}
+        >
+          {text}
+        </a>
+      </p>
+    </DivContainer>{" "}
+  </ScrollAnimationContainer>
 );
 
 export const Header = styled.div`
@@ -144,6 +152,7 @@ export const Divider = styled.hr`
 export const Num = styled.p`
   font-size: 10px;
   margin-right: 30px;
+
   @media (max-width: 480px) {
     font-size: 10px;
     margin-right: 20px;
@@ -163,6 +172,7 @@ export const Container = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
   @media (max-width: 790px) {
     height: 1000px;
   }
@@ -243,6 +253,7 @@ export const ProfileContainer = styled.div`
     margin-left: 45px;
     width: 300px;
     height: 300px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -270,6 +281,7 @@ export const AllBoxContainer = styled.div`
   display: flex;
   height: 50vh;
   width: 50%;
+
   @media (max-width: 1500px) {
     width: 30vh;
     height: 60vh;
@@ -309,14 +321,13 @@ export const BoxContainer = styled.div`
   }
   @media (max-width: 790px) {
     height: 280px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 `;
 export const MarginBottom = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 export const Box = styled.div`
   height: 48%;
@@ -336,7 +347,6 @@ export const ColDiv = styled.div`
 export const DivContainer = styled.div`
   display: flex;
   align-items: center;
-
   width: 350px;
   height: 30px;
   @media (max-width: 977px) {
@@ -350,6 +360,7 @@ export const DivContainer = styled.div`
 `;
 
 export const Title = styled.p`
+  color: #257400;
   font-family: "OTF® Glusp";
   font-size: 22px;
   @media (max-width: 977px) {
@@ -380,7 +391,7 @@ export const Circle = styled.div`
     height: 20vh;
   }
   @media (max-width: 1220px) {
-    font-size: 1.5vw;
+
     top: 220px;
     right: 280px;
     width: 20vh;
@@ -395,7 +406,7 @@ export const Circle = styled.div`
     height: 20vh;
   }
   @media (max-width: 790px) {
-    font-size: 14px;
+    font-size: 13px;
     top: 110px;
     right: 180px;
     width: 140px;
@@ -426,6 +437,7 @@ export const LogoBox = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 250px;
+
   @media (max-width: 1122px) {
     width: 215px;
     margin-bottom: 10px;
