@@ -337,7 +337,7 @@ export const Box = styled.div`
 `;
 export const ColDiv = styled.div`
   background-color: #fd6e55;
-  width: 3px;
+  width: 5px;
   height: 30px;
   @media (max-width: 790px) {
     height: 15px;
@@ -349,7 +349,9 @@ export const DivContainer = styled.div`
   align-items: center;
   width: 350px;
   height: 30px;
+  font-size: 20px;
   @media (max-width: 977px) {
+    font-size: 13px;
     width: 250px;
   }
   @media (max-width: 790px) {
@@ -362,7 +364,7 @@ export const DivContainer = styled.div`
 export const Title = styled.p`
   color: #257400;
   font-family: "OTF® Glusp";
-  font-size: 22px;
+  font-size: 30px;
   @media (max-width: 977px) {
     font-size: 16px;
   }
@@ -459,8 +461,8 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid black;
   background-color: white;
@@ -475,8 +477,8 @@ export const LogoContainer = styled.div`
   }
 `;
 export const Logo = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   @media (max-width: 1122px) {
     width: 1.4vw;
   }
