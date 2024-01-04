@@ -206,7 +206,7 @@ export const Text2Container = styled.div`
   height: 500px;
   display: flex;
   flex-direction: row;
-  @media (max-width: 1264px) {
+  @media (max-width: 1220px) {
     width: 0px;
     height: 0px;
   }
@@ -224,8 +224,11 @@ export const Body = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  @media (max-width: 977px) {
+  @media (max-width: 1140px) {
     margin-left: 40px;
+  }
+  @media (max-width: 977px) {
+    margin-left: 20px;
   }
   @media (max-width: 790px) {
     flex-direction: column;
@@ -245,6 +248,10 @@ const ProfileCircleContainer = styled.div`
 export const ProfileContainer = styled.div`
   width: 300px;
   height: 400px;
+  @media (max-width: 1140px) {
+    font-size: 0.5vw;
+    width: 250px;
+  }
   @media (max-width: 977px) {
     font-size: 0.5vw;
     width: 180px;
@@ -285,15 +292,12 @@ export const AllBoxContainer = styled.div`
   @media (max-width: 1500px) {
     width: 30vh;
     height: 60vh;
-    font-size: 1.2vw;
   }
   @media (max-width: 977px) {
-    font-size: 0.5vw;
     width: 100px;
   }
   @media (max-width: 1220px) {
     width: 30vh;
-    font-size: 1.2vw;
   }
 
   @media (max-width: 790px) {
@@ -316,7 +320,6 @@ export const BoxContainer = styled.div`
     flex-direction: column;
   }
   @media (max-width: 977px) {
-    font-size: 10px;
     margin-left: 15px;
   }
   @media (max-width: 790px) {
@@ -350,6 +353,9 @@ export const DivContainer = styled.div`
   width: 350px;
   height: 30px;
   font-size: 20px;
+  @media (max-width: 1550px) {
+    font-size: 18px;
+  }
   @media (max-width: 977px) {
     font-size: 13px;
     width: 250px;
@@ -365,8 +371,8 @@ export const Title = styled.p`
   color: #257400;
   font-family: "OTF® Glusp";
   font-size: 30px;
-  @media (max-width: 977px) {
-    font-size: 16px;
+  @media (max-width: 1126px) {
+    font-size: 20px;
   }
   @media (max-width: 790px) {
     font-size: 14px;
@@ -374,8 +380,9 @@ export const Title = styled.p`
 `;
 export const Circle = styled.div`
   padding: 15px;
-  width: 200px;
-  height: 200px;
+  font-size: 20px;
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   text-align: start;
@@ -386,14 +393,14 @@ export const Circle = styled.div`
   position: relative;
   background-color: #fd6e55; 
   @media (max-width: 1500px) {
-    font-size: 15px;
+    font-size: 18px;
     top: 220px;
     right: 280px;
     width: 20vh;
     height: 20vh;
   }
   @media (max-width: 1220px) {
-
+    font-size: 18px;
     top: 220px;
     right: 280px;
     width: 20vh;
@@ -404,8 +411,8 @@ export const Circle = styled.div`
     font-size: 15px;
     top: 220px;
     right: 140px;
-    width: 20vh;
-    height: 20vh;
+    width: 15vh;
+    height: 15vh;
   }
   @media (max-width: 790px) {
     font-size: 13px;
@@ -424,9 +431,10 @@ export const LogosBox = styled.div`
   align-items: center;
   width: 250px;
 
-  @media (max-width: 1122px) {
-    font-size: 10px;
+  @media (max-width: 1550px) {
+    font-size: 15px;
     width: 4vh;
+    margin-left: 15px;
   }
 
   @media (max-width: 790px) {
@@ -440,7 +448,7 @@ export const LogoBox = styled.div`
   justify-content: space-between;
   width: 250px;
 
-  @media (max-width: 1122px) {
+  @media (max-width: 1552px) {
     width: 215px;
     margin-bottom: 10px;
     display: grid;
@@ -469,6 +477,7 @@ export const LogoContainer = styled.div`
   @media (max-width: 1122px) {
     width: 1.4vw;
     height: 1.4vw;
+
     font-size: 1vw;
   }
   @media (max-width: 790px) {
