@@ -5,6 +5,7 @@ const { Meta } = Card;
 function Project() {
   return (
     <Container>
+      <Sea />
       <ProjectContainer>
         <CardComponent
           backgroundImage="assets/images/project1.jpg"
@@ -27,6 +28,7 @@ function Project() {
           subText="- solo"
         />
       </ProjectContainer>
+      <Rock />
     </Container>
   );
 }
@@ -63,6 +65,7 @@ export const TitleComponent = ({ text, subText }) => (
 export default Project;
 
 export const Container = styled.div`
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-scrollbar-button: none;
@@ -80,14 +83,40 @@ export const Container = styled.div`
   @media (max-width: 790px) {
   }
 `;
+export const Sea = styled.div`
+  background-image: url("assets/images/sea.png");
+  background-size: cover;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 50;
+  @media (max-width: 790px) {
+  }
+`;
 
+export const Rock = styled.div`
+  position: relative;
+  bottom: 0;
+  right: 0;
+  background-image: url("assets/images/rock.png");
+  background-size: cover;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+
+  @media (max-width: 790px) {
+  }
+`;
 const ProjectContainer = styled.div`
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 30vh;
 
   @media (max-width: 790px) {
     flex-direction: row;
