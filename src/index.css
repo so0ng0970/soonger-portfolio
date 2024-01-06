@@ -24,6 +24,13 @@
   font-style: normal;
 }
 @font-face {
+  font-family: "LeferiPoint-BlackObliqueA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackObliqueA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "CWDangamAsac-Bold";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff")
     format("woff");

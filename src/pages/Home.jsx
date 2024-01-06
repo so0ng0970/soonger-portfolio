@@ -13,7 +13,6 @@ function Home() {
       <Container>
         <Project />
       </Container>
- 
     </>
   );
 }
