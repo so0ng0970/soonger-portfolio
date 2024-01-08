@@ -6,30 +6,32 @@ function Project() {
   return (
     <Container>
       <SeaComponent />
-
       <ProjectContainer>
         <CardComponent
+          number="01"
           backgroundImage="assets/images/project1.jpg"
           text="You & I Diary"
           subText="- solo"
         />
         <CardComponent
+          number="02"
           backgroundImage="assets/images/project2.jpg"
           text="MAAP"
           subText="- solo"
         />
         <CardComponent
+          number="03"
           backgroundImage="assets/images/project3.jpg"
           text="STOCK'S TALK"
           subText="- member"
         />
         <CardComponent
+          number="04"
           backgroundImage="assets/images/project4.jpg"
           text="PORTFOLIO"
           subText="- solo"
         />
       </ProjectContainer>
-
       <RockComponent />
     </Container>
   );
@@ -64,25 +66,36 @@ export const RockComponent = () => {
   return <Rock ref={ref} className={isInViewport ? "slide-in" : ""} />;
 };
 
-export const CardComponent = ({ subText, backgroundImage, text }) => {
+export const CardComponent = ({ subText, backgroundImage, text, number }) => {
   return (
     <CardWrapper>
-      <TitleContainer>
-        <TitleComponent text={text} subText={subText} />
-      </TitleContainer>
+      <CardContainer>
+        <NumberComponent number={number} />
 
-      <ProjectImage backgroundImage={backgroundImage} />
+        <TitleContainer>
+          <TitleComponent text={text} subText={subText} />
+        </TitleContainer>
+        <ProjectImage backgroundImage={backgroundImage} />
+      </CardContainer>
     </CardWrapper>
   );
 };
 export const TitleComponent = ({ text, subText }) => (
-  <DivContainer>
-    <ColDiv />
-    <TitleContainer>
-      <Title>{text}</Title>
-      <SubTitle>{subText}</SubTitle>
-    </TitleContainer>
-  </DivContainer>
+  <>
+    <DivContainer>
+      <ColDiv />
+      <TitleContainer>
+        <Title>{text}</Title>
+        <SubTitle>{subText}</SubTitle>
+      </TitleContainer>
+    </DivContainer>
+  </>
+);
+export const NumberComponent = ({ number }) => (
+  <NumberContainer>
+    <NumberDiv />
+    <Number>{number}</Number>
+  </NumberContainer>
 );
 export default Project;
 
@@ -91,7 +104,8 @@ export const Container = styled.div`
   overflow-x: hidden;
   position: relative;
   -webkit-scrollbar-button: none;
-  background-image: url("assets/images/background2.jpg");
+
+  background-color: #eae7e0;
   background-size: cover;
   display: flex;
   width: 100%;
@@ -104,7 +118,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     width: 100%;
-    height: 260vh;
+    height: 250vh;
   }
 `;
 export const Sea = styled.div`
@@ -116,10 +130,10 @@ export const Sea = styled.div`
   &.slide-in {
     animation: ${slideInAnimation} 2s forwards;
   }
-
+  position: relative;
   @media (max-width: 790px) {
     width: 100%;
-    height: 50vh;
+    height: 80vh;
   }
 `;
 
@@ -128,7 +142,7 @@ export const Rock = styled.div`
   background-size: cover;
   display: flex;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
 
   &.slide-in {
     animation: ${slideOutAnimation} 2s forwards;
@@ -142,17 +156,26 @@ const ProjectContainer = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: 30vh;
+  height: 400px;
   @media (max-width: 1400px) {
     justify-content: space-between;
   }
   @media (max-width: 790px) {
-    height: 220vh;
-    margin-top: 50px;
+    height: 300vh;
+
     flex-direction: column;
   }
 `;
-
+const CardContainer = styled.div`
+  height: 30vw;
+  width: 22vw;
+  @media (max-width: 1400px) {
+  }
+  @media (max-width: 790px) {
+    height: 320px;
+    width: 270px;
+  }
+`;
 export const ProjectImage = styled.div`
   cursor: url("assets/images/cursor.png") 32 32, auto;
   background-image: url(${(props) => props.backgroundImage});
@@ -160,7 +183,7 @@ export const ProjectImage = styled.div`
   background-position: center;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
-  height: 400px;
+  height: 90%;
   width: 100%;
   &:hover {
     transform: scale(1.05); // hover 시 10% 확대
@@ -170,8 +193,8 @@ export const ProjectImage = styled.div`
     content: "";
 
     position: absolute;
+    height: 100%;
     width: 100%;
-    height: 400px;
     background-color: rgba(0, 0, 0, 0.5);
   }
 
@@ -194,57 +217,99 @@ export const ProjectImage = styled.div`
       transform: translateX(-50%) scale(1.1);
     }
   }
-  @media (max-width: 1400px) {
+  /* @media (max-width: 1400px) {
     width: 80%;
     height: 300px;
-  }
+  } */
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
   }
 `;
 const CardWrapper = styled.div`
-  margin-top: 10px;
-
+  top: -140px;
+  padding: 10px;
+  position: relative;
   @media (min-width: 791px) {
     &:nth-of-type(even) {
       position: relative;
-      top: 2rem;
+      top: -6rem;
     }
   }
-  @media (max-width: 1400px) {
-    width: 80%;
+  @media (max-width: 790px) {
+    top: -100px;
+    margin-bottom: 30px;
   }
+  /* @media (max-width: 1400px) {
+    width: 80%;
+  } */
 `;
+export const NumberContainer = styled.div`
+  height: 10vw;
 
-export const DivContainer = styled.div`
   @media (max-width: 977px) {
-    width: 250px;
   }
   @media (max-width: 790px) {
     font-size: 13px;
-    width: 150px;
-    height: 300px;
   }
 `;
+
+export const NumberDiv = styled.div`
+  background-color: #001e2c;
+  height: 25%;
+  width: 2px;
+  right: 10px;
+  position: absolute;
+  /* @media (max-width: 1400px) {
+    width: 250px;
+    height: 20px;
+  } */
+  @media (max-width: 790px) {
+    display: none;
+  }
+`;
+export const Number = styled.p`
+  font-size: 2.5em;
+  top: -30px;
+  right: 10px;
+
+  position: absolute;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  @media (max-width: 790px) {
+    display: none;
+  }
+  /* @media (max-width: 1400px) {
+    width: 250px;
+    height: 20px;
+  } */
+`;
+export const DivContainer = styled.div`
+  width: 100%;
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+    font-size: 13px;
+  }
+`;
+
 export const ColDiv = styled.div`
   background-color: #001e2c;
-  width: 100%;
   height: 20px;
   /* @media (max-width: 1400px) {
     width: 250px;
     height: 20px;
   } */
 `;
+
 export const TitleContainer = styled.div`
-  width: 350px;
-  height: 100px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  @media (max-width: 1400px) {
+  /* @media (max-width: 1400px) {
     width: 250px;
-  }
+  } */
 `;
 export const Title = styled.p`
   color: #002230;

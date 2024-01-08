@@ -159,9 +159,7 @@ export const Num = styled.p`
   }
 `;
 export const Container = styled.div`
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-scrollbar-button: none;
+  overflow: hidden;
   background-image: url("assets/images/background1.jpg");
   background-size: cover;
   display: flex;
@@ -219,6 +217,7 @@ export const Text2Container = styled.div`
 `;
 export const Body = styled.div`
   width: 100%;
+
   margin-top: 100px;
   margin-left: 100px;
   display: flex;
@@ -286,18 +285,18 @@ export const ProfileImage = styled.div`
 export const AllBoxContainer = styled.div`
   justify-content: space-around;
   display: flex;
-  height: 50vh;
+  height: 500px;
   width: 50%;
 
   @media (max-width: 1500px) {
-    width: 30vh;
-    height: 60vh;
-  }
-  @media (max-width: 977px) {
-    width: 100px;
+    width: 450px;
   }
   @media (max-width: 1220px) {
-    width: 30vh;
+    width: 300px;
+  }
+
+  @media (max-width: 977px) {
+    width: 350px;
   }
 
   @media (max-width: 790px) {
@@ -391,28 +390,28 @@ export const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid #547c49;
   position: relative;
-  background-color: #fd6e55; 
+  background-color: #fd6e55;
   @media (max-width: 1500px) {
     font-size: 18px;
     top: 220px;
     right: 280px;
-    width: 20vh;
-    height: 20vh;
+    width: 200px;
+    height: 200px;
   }
   @media (max-width: 1220px) {
     font-size: 18px;
     top: 220px;
     right: 280px;
-    width: 20vh;
-    height: 20vh;
+    /* width: 20px;
+    height: 20vh; */
   }
- 
+
   @media (max-width: 977px) {
     font-size: 15px;
     top: 220px;
     right: 140px;
-    width: 15vh;
-    height: 15vh;
+    width: 150px;
+    height: 150px;
   }
   @media (max-width: 790px) {
     font-size: 13px;
@@ -420,16 +419,16 @@ export const Circle = styled.div`
     right: 180px;
     width: 140px;
     height: 140px;
-  }7u
+  }
 `;
 
 export const LogosBox = styled.div`
-  margin: 10px 30px 0px 0px;
+  margin: 10px 50px 0px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  height: 85px;
 
   @media (max-width: 1550px) {
     font-size: 15px;
@@ -446,7 +445,6 @@ export const LogoBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 250px;
 
   @media (max-width: 1552px) {
     width: 215px;
@@ -469,8 +467,8 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+
   border-radius: 50%;
   border: 1px solid black;
   background-color: white;
@@ -486,8 +484,8 @@ export const LogoContainer = styled.div`
   }
 `;
 export const Logo = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   @media (max-width: 1122px) {
     width: 1.4vw;
   }
