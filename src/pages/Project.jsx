@@ -177,7 +177,7 @@ const CardContainer = styled.div`
   }
 `;
 export const ProjectImage = styled.div`
-  cursor: url("assets/images/cursor.png") 32 32, auto;
+  cursor: url("assets/images/cursor_3.png") 32 32, auto;
   background-image: url(${(props) => props.backgroundImage});
   background-size: cover;
   background-position: center;

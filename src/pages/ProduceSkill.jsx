@@ -1,25 +1,29 @@
 import styled, { keyframes } from "styled-components";
-
+import React, { useState } from "react";
 import { useScrollAnimation } from "../component/userScrollAnimation";
-import ReactCurvedText from "react-curved-text";
+import { CurvedTextStyle } from "../styles/CurvedTextStyle";
 
 function ProduceSkill() {
+  const [rockClicked, setRockClicked] = useState(false);
+  const handleClick = () => {
+    setRockClicked(!rockClicked);
+    console.log(rockClicked);
+  };
   return (
-    <Container>
-      <SunComponent />
+    <Container rockClicked={rockClicked}>
+      <SunComponent rockClicked={rockClicked} />
       <Body>
         <LogoComponent logo="dart" text="dart" />
         <LogoComponent logo="flutter" text="flutter" />
         <LogoComponent logo="riverpod" text="riverpod" />{" "}
       </Body>
-      <CurvedTextComponent />
-      <ArrowContainer />
-      <RockComponent />
+
+      <CurvedTextComponent rockClicked={rockClicked} />
+      <ArrowContainer rockClicked={rockClicked} />
+      <RockComponent onClick={handleClick} />
     </Container>
   );
 }
-
-export default ProduceSkill;
 
 const sunTransAnimation = keyframes`
   0% {
@@ -38,16 +42,26 @@ const rockTransAnimation = keyframes`
     transform: translateY(0%) ;
   }
 `;
-export const SunComponent = () => {
+export const SunComponent = ({ rockClicked }) => {
   const { ref, isInViewport } = useScrollAnimation();
 
-  return <SunContainer ref={ref} className={isInViewport ? "slide-in" : ""} />;
+  return (
+    <SunContainer
+      rockClicked={rockClicked}
+      ref={ref}
+      className={isInViewport ? "slide-in" : ""}
+    />
+  );
 };
-export const RockComponent = () => {
-  const { ref, isInViewport } = useScrollAnimation();
-
-  return <RockContainer ref={ref} className={isInViewport ? "slide-in" : ""} />;
-};
+const RockComponent = ({ onClick }) => (
+  <RockContainer>
+    <img
+      src="assets/images/background2_rock.png"
+      alt="rock"
+      onClick={onClick}
+    />
+  </RockContainer>
+);
 export const LogoComponent = ({ logo, text }) => (
   <>
     <LogoContainer>
@@ -56,18 +70,28 @@ export const LogoComponent = ({ logo, text }) => (
     </LogoContainer>
   </>
 );
-const CurvedTextComponent = () => (
-  <CurvedText>
+const CurvedTextComponent = ({ rockClicked }) => (
+  <CurvedTextStyle rockClicked={rockClicked}>
+    <span>{rockClicked ? "A" : "W"}</span>
+    <span>{rockClicked ? "P" : "E"}</span>
+    <span>{rockClicked ? "P" : "B"}</span>
+    <span>s</span>
+    <span>k</span>
+    <span>i</span>
+    <span>l</span>
+    <span>l</span>
+    <span>s</span>
+    <span>?</span>
     <span>c</span>
     <span>l</span>
     <span>i</span>
     <span>c</span>
     <span>k</span>
-    <span>!</span>
-  </CurvedText>
+  </CurvedTextStyle>
 );
 
 export const Container = styled.div`
+  background-color: ${(props) => (props.rockClicked ? "#272727" : "#eae7e0")};
   background-image: url("assets/images/background2.jpg");
   background-size: cover;
   overflow: hidden;
@@ -85,7 +109,10 @@ export const Container = styled.div`
   }
 `;
 export const SunContainer = styled.div`
-  background-image: url("assets/images/background2_sun.png");
+  background-image: url(${(props) =>
+    props.rockClicked
+      ? "assets/images/background2_moon.png"
+      : "assets/images/background2_sun.png"});
   background-size: 50;
   background-repeat: no-repeat;
   background-position: center;
@@ -105,37 +132,58 @@ export const SunContainer = styled.div`
   }
 `;
 
-export const RockContainer = styled.div`
+export const BottomContainer = styled.div`
+  background-color: #fd6e55;
+  display: flex;
+  width: 100%;
+  height: 500px;
+
+  @media (max-width: 790px) {
+  }
+`;
+
+const RockContainer = styled.div`
   position: absolute;
-  background-image: url("assets/images/background2_rock.png");
-  background-size: 700px;
-  background-repeat: no-repeat;
-  background-position: center;
   display: flex;
   width: 100%;
   height: 500px;
   left: 150px;
-  bottom: -180px;
+  bottom: -250px;
 
-  &.slide-in {
-    animation: ${rockTransAnimation} 2s forwards;
+  img {
+    position: absolute;
+    width: 700px;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: url("assets/images/cursor_2.png") 16 16, auto;
+    &:hover {
+      width: 800px;
+    }
   }
+
   @media (max-width: 790px) {
-    background-size: 500px;
-    left: 50px;
-    bottom: -350px;
+    img {
+      width: 500px;
+      left: 50px;
+      bottom: -350px;
+    }
   }
 `;
 export const ArrowContainer = styled.div`
   position: absolute;
-  background-image: url("assets/images/background2_arrow.png");
+  background-image: url(${(props) =>
+    props.rockClicked
+      ? "assets/images/background2_arrow2.png"
+      : "assets/images/background2_arrow.png"});
+
   background-size: 150px;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   width: 100%;
   height: 100px;
-  left: 300px;
+  left: 320px;
   bottom: 150px;
 
   &.slide-in {
@@ -145,56 +193,6 @@ export const ArrowContainer = styled.div`
     background-size: 300px;
     left: 50px;
     bottom: -350px;
-  }
-`;
-
-const CurvedText = styled.div`
-
- position: absolute;
-  font-size: 30px;
-  display: flex;
-  width: 100%;
-  height: 100px;
-  left: 140px;
-  bottom: 200px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-
-  span {
-    padding-right: 15px
-    position: relative;
-    display: inline-block;
-    text-align: center;
-  }
-
-  span:nth-child(1) {
-    padding-left: 5px;
-    transform: rotate(-10deg);
-  }
-  span:nth-child(2) {
-    padding-left: 5px;
-    transform: rotate(-5deg);
-  }
-  span:nth-child(3) {
-    padding-left: 5px;
-    transform: rotate(0deg);
-  }
-  span:nth-child(4) {
-    padding-left: 5px;
-    transform: rotate(5deg);
-  }
-  span:nth-child(5) {
-    padding-left: 5px;
-    transform: rotate(10deg);
-    position: relative;
-    bottom: -5px;
-  }
-  span:nth-child(6) {
-    position: relative;
-    padding-left: 5px;
-    transform: rotate(10deg);
-    bottom: -10px;
   }
 `;
 
@@ -250,3 +248,4 @@ export const LogoName = styled.p`
   @media (max-width: 790px) {
   }
 `;
+export default ProduceSkill;
