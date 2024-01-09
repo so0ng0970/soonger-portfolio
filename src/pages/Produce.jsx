@@ -89,12 +89,11 @@ function Produce() {
 }
 export default Produce;
 
-export const ContainerComponent = ({ IconComponent, text, date }) => (
+export const ContainerComponent = ({ IconComponent, text }) => (
   <ScrollAnimationContainer>
     <DivContainer>
       {IconComponent && <IconComponent />}
       <span style={{ paddingRight: "5px" }} />
-      <p>{date}</p>
       <p>{text}</p>
     </DivContainer>
   </ScrollAnimationContainer>
@@ -468,7 +467,6 @@ export const LogoContainer = styled.div`
   align-items: center;
   padding: 5px;
   width: 35px;
-
   border-radius: 50%;
   border: 1px solid black;
   background-color: white;
@@ -484,8 +482,8 @@ export const LogoContainer = styled.div`
   }
 `;
 export const Logo = styled.img`
-  width: 28px;
-  height: 28px;
+  width: 265x;
+  height: 25px;
   @media (max-width: 1122px) {
     width: 1.4vw;
   }
