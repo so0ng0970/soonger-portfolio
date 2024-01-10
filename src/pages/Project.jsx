@@ -110,6 +110,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
+  min-height: 800px;
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {

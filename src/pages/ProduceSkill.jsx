@@ -9,7 +9,7 @@ function ProduceSkill() {
     setRockClicked(!rockClicked);
     console.log(rockClicked);
   };
-  const radius = 200; // 원의 반지름
+  const radius = 450; // 원의 반지름
   const logos = [
     { logo: "dart", text: "Dart" },
     { logo: "flutter", text: "Flutter" },
@@ -18,9 +18,9 @@ function ProduceSkill() {
     { logo: "figma", text: "Figma" },
     { logo: "github", text: "GitHub" },
   ];
-  const centerX = 250; // 원의 중심 x 좌표
-  const centerY = 250; // 원의 중심 y 좌표
-  const angleStep = (2 * Math.PI) / logos.length;
+  const centerX = 160;
+  const centerY = 40;
+  const angleStep = Math.PI / 1.4 / logos.length;
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
@@ -114,6 +114,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
+  min-height: 800px;
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {
@@ -132,8 +133,8 @@ export const SunContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  width: 170%;
-  height: 200%;
+  width: 2100px;
+  height: 1500px;
   left: -800px;
   top: -700px;
   position: absolute;
@@ -216,7 +217,6 @@ export const ArrowContainer = styled.div`
 `;
 
 export const Body = styled.div`
-  background-color: #fd6e553b;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -236,17 +236,16 @@ export const LogoContainer = styled.div`
   margin: 10px;
   display: flex;
   align-items: center;
-  width: 350px;
+  width: 65%;
   height: 30px;
   font-size: 20px;
+
   left: ${(props) => props.x || 0}px;
   top: ${(props) => props.y || 0}px;
   @media (max-width: 1550px) {
     font-size: 18px;
   }
   @media (max-width: 977px) {
-    font-size: 13px;
-    width: 250px;
   }
   @media (max-width: 790px) {
     font-size: 13px;
