@@ -9,13 +9,30 @@ function ProduceSkill() {
     setRockClicked(!rockClicked);
     console.log(rockClicked);
   };
+  const radius = 200; // 원의 반지름
+  const logos = [
+    { logo: "dart", text: "Dart" },
+    { logo: "flutter", text: "Flutter" },
+    { logo: "riverpod", text: "Riverpod" },
+    { logo: "firebase", text: "Firebase" },
+    { logo: "figma", text: "Figma" },
+    { logo: "github", text: "GitHub" },
+  ];
+  const centerX = 250; // 원의 중심 x 좌표
+  const centerY = 250; // 원의 중심 y 좌표
+  const angleStep = (2 * Math.PI) / logos.length;
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
       <Body>
-        <LogoComponent logo="dart" text="dart" />
-        <LogoComponent logo="flutter" text="flutter" />
-        <LogoComponent logo="riverpod" text="riverpod" />{" "}
+        {logos.map((logo, index) => {
+          const angle = index * angleStep;
+          const x = centerX + radius * Math.cos(angle); // x 좌표 계산
+          const y = centerY + radius * Math.sin(angle); // y 좌표 계산
+          return (
+            <LogoComponent logo={logo.logo} text={logo.text} x={x} y={y} />
+          );
+        })}
       </Body>
 
       <CurvedTextComponent rockClicked={rockClicked} />
@@ -62,13 +79,11 @@ const RockComponent = ({ onClick }) => (
     />
   </RockContainer>
 );
-export const LogoComponent = ({ logo, text }) => (
-  <>
-    <LogoContainer>
-      <Logo src={`assets/logos/${logo}.png`} />
-      <LogoName> {text}</LogoName>
-    </LogoContainer>
-  </>
+export const LogoComponent = ({ logo, text, x, y }) => (
+  <LogoContainer x={x} y={y}>
+    <Logo src={`assets/logos/${logo}.png`} alt={text} />
+    <LogoName>{text}</LogoName>
+  </LogoContainer>
 );
 const CurvedTextComponent = ({ rockClicked }) => (
   <CurvedTextStyle rockClicked={rockClicked}>
@@ -126,14 +141,14 @@ export const SunContainer = styled.div`
     animation: ${sunTransAnimation} 2s forwards;
   }
   @media (max-width: 790px) {
-    background-size: 110%;
+    height: 800px;
+    background-size: 800px;
     left: -200px;
-    top: -150px;
+    top: 50px;
   }
 `;
 
 export const BottomContainer = styled.div`
-  background-color: #fd6e55;
   display: flex;
   width: 100%;
   height: 500px;
@@ -163,10 +178,14 @@ const RockContainer = styled.div`
   }
 
   @media (max-width: 790px) {
+    height: 450px;
+    bottom: -300px;
+    left: 90px;
     img {
-      width: 500px;
-      left: 50px;
-      bottom: -350px;
+      &:hover {
+        width: 700px;
+      }
+      width: 600px;
     }
   }
 `;
@@ -197,14 +216,15 @@ export const ArrowContainer = styled.div`
 `;
 
 export const Body = styled.div`
+  background-color: #fd6e553b;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  width: 50%;
-  height: 500px;
+  width: 65%;
+  height: 600px;
 
   @media (max-width: 1122px) {
   }
@@ -212,12 +232,15 @@ export const Body = styled.div`
   }
 `;
 export const LogoContainer = styled.div`
+  position: absolute;
   margin: 10px;
   display: flex;
   align-items: center;
   width: 350px;
   height: 30px;
   font-size: 20px;
+  left: ${(props) => props.x || 0}px;
+  top: ${(props) => props.y || 0}px;
   @media (max-width: 1550px) {
     font-size: 18px;
   }
