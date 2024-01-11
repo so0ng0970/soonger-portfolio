@@ -1,9 +1,15 @@
 import styled, { keyframes } from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { CurvedTextStyle } from "../styles/CurvedTextStyle";
 
 function ProduceSkill() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const modalOpenClick = () => {
+    setModalOpen(!modalOpen);
+    console.log(modalOpen);
+  };
   const [rockClicked, setRockClicked] = useState(false);
   const handleClick = () => {
     setRockClicked(!rockClicked);
@@ -17,13 +23,12 @@ function ProduceSkill() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const logos = [
-    { logo: "dart", text: "Dart" },
-
-    { logo: "flutter", text: "Flutter" },
-    { logo: "riverpod", text: "Riverpod" },
-    { logo: "firebase", text: "Firebase" },
-    { logo: "figma", text: "Figma" },
-    { logo: "github", text: "GitHub" },
+    { logo: "dart", text: "Dart", description: "Dart는..." },
+    { logo: "flutter", text: "Flutter", description: "Flutter는..." },
+    { logo: "riverpod", text: "Riverpod", description: "Riverpod는..." },
+    { logo: "firebase", text: "Firebase", description: "Firebase는..." },
+    { logo: "figma", text: "Figma", description: "Figma는..." },
+    { logo: "github", text: "GitHub", description: "GitHub는..." },
   ];
 
   let radius, centerX, centerY, angleStep;
@@ -33,7 +38,7 @@ function ProduceSkill() {
     centerY = 550;
     angleStep = (1.8 * Math.PI) / 17;
   } else {
-    radius = 450;
+    radius = 500;
     centerX = 160;
     centerY = 40;
     angleStep = Math.PI / 1.4 / logos.length;
@@ -53,11 +58,22 @@ function ProduceSkill() {
           const x = centerX + radius * Math.cos(angle);
           const y = centerY + radius * Math.sin(angle);
           return (
-            <LogoComponent logo={logo.logo} text={logo.text} x={x} y={y} />
+            <LogoComponent
+              onClick={() => setModalOpen(logo)}
+              logo={logo.logo}
+              text={logo.text}
+              x={x}
+              y={y}
+            />
           );
         })}
       </Body>
-
+      {modalOpen && (
+        <Modal
+          description={modalOpen.description}
+          onClose={() => modalOpenClick(false)}
+        />
+      )}
       <CurvedTextComponent rockClicked={rockClicked} />
       <ArrowContainer rockClicked={rockClicked} />
       <RockComponent onClick={handleClick} />
@@ -82,6 +98,14 @@ const rockTransAnimation = keyframes`
     transform: translateY(0%) ;
   }
 `;
+export const Modal = ({ description, onClose }) => (
+  <StyledModal>
+    <div>
+      <p>{description}</p>
+    </div>
+    <button onClick={onClose}>Close</button>
+  </StyledModal>
+);
 export const SunComponent = ({ rockClicked }) => {
   const { ref, isInViewport } = useScrollAnimation();
 
@@ -102,8 +126,8 @@ const RockComponent = ({ onClick }) => (
     />
   </RockContainer>
 );
-export const LogoComponent = ({ logo, text, x, y }) => (
-  <LogoContainer x={x} y={y}>
+export const LogoComponent = ({ logo, text, x, y, onClick }) => (
+  <LogoContainer x={x} y={y} onClick={onClick}>
     <Logo src={`assets/logos/${logo}.png`} alt={text} />
     <LogoName>{text}</LogoName>
   </LogoContainer>
@@ -152,14 +176,14 @@ export const SunContainer = styled.div`
     props.rockClicked
       ? "assets/images/background2_moon.png"
       : "assets/images/background2_sun.png"});
-  background-size: 50;
+  background-size: 1600px;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  width: 2100px;
-  height: 1500px;
-  left: -800px;
-  top: -700px;
+  width: 2200px;
+  height: 2000px;
+  left: -900px;
+  top: -1100px;
   position: absolute;
   &.slide-in {
     animation: ${sunTransAnimation} 2s forwards;
@@ -292,6 +316,22 @@ export const LogoName = styled.p`
   }
   @media (max-width: 750px) {
     font-size: 18px;
+  }
+`;
+
+export const StyledModal = styled.div`
+  position: absolute;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 600px;
+  height: 500px;
+
+  @media (max-width: 1122px) {
+  }
+  @media (max-width: 790px) {
   }
 `;
 export default ProduceSkill;

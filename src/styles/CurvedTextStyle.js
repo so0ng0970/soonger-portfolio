@@ -12,7 +12,7 @@ export const CurvedTextStyle = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
     font-size: 25px;
     color : #000000;
     left : 50px;
