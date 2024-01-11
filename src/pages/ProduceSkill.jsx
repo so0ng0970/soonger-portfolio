@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { CurvedTextStyle } from "../styles/CurvedTextStyle";
 
@@ -9,26 +9,49 @@ function ProduceSkill() {
     setRockClicked(!rockClicked);
     console.log(rockClicked);
   };
-  const radius = 450; // 원의 반지름
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const logos = [
     { logo: "dart", text: "Dart" },
+
     { logo: "flutter", text: "Flutter" },
     { logo: "riverpod", text: "Riverpod" },
     { logo: "firebase", text: "Firebase" },
     { logo: "figma", text: "Figma" },
     { logo: "github", text: "GitHub" },
   ];
-  const centerX = 160;
-  const centerY = 40;
-  const angleStep = Math.PI / 1.4 / logos.length;
+
+  let radius, centerX, centerY, angleStep;
+  if (windowWidth <= 750) {
+    radius = (240 * logos.length) / 6;
+    centerX = 230;
+    centerY = 550;
+    angleStep = (1.8 * Math.PI) / 17;
+  } else {
+    radius = 450;
+    centerX = 160;
+    centerY = 40;
+    angleStep = Math.PI / 1.4 / logos.length;
+  }
+
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
       <Body>
         {logos.map((logo, index) => {
-          const angle = index * angleStep;
-          const x = centerX + radius * Math.cos(angle); // x 좌표 계산
-          const y = centerY + radius * Math.sin(angle); // y 좌표 계산
+          let angle;
+          if (windowWidth <= 750) {
+            angle = index * angleStep + 0.8 * Math.PI;
+          } else {
+            angle = index * angleStep;
+          }
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
           return (
             <LogoComponent logo={logo.logo} text={logo.text} x={x} y={y} />
           );
@@ -141,11 +164,11 @@ export const SunContainer = styled.div`
   &.slide-in {
     animation: ${sunTransAnimation} 2s forwards;
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
     height: 800px;
     background-size: 800px;
-    left: -200px;
-    top: 50px;
+    left: -700px;
+    top: 200px;
   }
 `;
 
@@ -154,7 +177,7 @@ export const BottomContainer = styled.div`
   width: 100%;
   height: 500px;
 
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
   }
 `;
 
@@ -178,7 +201,7 @@ const RockContainer = styled.div`
     }
   }
 
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
     height: 450px;
     bottom: -300px;
     left: 90px;
@@ -209,7 +232,7 @@ export const ArrowContainer = styled.div`
   &.slide-in {
     animation: ${rockTransAnimation} 2s forwards;
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
     background-size: 300px;
     left: 50px;
     bottom: -350px;
@@ -247,7 +270,7 @@ export const LogoContainer = styled.div`
   }
   @media (max-width: 977px) {
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
     font-size: 13px;
     width: 300px;
     height: 20px;
@@ -258,16 +281,17 @@ export const Logo = styled.img`
   height: 25px;
   @media (max-width: 1122px) {
   }
-  @media (max-width: 790px) {
-    width: 30px;
-    height: 30px;
+  @media (max-width: 750px) {
+    width: 20px;
+    height: 20px;
   }
 `;
 export const LogoName = styled.p`
   font-size: 20px;
   @media (max-width: 1122px) {
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
+    font-size: 18px;
   }
 `;
 export default ProduceSkill;
