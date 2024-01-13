@@ -23,12 +23,41 @@ function ProduceSkill() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const logos = [
-    { logo: "dart", text: "Dart", description: "Dart는..." },
-    { logo: "flutter", text: "Flutter", description: "Flutter는..." },
-    { logo: "riverpod", text: "Riverpod", description: "Riverpod는..." },
-    { logo: "firebase", text: "Firebase", description: "Firebase는..." },
-    { logo: "figma", text: "Figma", description: "Figma는..." },
-    { logo: "github", text: "GitHub", description: "GitHub는..." },
+    {
+      logo: "dart",
+      text: "Dart",
+      description:
+        "Dart 언어에 대해 다양한 데이터 타입의 활용, 함수의 정의 및 사용, 제어문을 통한 로직 제어, 클래스와 생성자를 활용한 객체 지향 프로그래밍 등을 자유롭게 다룰 수 있습니다.",
+    },
+    {
+      logo: "flutter",
+      text: "Flutter",
+      description:
+        " Dart 언어를 기반으로 한 Flutter를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 보유하고 있습니다.",
+    },
+    {
+      logo: "riverpod",
+      text: "Riverpod",
+      description:
+        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+    },
+    {
+      logo: "firebase",
+      text: "Firebase",
+      description:
+        "Cloud Function을 사용해 알림 기능과 소셜로그인을 firebase 연동하여 사용할 수 있게 서버리스 작업을 했습니다. 또한, Firebase의 Storage와 Database 기능을 활용해 데이터를 관리했고, Authentication 기능을 통해 사용자의 로그인과 관련된 기능을 구현했습니다",
+    },
+    {
+      logo: "figma",
+      text: "Figma",
+      description: "Figma를 통해 와이어프레임을 \n 구현했습니다.",
+    },
+    {
+      logo: "github",
+      text: "GitHub",
+      description:
+        "GitHub를 활용하여 협업과 코드 관리에 대한 실질적인 경험을 쌓았습니다. 그리고 주기적으로 코드를 커밋하고 푸시하여 프로젝트를 진행을 했습니다.",
+    },
   ];
 
   let radius, centerX, centerY, angleStep;
@@ -117,15 +146,19 @@ export const SunComponent = ({ rockClicked }) => {
     />
   );
 };
-const RockComponent = ({ onClick }) => (
-  <RockContainer>
-    <img
-      src="assets/images/background2_rock.png"
-      alt="rock"
-      onClick={onClick}
-    />
-  </RockContainer>
-);
+const RockComponent = ({ onClick }) => {
+  const { ref, isInViewport } = useScrollAnimation();
+
+  return (
+    <RockContainer ref={ref} className={isInViewport ? "slide-in" : ""}>
+      <img
+        src="assets/images/background2_rock.png"
+        alt="rock"
+        onClick={onClick}
+      />
+    </RockContainer>
+  );
+};
 export const LogoComponent = ({ logo, text, x, y, onClick }) => (
   <LogoContainer x={x} y={y} onClick={onClick}>
     <Logo src={`assets/logos/${logo}.png`} alt={text} />
@@ -212,7 +245,9 @@ const RockContainer = styled.div`
   height: 500px;
   left: 150px;
   bottom: -250px;
-
+  &.slide-in {
+    animation: ${rockTransAnimation} 2s forwards;
+  }
   img {
     position: absolute;
     width: 700px;
@@ -253,9 +288,6 @@ export const ArrowContainer = styled.div`
   left: 320px;
   bottom: 150px;
 
-  &.slide-in {
-    animation: ${rockTransAnimation} 2s forwards;
-  }
   @media (max-width: 750px) {
     background-size: 300px;
     left: 50px;
@@ -322,16 +354,20 @@ export const LogoName = styled.p`
 export const StyledModal = styled.div`
   position: absolute;
   display: flex;
-
-  justify-content: center;
-  align-items: center;
+  left: 100px;
+  top: 100px;
   padding: 5px;
-  width: 600px;
-  height: 500px;
-
+  width: 300px;
+  height: 300px;
+  /* background-color: #aa8327; */
   @media (max-width: 1122px) {
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 450px;
+    left: 200px;
   }
 `;
 export default ProduceSkill;
