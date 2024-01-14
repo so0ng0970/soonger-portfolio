@@ -8,15 +8,15 @@ export const CurvedTextStyle = styled.div`
   width: 100%;
   height: 100px;
   left: 110px;
-  bottom: 180px;
+  bottom: 200px;
   text-align: center;
   justify-content: center;
   align-items: center;
   @media (max-width: 750px) {
     font-size: 25px;
     color : #000000;
-    left : 50px;
-    bottom: 90px;
+    left : 70px;
+    bottom: 70px;
   }
   span {
     padding-right: 15px

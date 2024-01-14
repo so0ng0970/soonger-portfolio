@@ -33,7 +33,7 @@ function ProduceSkill() {
       logo: "flutter",
       text: "Flutter",
       description:
-        "Flutter 프레임워크를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 갖추고 있습니다. Dart 언어를 기반으로 하여 모바일 앱 개발에 활용했습니다.",
+        "Flutter 프레임워크를 이용하여 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 갖추고 있으며, Dart 언어를 기반으로 모바일 앱 개발을 진행하였습니다. 또한 재사용 가능한 위젯을 만들어서 개발한 경험이 있습니다.",
     },
 
     {
@@ -58,32 +58,32 @@ function ProduceSkill() {
       logo: "javascript",
       text: "Javascript",
       description:
-        "Dart 언어에 대해 다양한 데이터 타입의 활용, 함수의 정의 및 사용, 제어문을 통한 로직 제어, 클래스와 생성자를 활용한 객체 지향 프로그래밍 등을 자유롭게 다룰 수 있습니다.",
+        "ES6+ 문법을 공부했고 객체 지향 프로그래밍과 다양한 내장 객체의 활용을 했으며, 비동기 처리를 다뤘습니다",
     },
     {
       logo: "react",
       text: "React",
       description:
-        " Dart 언어를 기반으로 한 Flutter를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 보유하고 있습니다.",
+        "컴포넌트 기반의 구조를 이해하고 이를 웹 애플리케이션 개발에 적용해 보았습니다. 상태 관리는 Props와 State를 활용하여 진행하였습니다.",
     },
     {
       logo: "recoil",
       text: "Recoil",
       description:
-        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+        "atom을 활용하여 React 애플리케이션의 상태 관리를 진행한 경험이 있습니다.",
     },
     {
       logo: "reactquery",
       text: "React-Query",
       description:
-        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+        "React-Query를 이용하여 서버 상태와 비동기 작업을 효율적으로 관리한 경험이 있습니다.",
     },
 
     {
       logo: "styled-components",
       text: "Styled-Components",
       description:
-        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+        "Styled-Components를 사용하여 React 애플리케이션의 스타일링을 진행한 경험이 있습니다.",
     },
   ];
 
@@ -155,6 +155,7 @@ function ProduceSkill() {
       </Body>
       {modalOpen && (
         <Modal
+          logo={modalOpen.text}
           description={modalOpen.description}
           onClose={() => modalOpenClick(false)}
         />
@@ -162,7 +163,7 @@ function ProduceSkill() {
 
       {!modalOpen && (
         <Modal
-          description="모달에 로고를 클릭해주세요!"
+          description="로고를 클릭해주세요!"
           onClose={() => modalOpenClick(null)}
         />
       )}
@@ -190,8 +191,9 @@ const rockTransAnimation = keyframes`
     transform: translateY(0%) ;
   }
 `;
-export const Modal = ({ description, onClose }) => (
+export const Modal = ({ logo, description, onClose }) => (
   <StyledModal>
+    <p style={{ fontSize: "20px" }}>{logo}</p>
     <div>
       <p>{description}</p>
     </div>
@@ -324,14 +326,15 @@ const RockContainer = styled.div`
   }
 
   @media (max-width: 750px) {
+    width: 300px;
     height: 450px;
-    bottom: -300px;
-    left: 90px;
+    bottom: -350px;
+    left: 150px;
     img {
       &:hover {
-        width: 700px;
+        width: 300px;
       }
-      width: 600px;
+      width: 300px;
     }
   }
 `;
@@ -393,10 +396,10 @@ export const LogoContainer = styled.div`
   margin: 10px;
   display: flex;
   align-items: center;
-  width: 20px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
   font-size: 20px;
-
+  cursor: url("assets/images/cursor_2.png") 16 16, auto;
   left: ${(props) => props.x || 0}px;
   top: ${(props) => props.y || 0}px;
 
@@ -404,8 +407,6 @@ export const LogoContainer = styled.div`
   }
   @media (max-width: 750px) {
     font-size: 13px;
-    width: 300px;
-    height: 20px;
   }
 `;
 export const Logo = styled.img`
@@ -429,6 +430,7 @@ export const LogoName = styled.p`
 
 export const StyledModal = styled.div`
   position: absolute;
+  flex-direction: column;
   display: flex;
   align-items: center;
   left: 100px;
@@ -436,7 +438,7 @@ export const StyledModal = styled.div`
   padding: 10px;
   width: 300px;
   height: 300px;
-  /* background-color: #aa8327; */
+
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
