@@ -22,25 +22,72 @@ function ProduceSkill() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const logos = [
+  const appLogos = [
     {
       logo: "dart",
       text: "Dart",
       description:
-        "Dart 언어에 대해 다양한 데이터 타입의 활용, 함수의 정의 및 사용, 제어문을 통한 로직 제어, 클래스와 생성자를 활용한 객체 지향 프로그래밍 등을 자유롭게 다룰 수 있습니다.",
+        "Dart 언어를 자유롭게 활용해 다양한 데이터 타입의 사용, 함수 정의와 활용, 제어문을 통한 로직 제어, 클래스와 생성자를 활용한 객체 지향 프로그래밍을 구현하는 능력을 보유하고 있습니다.",
     },
     {
       logo: "flutter",
       text: "Flutter",
       description:
-        " Dart 언어를 기반으로 한 Flutter를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 보유하고 있습니다.",
+        "Flutter 프레임워크를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 갖추고 있습니다. Dart 언어를 기반으로 하여 모바일 앱 개발에 활용했습니다.",
     },
+
     {
       logo: "riverpod",
       text: "Riverpod",
       description:
+        "Riverpod의 Provider를 활용하여 프로젝트의 상태 관리를 효율적으로 수행했습니다. 이를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리했습니다.",
+    },
+    {
+      text: "GoRouter",
+      description:
+        "GoRouter를 활용하여 애플리케이션 내의 페이지 라우팅을 관리하였습니다.",
+    },
+    {
+      text: "JsonSerializable",
+      description:
+        "JsonSerializable을 사용하여 반복적인 JSON 직렬화 및 역직렬화 코드를 자동화하였습니다.",
+    },
+  ];
+  const webLogos = [
+    {
+      logo: "javascript",
+      text: "Javascript",
+      description:
+        "Dart 언어에 대해 다양한 데이터 타입의 활용, 함수의 정의 및 사용, 제어문을 통한 로직 제어, 클래스와 생성자를 활용한 객체 지향 프로그래밍 등을 자유롭게 다룰 수 있습니다.",
+    },
+    {
+      logo: "react",
+      text: "React",
+      description:
+        " Dart 언어를 기반으로 한 Flutter를 이용해 효율적이고 동적인 사용자 인터페이스를 제작하는 능력을 보유하고 있습니다.",
+    },
+    {
+      logo: "recoil",
+      text: "Recoil",
+      description:
         "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
     },
+    {
+      logo: "reactquery",
+      text: "React-Query",
+      description:
+        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+    },
+
+    {
+      logo: "styled-components",
+      text: "Styled-Components",
+      description:
+        "Riverpod의 Provider를 활용하여 프로젝트에 효율적인 상태 관리를 도입했습니다. Provider를 통해 모듈 간의 의존성을 최소화하고, 복잡한 상태 변화를 쉽게 관리할 수 있었습니다",
+    },
+  ];
+
+  const ectLogos = [
     {
       logo: "firebase",
       text: "Firebase",
@@ -50,7 +97,7 @@ function ProduceSkill() {
     {
       logo: "figma",
       text: "Figma",
-      description: "Figma를 통해 와이어프레임을 \n 구현했습니다.",
+      description: "Figma를 통해 와이어프레임을 구현했습니다.",
     },
     {
       logo: "github",
@@ -59,25 +106,34 @@ function ProduceSkill() {
         "GitHub를 활용하여 협업과 코드 관리에 대한 실질적인 경험을 쌓았습니다. 그리고 주기적으로 코드를 커밋하고 푸시하여 프로젝트를 진행을 했습니다.",
     },
   ];
-
   let radius, centerX, centerY, angleStep;
-  if (windowWidth <= 750) {
-    radius = (240 * logos.length) / 6;
-    centerX = 230;
-    centerY = 550;
-    angleStep = (1.8 * Math.PI) / 17;
-  } else {
-    radius = 500;
-    centerX = 160;
+  if (windowWidth > 800) {
+    radius = 490;
+    centerX = rockClicked ? 150 : 190;
     centerY = 40;
-    angleStep = Math.PI / 1.4 / logos.length;
+    angleStep = rockClicked
+      ? (1.8 * Math.PI) / 21
+      : Math.PI / 1.4 / [...appLogos, ...ectLogos].length;
+  } else if (windowWidth <= 800 && windowWidth > 750) {
+    radius = 490;
+    centerX = rockClicked ? 50 : 100;
+    centerY = 40;
+    angleStep = rockClicked ? (1.8 * Math.PI) / 24 : (1.8 * Math.PI) / 22.5;
+  } else {
+    radius = (240 * [...appLogos, ...ectLogos].length) / 6;
+    centerX = 330;
+    centerY = 550;
+    angleStep = (1.8 * Math.PI) / 18;
   }
-
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
+      <Name>{rockClicked ? "WEB" : "APP"}</Name>
       <Body>
-        {logos.map((logo, index) => {
+        {(rockClicked
+          ? [...webLogos, ...ectLogos]
+          : [...appLogos, ...ectLogos]
+        ).map((logo, index) => {
           let angle;
           if (windowWidth <= 750) {
             angle = index * angleStep + 0.8 * Math.PI;
@@ -101,6 +157,13 @@ function ProduceSkill() {
         <Modal
           description={modalOpen.description}
           onClose={() => modalOpenClick(false)}
+        />
+      )}
+
+      {!modalOpen && (
+        <Modal
+          description="모달에 로고를 클릭해주세요!"
+          onClose={() => modalOpenClick(null)}
         />
       )}
       <CurvedTextComponent rockClicked={rockClicked} />
@@ -161,7 +224,7 @@ const RockComponent = ({ onClick }) => {
 };
 export const LogoComponent = ({ logo, text, x, y, onClick }) => (
   <LogoContainer x={x} y={y} onClick={onClick}>
-    <Logo src={`assets/logos/${logo}.png`} alt={text} />
+    {logo && <Logo src={`assets/logos/${logo}.png`} alt={text} />}
     <LogoName>{text}</LogoName>
   </LogoContainer>
 );
@@ -310,20 +373,33 @@ export const Body = styled.div`
   @media (max-width: 790px) {
   }
 `;
+export const Name = styled.div`
+  position: absolute;
+  display: flex;
+  font-size: 30px;
+  top: 20px;
+  left: 20px;
+  padding: 5px;
+  width: 200px;
+  height: 60px;
+
+  @media (max-width: 1122px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
 export const LogoContainer = styled.div`
   position: absolute;
   margin: 10px;
   display: flex;
   align-items: center;
-  width: 65%;
+  width: 20px;
   height: 30px;
   font-size: 20px;
 
   left: ${(props) => props.x || 0}px;
   top: ${(props) => props.y || 0}px;
-  @media (max-width: 1550px) {
-    font-size: 18px;
-  }
+
   @media (max-width: 977px) {
   }
   @media (max-width: 750px) {
@@ -347,26 +423,28 @@ export const LogoName = styled.p`
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
-    font-size: 18px;
+    font-size: 15px;
   }
 `;
 
 export const StyledModal = styled.div`
   position: absolute;
   display: flex;
+  align-items: center;
   left: 100px;
   top: 100px;
-  padding: 5px;
+  padding: 10px;
   width: 300px;
   height: 300px;
   /* background-color: #aa8327; */
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
-    width: 250px;
+    font-size: 15px;
+    width: 230px;
     height: 250px;
     position: absolute;
-    top: 450px;
+    top: 380px;
     left: 200px;
   }
 `;
