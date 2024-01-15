@@ -48,7 +48,7 @@ const slideInAnimation = keyframes`
 const slideOutAnimation = keyframes`
   0% {
     opacity: 0;
-    transform: translateY(-10%);
+    transform: translateY(10%);
   }
   100% {
     opacity: 100;
@@ -119,7 +119,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     width: 100%;
-    height: 250vh;
+    height: 1700px;
   }
 `;
 export const Sea = styled.div`
@@ -134,7 +134,7 @@ export const Sea = styled.div`
   position: relative;
   @media (max-width: 790px) {
     width: 100%;
-    height: 80vh;
+    height: 200px;
   }
 `;
 
@@ -144,7 +144,9 @@ export const Rock = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
-
+  @media (max-width: 790px) {
+    height: 200px;
+  }
   &.slide-in {
     animation: ${slideOutAnimation} 2s forwards;
   }
@@ -162,11 +164,12 @@ const ProjectContainer = styled.div`
     justify-content: space-between;
   }
   @media (max-width: 790px) {
-    height: 300vh;
+    height: 1300px;
 
     flex-direction: column;
   }
 `;
+
 const CardContainer = styled.div`
   height: 30vw;
   width: 22vw;

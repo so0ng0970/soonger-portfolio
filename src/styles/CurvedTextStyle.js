@@ -12,10 +12,22 @@ export const CurvedTextStyle = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
+
+
+  @media (max-width: 1130px) {
+
+   width:30%;
+   font-size: 22px;
+   color : #ffffff;
+   left :440px;
+   bottom: 120px;
+ }
   @media (max-width: 750px) {
-    font-size: 25px;
+   
+    width: 200px;
+    font-size: 22px;
     color : #000000;
-    left : 70px;
+    left : 220px;
     bottom: 70px;
   }
   span {

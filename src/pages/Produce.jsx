@@ -302,7 +302,7 @@ export const AllBoxContainer = styled.div`
   @media (max-width: 790px) {
     margin-top: 10px;
     height: 430px;
-    width: 430px;
+    width: 450px;
 
     display: flex;
     flex-direction: column;
@@ -390,7 +390,7 @@ export const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid #547c49;
   position: relative;
-  background-color: #fd6e55;
+  background-color: #ff914d;
   @media (max-width: 1500px) {
     font-size: 18px;
     top: 220px;

@@ -13,7 +13,9 @@ function ProduceSkill() {
   const [rockClicked, setRockClicked] = useState(false);
   const handleClick = () => {
     setRockClicked(!rockClicked);
-    console.log(rockClicked);
+    if (modalOpen) {
+      modalOpenClick(false);
+    }
   };
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -107,28 +109,26 @@ function ProduceSkill() {
     },
   ];
   let radius, centerX, centerY, angleStep;
-  if (windowWidth > 800) {
-    radius = 490;
-    centerX = rockClicked ? 150 : 190;
+  if (windowWidth > 1130) {
+    radius = rockClicked ? 580 : 600;
+    centerX = rockClicked ? 70 : 50;
+    centerY = 20;
+    angleStep = rockClicked ? (1.8 * Math.PI) / 24 : (1.8 * Math.PI) / 24.5;
+  } else if (windowWidth <= 1130 && windowWidth > 750) {
+    radius = 620;
+    centerX = -10;
     centerY = 40;
-    angleStep = rockClicked
-      ? (1.8 * Math.PI) / 21
-      : Math.PI / 1.4 / [...appLogos, ...ectLogos].length;
-  } else if (windowWidth <= 800 && windowWidth > 750) {
-    radius = 490;
-    centerX = rockClicked ? 50 : 100;
-    centerY = 40;
-    angleStep = rockClicked ? (1.8 * Math.PI) / 24 : (1.8 * Math.PI) / 22.5;
+    angleStep = (1.8 * Math.PI) / 26;
   } else {
     radius = (240 * [...appLogos, ...ectLogos].length) / 6;
     centerX = 330;
     centerY = 550;
-    angleStep = (1.8 * Math.PI) / 18;
+    angleStep = (1.8 * Math.PI) / 19;
   }
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
-      <Name>{rockClicked ? "WEB" : "APP"}</Name>
+      <Name rockClicked={rockClicked}>{rockClicked ? "WEB" : "APP"}</Name>
       <Body>
         {(rockClicked
           ? [...webLogos, ...ectLogos]
@@ -154,19 +154,16 @@ function ProduceSkill() {
         })}
       </Body>
       {modalOpen && (
-        <Modal
-          logo={modalOpen.text}
-          description={modalOpen.description}
-          onClose={() => modalOpenClick(false)}
-        />
+        <>
+          <Modal
+            modalOpen={modalOpen}
+            logo={modalOpen.text}
+            description={modalOpen.description}
+          />
+        </>
       )}
 
-      {!modalOpen && (
-        <Modal
-          description="로고를 클릭해주세요!"
-          onClose={() => modalOpenClick(null)}
-        />
-      )}
+      {!modalOpen && <Modal description="로고를 클릭해주세요!" />}
       <CurvedTextComponent rockClicked={rockClicked} />
       <ArrowContainer rockClicked={rockClicked} />
       <RockComponent onClick={handleClick} />
@@ -191,13 +188,12 @@ const rockTransAnimation = keyframes`
     transform: translateY(0%) ;
   }
 `;
-export const Modal = ({ logo, description, onClose }) => (
-  <StyledModal>
+export const Modal = ({ modalOpen, logo, description }) => (
+  <StyledModal modalOpen={modalOpen}>
     <p style={{ fontSize: "20px" }}>{logo}</p>
     <div>
       <p>{description}</p>
     </div>
-    <button onClick={onClose}>Close</button>
   </StyledModal>
 );
 export const SunComponent = ({ rockClicked }) => {
@@ -274,14 +270,14 @@ export const SunContainer = styled.div`
     props.rockClicked
       ? "assets/images/background2_moon.png"
       : "assets/images/background2_sun.png"});
-  background-size: 1600px;
+  background-size: 1450px;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   width: 2200px;
   height: 2000px;
   left: -900px;
-  top: -1100px;
+  top: -950px;
   position: absolute;
   &.slide-in {
     animation: ${sunTransAnimation} 2s forwards;
@@ -324,15 +320,27 @@ const RockContainer = styled.div`
       width: 800px;
     }
   }
-
-  @media (max-width: 750px) {
-    width: 300px;
+  @media (max-width: 1130px) {
+    /* background-color: #ff914d; */
+    width: 30%;
     height: 450px;
-    bottom: -350px;
-    left: 150px;
+    bottom: -300px;
+    left: 450px;
     img {
       &:hover {
-        width: 300px;
+        width: 500px;
+      }
+      width: 400px;
+    }
+  }
+  @media (max-width: 750px) {
+    width: 220px;
+    height: 450px;
+    bottom: -350px;
+    left: 220px;
+    img {
+      &:hover {
+        width: 220px;
       }
       width: 300px;
     }
@@ -353,6 +361,13 @@ export const ArrowContainer = styled.div`
   height: 100px;
   left: 320px;
   bottom: 150px;
+
+  @media (max-width: 1130px) {
+    background-size: 120px;
+    width: 30%;
+    left: 600px;
+    bottom: 100px;
+  }
 
   @media (max-width: 750px) {
     background-size: 300px;
@@ -388,7 +403,9 @@ export const Name = styled.div`
 
   @media (max-width: 1122px) {
   }
-  @media (max-width: 790px) {
+  @media (max-width: 750px) {
+    color: ${(props) => (props.rockClicked ? "#ffffff" : "#000000")};
+    top: 80px;
   }
 `;
 export const LogoContainer = styled.div`
@@ -396,10 +413,11 @@ export const LogoContainer = styled.div`
   margin: 10px;
   display: flex;
   align-items: center;
+  z-index: 1;
   width: 120px;
   height: 40px;
   font-size: 20px;
-  cursor: url("assets/images/cursor_2.png") 16 16, auto;
+  cursor: url("assets/images/cursor_2-1.png") 16 16, auto;
   left: ${(props) => props.x || 0}px;
   top: ${(props) => props.y || 0}px;
 
@@ -411,6 +429,7 @@ export const LogoContainer = styled.div`
 `;
 export const Logo = styled.img`
   width: 25px;
+
   height: 25px;
   @media (max-width: 1122px) {
   }
@@ -420,7 +439,9 @@ export const Logo = styled.img`
   }
 `;
 export const LogoName = styled.p`
-  font-size: 20px;
+  font-size: 23px;
+  margin-left: 5px;
+  text-shadow: 0 5px #fff7f1;
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
@@ -429,25 +450,30 @@ export const LogoName = styled.p`
 `;
 
 export const StyledModal = styled.div`
+  background-color: ${(props) => (props.modalOpen ? "#f8f1f17b" : "#0000000")};
   position: absolute;
   flex-direction: column;
   display: flex;
   align-items: center;
   left: 100px;
-  top: 100px;
+  top: ${(props) => (props.modalOpen ? "120px" : "200px")};
   padding: 10px;
   width: 300px;
-  height: 300px;
+  height: 320px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: ${(props) => (props.modalOpen ? "3px solid #e9d6b6" : "none")};
 
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
     font-size: 15px;
-    width: 230px;
-    height: 250px;
+    width: 200px;
+    height: 270px;
     position: absolute;
-    top: 380px;
-    left: 200px;
+    top: 450px;
+    left: 190px;
   }
 `;
+
 export default ProduceSkill;

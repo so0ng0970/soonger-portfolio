@@ -18,7 +18,7 @@ export const BgComponent = () => {
 };
 const slideInAnimation = keyframes`
   0% {
-    transform: translateX(60%);
+    transform: translateX(40%);
   }
   100% {
     transform: translateX(0%);
