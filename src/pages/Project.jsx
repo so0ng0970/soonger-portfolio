@@ -100,11 +100,6 @@ export const NumberComponent = ({ number }) => (
 export default Project;
 
 export const Container = styled.div`
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  -webkit-scrollbar-button: none;
-
   background-color: #eae7e0;
   background-size: cover;
   display: flex;
@@ -160,6 +155,7 @@ const ProjectContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 400px;
+
   @media (max-width: 1400px) {
     justify-content: space-between;
   }
@@ -173,6 +169,7 @@ const ProjectContainer = styled.div`
 const CardContainer = styled.div`
   height: 30vw;
   width: 22vw;
+
   @media (max-width: 1400px) {
   }
   @media (max-width: 790px) {
@@ -189,6 +186,7 @@ export const ProjectImage = styled.div`
   transition: transform 0.3s ease-in-out;
   height: 90%;
   width: 100%;
+
   &:hover {
     transform: scale(1.05); // hover 시 10% 확대
   }

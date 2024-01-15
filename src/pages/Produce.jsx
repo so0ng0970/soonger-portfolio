@@ -172,7 +172,8 @@ export const Container = styled.div`
   }
 
   @media (max-width: 790px) {
-    height: 1000px;
+    height: 100vh;
+    min-height: 900px;
   }
 `;
 export const line = styled.div`
@@ -388,7 +389,7 @@ export const Circle = styled.div`
   top: 150px;
   right: 100px;
   border-radius: 50%;
-  border: 1px solid #547c49;
+  border: 1px solid #217500f0;
   position: relative;
   background-color: #ff914d;
   @media (max-width: 1500px) {

@@ -255,7 +255,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
-  min-height: 800px;
+  min-height: 900px;
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {
@@ -263,6 +263,8 @@ export const Container = styled.div`
   }
 
   @media (max-width: 790px) {
+    height: 100vh;
+    min-height: 900px;
   }
 `;
 export const SunContainer = styled.div`
@@ -450,7 +452,7 @@ export const LogoName = styled.p`
 `;
 
 export const StyledModal = styled.div`
-  background-color: ${(props) => (props.modalOpen ? "#f8f1f17b" : "#0000000")};
+  background-color: ${(props) => (props.modalOpen ? "#f8f1f18f" : "#0000000")};
   position: absolute;
   flex-direction: column;
   display: flex;
@@ -460,19 +462,20 @@ export const StyledModal = styled.div`
   padding: 10px;
   width: 300px;
   height: 320px;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 20px;
   border: ${(props) => (props.modalOpen ? "3px solid #e9d6b6" : "none")};
-
+  line-height: 1.5;
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
-    font-size: 15px;
+    font-size: 14px;
     width: 200px;
-    height: 270px;
+    height: 290px;
     position: absolute;
-    top: 450px;
-    left: 190px;
+    top: ${(props) => (props.modalOpen ? "440px" : "490px")};
+
+    left: 180px;
   }
 `;
 
