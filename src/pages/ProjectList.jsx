@@ -1,14 +1,32 @@
 import styled, { keyframes } from "styled-components";
-import { Card, Row, Col } from "antd";
 import { useScrollAnimation } from "../component/userScrollAnimation";
-import { ScrollAnimationContainer } from "../styles/ScrollAnimaiton";
+import SwiperImage from "../styles/slider";
+// const images = [
+//   "assets/images/background4.jpg",
+//   "assets/images/background4-mobile.png",
+//   "assets/images/profile.jpg",
+// ];
+const images = [
+  { img: "assets/images/background4.jpg" },
+  { img: "assets/images/background4-mobile.png" },
+  { img: "assets/images/profile.jpg" },
+];
 function ProjectList() {
   return (
     <Container>
-      <BgComponent />
+      {" "}
+      <BgComponent />{" "}
+      <ButtonContainer>
+        <Button>You & I Diary</Button>
+        <Button>MAAP</Button>
+        <Button>STOCK'S TALK</Button>
+        <Button>PORTFOLIO</Button>
+      </ButtonContainer>
       <Body>
-        <ProjectImage />
-        <DivContainer />
+        <ProjectImage>
+          <SwiperImage bgArr={images} />
+        </ProjectImage>
+        <DivContainer></DivContainer>
       </Body>
     </Container>
   );
@@ -105,15 +123,16 @@ export const Body = styled.div`
 `;
 
 export const ProjectImage = styled.div`
-  background-image: url("assets/images/profile.jpg");
   background-size: cover;
   background-position: center;
-
+  position: absolute;
+  top: 50;
+  left: 0;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
   height: 60%;
   width: 30%;
-
+  overflow: hidden;
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
@@ -122,7 +141,7 @@ export const ProjectImage = styled.div`
   }
 `;
 export const DivContainer = styled.div`
-  background-color: #5f83946f;
+  /* background-color: #5f83946f; */
   width: 60%;
   height: 100%;
   @media (max-width: 977px) {
@@ -131,5 +150,48 @@ export const DivContainer = styled.div`
     font-size: 13px;
     width: 80%;
     height: 400px;
+  }
+`;
+export const ButtonContainer = styled.div`
+  justify-content: center;
+  align-items: center;
+  /* background-color: #001a256e; */
+  width: 60%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+    font-size: 13px;
+    width: 80%;
+    height: 400px;
+  }
+`;
+export const Button = styled.button`
+  z-index: 1;
+  font-size: 18px;
+  font-family: "RubikMonoOne-Regular";
+  border: none;
+  border-radius: 20px;
+  border-right: 2px solid #999999;
+  border-bottom: 5px solid #303030;
+  width: 220px;
+  margin-left: 15px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e4e2d6;
+  &:hover {
+    border-bottom: 2px solid #303030;
+  }
+
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
   }
 `;

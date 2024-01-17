@@ -274,7 +274,6 @@ export const Number = styled.p`
   font-size: 2.5em;
   top: -30px;
   right: 10px;
-
   position: absolute;
   -ms-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
