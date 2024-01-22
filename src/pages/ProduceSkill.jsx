@@ -108,62 +108,56 @@ function ProduceSkill() {
         "GitHub를 활용하여 협업과 코드 관리에 대한 실질적인 경험을 쌓았습니다. 그리고 주기적으로 코드를 커밋하고 푸시하여 프로젝트를 진행을 했습니다.",
     },
   ];
-  let radius, centerX, centerY, angleStep;
-  if (windowWidth > 1130) {
-    radius = rockClicked ? 580 : 600;
-    centerX = rockClicked ? 70 : 50;
-    centerY = 20;
-    angleStep = rockClicked ? (1.8 * Math.PI) / 24 : (1.8 * Math.PI) / 24.5;
-  } else if (windowWidth <= 1130 && windowWidth > 750) {
-    radius = 620;
-    centerX = -10;
-    centerY = 40;
-    angleStep = (1.8 * Math.PI) / 26;
-  } else {
-    radius = (240 * [...appLogos, ...ectLogos].length) / 6;
-    centerX = 330;
-    centerY = 550;
-    angleStep = (1.8 * Math.PI) / 19;
-  }
+
   return (
     <Container rockClicked={rockClicked}>
       <SunComponent rockClicked={rockClicked} />
       <Name rockClicked={rockClicked}>{rockClicked ? "WEB" : "APP"}</Name>
-      <Body>
-        {(rockClicked
-          ? [...webLogos, ...ectLogos]
-          : [...appLogos, ...ectLogos]
-        ).map((logo, index) => {
-          let angle;
-          if (windowWidth <= 750) {
-            angle = index * angleStep + 0.8 * Math.PI;
-          } else {
-            angle = index * angleStep;
-          }
-          const x = centerX + radius * Math.cos(angle);
-          const y = centerY + radius * Math.sin(angle);
-          return (
-            <LogoComponent
-              onClick={() => setModalOpen(logo)}
-              logo={logo.logo}
-              text={logo.text}
-              x={x}
-              y={y}
-            />
-          );
-        })}
-      </Body>
-      {modalOpen && (
-        <>
-          <Modal
-            modalOpen={modalOpen}
-            logo={modalOpen.text}
-            description={modalOpen.description}
-          />
-        </>
-      )}
+      <Body rockClicked={rockClicked}>
+        <LogoBody>
+          <AppContainer>
+            <AppSectionTitle rockClicked={rockClicked} />
+            {(rockClicked ? [...webLogos] : [...appLogos]).map(
+              (logo, index) => (
+                <LogoComponent
+                  onClick={() => setModalOpen(logo)}
+                  logo={logo.logo}
+                  text={logo.text}
+                />
+              )
+            )}
+          </AppContainer>
+          <EctContainer>
+            <EctSectionTitle rockClicked={rockClicked} />
+            {ectLogos.map((logo, index) => (
+              <LogoComponent
+                onClick={() => setModalOpen(logo)}
+                logo={logo.logo}
+                text={logo.text}
+              />
+            ))}
+          </EctContainer>
+        </LogoBody>
+        <ModalBody modalOpen={modalOpen} rockClicked={rockClicked}>
+          {modalOpen && (
+            <>
+              <Modal
+                rockClicked={rockClicked}
+                modalOpen={modalOpen}
+                logo={modalOpen.text}
+                description={modalOpen.description}
+              />
+            </>
+          )}
 
-      {!modalOpen && <Modal description="로고를 클릭해주세요!" />}
+          {!modalOpen && (
+            <Modal
+              rockClicked={rockClicked}
+              description="로고를 클릭해주세요!"
+            />
+          )}
+        </ModalBody>
+      </Body>
       <CurvedTextComponent rockClicked={rockClicked} />
       <ArrowContainer rockClicked={rockClicked} />
       <RockComponent onClick={handleClick} />
@@ -188,12 +182,17 @@ const rockTransAnimation = keyframes`
     transform: translateY(0%) ;
   }
 `;
-export const Modal = ({ modalOpen, logo, description }) => (
-  <StyledModal modalOpen={modalOpen}>
-    <p style={{ fontSize: "20px" }}>{logo}</p>
-    <div>
+export const Modal = ({ modalOpen, rockClicked, logo, description }) => (
+  <StyledModal modalOpen={modalOpen} rockClicked={rockClicked}>
+    {modalOpen && (
+      <LogoBorderLine rockClicked={rockClicked}>
+        <p style={{ fontSize: "30px" }}>{logo}</p>
+      </LogoBorderLine>
+    )}
+
+    <DescriptionContainer modalOpen={modalOpen}>
       <p>{description}</p>
-    </div>
+    </DescriptionContainer>
   </StyledModal>
 );
 export const SunComponent = ({ rockClicked }) => {
@@ -220,8 +219,16 @@ const RockComponent = ({ onClick }) => {
     </RockContainer>
   );
 };
-export const LogoComponent = ({ logo, text, x, y, onClick }) => (
-  <LogoContainer x={x} y={y} onClick={onClick}>
+
+const AppSectionTitle = ({ rockClicked }) => (
+  <BorderLine rockClicked={rockClicked}>App</BorderLine>
+);
+
+const EctSectionTitle = ({ rockClicked }) => (
+  <BorderLine rockClicked={rockClicked}>Ect</BorderLine>
+);
+export const LogoComponent = ({ logo, text, onClick }) => (
+  <LogoContainer onClick={onClick}>
     {logo && <Logo src={`assets/logos/${logo}.png`} alt={text} />}
     <LogoName>{text}</LogoName>
   </LogoContainer>
@@ -247,8 +254,9 @@ const CurvedTextComponent = ({ rockClicked }) => (
 );
 
 export const Container = styled.div`
-  background-color: ${(props) => (props.rockClicked ? "#272727" : "#eae7e0")};
+  background-color: ${(props) => (props.rockClicked ? "#131313" : "#eae7e0")};
   background-image: url("assets/images/background2.jpg");
+
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -256,7 +264,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   min-height: 900px;
-  flex-direction: column;
+
   align-items: flex-start;
   &::-webkit-scrollbar {
     display: none;
@@ -267,27 +275,32 @@ export const Container = styled.div`
     min-height: 900px;
   }
 `;
+
 export const SunContainer = styled.div`
   background-image: url(${(props) =>
     props.rockClicked
       ? "assets/images/background2_moon.png"
       : "assets/images/background2_sun.png"});
-  background-size: 1450px;
+  background-size: 550px;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
-  width: 2200px;
-  height: 2000px;
-  left: -900px;
-  top: -950px;
+  width: 600px;
+  height: 600px;
+  left: -250px;
+  top: -300px;
   position: absolute;
   &.slide-in {
     animation: ${sunTransAnimation} 2s forwards;
   }
+  @media (max-width: 1130px) {
+    left: -350px;
+    top: -300px;
+  }
   @media (max-width: 750px) {
     height: 800px;
     background-size: 800px;
-    left: -700px;
+    left: -900px;
     top: 200px;
   }
 `;
@@ -306,7 +319,7 @@ const RockContainer = styled.div`
   display: flex;
   width: 100%;
   height: 500px;
-  left: 150px;
+  left: 300px;
   bottom: -250px;
   &.slide-in {
     animation: ${rockTransAnimation} 2s forwards;
@@ -335,11 +348,11 @@ const RockContainer = styled.div`
       width: 400px;
     }
   }
-  @media (max-width: 750px) {
+  @media (max-width: 790px) {
     width: 220px;
     height: 450px;
     bottom: -350px;
-    left: 220px;
+    left: 200px;
     img {
       &:hover {
         width: 220px;
@@ -361,7 +374,7 @@ export const ArrowContainer = styled.div`
   display: flex;
   width: 100%;
   height: 100px;
-  left: 320px;
+  left: 450px;
   bottom: 150px;
 
   @media (max-width: 1130px) {
@@ -371,34 +384,21 @@ export const ArrowContainer = styled.div`
     bottom: 100px;
   }
 
-  @media (max-width: 750px) {
-    background-size: 300px;
-    left: 50px;
-    bottom: -350px;
-  }
-`;
-
-export const Body = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  width: 65%;
-  height: 600px;
-
-  @media (max-width: 1122px) {
-  }
   @media (max-width: 790px) {
+    transform: scaleX(-1);
+    background-size: 120px;
+    width: 300px;
+    left: 0px;
+    bottom: 30px;
   }
 `;
+
 export const Name = styled.div`
   position: absolute;
   display: flex;
   font-size: 30px;
-  top: 20px;
-  left: 20px;
+  top: 50px;
+  left: 50px;
   padding: 5px;
   width: 200px;
   height: 60px;
@@ -407,26 +407,121 @@ export const Name = styled.div`
   }
   @media (max-width: 750px) {
     color: ${(props) => (props.rockClicked ? "#ffffff" : "#000000")};
-    top: 80px;
+    top: 50px;
+    left: 35px;
   }
 `;
-export const LogoContainer = styled.div`
+
+export const Body = styled.div`
+  color: ${(props) => (props.rockClicked ? "#ffffff" : "#000000")};
   position: absolute;
-  margin: 10px;
+  top: -100px;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: #5d80917a; */
+  width: 100%;
+  height: 100%;
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+    flex-direction: column;
+  }
+`;
+
+export const LogoBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  width: 50%;
+  padding: 5px;
+  margin-left: 400px;
+  height: 600px;
+  @media (max-width: 1130px) {
+    margin-left: 200px;
+  }
+  @media (max-width: 790px) {
+    margin-left: 80px;
+    padding: 0px;
+    flex-direction: row;
+    top: 240px;
+    width: 100%;
+  }
+`;
+export const AppContainer = styled.div`
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+  height: 600px;
+  @media (max-width: 790px) {
+    margin-bottom: 0px;
+    width: 50%;
+  }
+`;
+export const EctContainer = styled.div`
+  position: relative;
+  width: 100%;
+
+  height: 600px;
+  @media (max-width: 790px) {
+    width: 50%;
+  }
+`;
+export const ModalBody = styled.div`
+  display: flex;
+  /* background-color: #ff914d; */
+  position: relative;
+  padding: 5px;
+  width: 50%;
+  height: 600px;
+  @media (max-width: 790px) {
+    width: 80%;
+    height: 500px;
+    top: -70px;
+  }
+`;
+export const BorderLine = styled.div`
+  display: flex;
+  padding-bottom: 10px;
+  font-size: 20px;
+  border-bottom: ${(props) =>
+    props.rockClicked ? "1px solid #ffffff" : "1px solid #000000"};
+  position: relative;
+
+  width: 200px;
+  @media (max-width: 790px) {
+    width: 120px;
+  }
+`;
+export const LogoBorderLine = styled.div`
+  display: flex;
+
+  font-size: 20px;
+  border-bottom: ${(props) =>
+    props.rockClicked ? "1px solid #ffffff" : "1px solid #000000"};
+  position: relative;
+  width: 100%;
+`;
+
+export const LogoContainer = styled.div`
+  position: relative;
+  margin: 12px 0px 0px 0px;
   display: flex;
   align-items: center;
   z-index: 1;
-  width: 120px;
+  width: 280px;
   height: 40px;
   font-size: 20px;
   cursor: url("assets/images/cursor_2-1.png") 16 16, auto;
   left: ${(props) => props.x || 0}px;
   top: ${(props) => props.y || 0}px;
 
-  @media (max-width: 977px) {
-  }
   @media (max-width: 750px) {
     font-size: 13px;
+    margin: 5px 0px 0px 0px;
   }
 `;
 export const Logo = styled.img`
@@ -441,9 +536,12 @@ export const Logo = styled.img`
   }
 `;
 export const LogoName = styled.p`
-  font-size: 23px;
+  &:hover {
+    color: #5e5e5e;
+  }
+  font-size: 20px;
   margin-left: 5px;
-  text-shadow: 0 5px #fff7f1;
+
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
@@ -452,30 +550,38 @@ export const LogoName = styled.p`
 `;
 
 export const StyledModal = styled.div`
-  background-color: ${(props) => (props.modalOpen ? "#f8f1f18f" : "#0000000")};
-  position: absolute;
   flex-direction: column;
+  background-color: ${(props) => (props.rockClicked ? "#292929" : "#ffffff8f")};
   display: flex;
-  align-items: center;
-  left: 100px;
-  top: ${(props) => (props.modalOpen ? "120px" : "200px")};
+  position: relative;
+
+  /* left: 100px; */
+  /* top: ${(props) => (props.modalOpen ? "120px" : "200px")}; */
   padding: 10px;
-  width: 300px;
-  height: 320px;
+  width: 80%;
+  height: 80%;
   font-size: 18px;
-  border-radius: 20px;
-  border: ${(props) => (props.modalOpen ? "3px solid #e9d6b6" : "none")};
+  border-radius: 10px;
+  border: ${(props) =>
+    props.rockClicked ? "2px solid #ffffff" : "2px solid #515151"};
   line-height: 1.5;
   @media (max-width: 1122px) {
   }
-  @media (max-width: 750px) {
+  @media (max-width: 790px) {
     font-size: 14px;
-    width: 200px;
-    height: 290px;
-    position: absolute;
-    top: ${(props) => (props.modalOpen ? "440px" : "490px")};
+    width: 800px;
+    height: 280px;
+  }
+`;
+export const DescriptionContainer = styled.div`
+  display: flex;
+  position: relative;
+  top: ${(props) => (props.modalOpen ? "10%" : "40%")};
 
-    left: 180px;
+  justify-content: center;
+  height: 100%;
+  @media (max-width: 790px) {
+    top: ${(props) => (props.modalOpen ? "5%" : "40%")};
   }
 `;
 

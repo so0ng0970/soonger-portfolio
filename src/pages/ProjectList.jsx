@@ -123,15 +123,14 @@ export const Body = styled.div`
 `;
 
 export const ProjectImage = styled.div`
-  background-size: cover;
-  background-position: center;
+  background-color: #5d80917a;
   position: absolute;
   top: 50;
-  left: 0;
+  left: 100px;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
-  height: 60%;
-  width: 30%;
+  height: 40vw;
+  width: 30vw;
   overflow: hidden;
   @media (max-width: 977px) {
   }
@@ -141,7 +140,6 @@ export const ProjectImage = styled.div`
   }
 `;
 export const DivContainer = styled.div`
-  /* background-color: #5f83946f; */
   width: 60%;
   height: 100%;
   @media (max-width: 977px) {

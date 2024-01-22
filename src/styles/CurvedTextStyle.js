@@ -7,7 +7,7 @@ export const CurvedTextStyle = styled.div`
   display: flex;
   width: 100%;
   height: 100px;
-  left: 110px;
+  left: 260px;
   bottom: 200px;
   text-align: center;
   justify-content: center;
@@ -18,18 +18,18 @@ export const CurvedTextStyle = styled.div`
 
    width:30%;
    font-size: 22px;
-   color : #ffffff;
+
    left :440px;
    bottom: 120px;
  }
-  @media (max-width: 750px) {
+ @media (max-width: 790px) {
    
     width: 200px;
     font-size: 22px;
-    color : #000000;
-    left : 220px;
+    left : 200px;
     bottom: 70px;
-  }
+ }
+
   span {
     padding-right: 15px
     position: relative;

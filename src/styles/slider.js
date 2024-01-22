@@ -6,39 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 
-const SlideBtn = styled.div`
-  z-index: 100;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const SlideRBtn = styled.div`
-  z-index: 100;
-  top: 50;
-  left: 0;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ImgContainer = styled.div`
-  display: flex;
-  overflow: hidden;
-`;
-
-const ImgBox = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  img {
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-  }
-`;
-
 function SwiperImage({ bgArr }) {
   const [slideIndex, setSlideIndex] = useState(1);
 
@@ -79,12 +46,15 @@ function SwiperImage({ bgArr }) {
 
   return (
     <>
-      {/* <SlideBtn onClick={() => slideHandler(-1)}>
-        <FontAwesomeIcon icon={faChevronLeft} size="4x" />
-      </SlideBtn> */}
-      <SlideRBtn onClick={() => slideHandler(+1)}>
-        <FontAwesomeIcon icon={faChevronRight} size="4x" />
-      </SlideRBtn>
+      {" "}
+      <SlideComponent>
+        <SlideBtn onClick={() => slideHandler(-1)}>
+          <FontAwesomeIcon icon={faChevronLeft} size="4x" />
+        </SlideBtn>
+        <SlideBtn onClick={() => slideHandler(+1)}>
+          <FontAwesomeIcon icon={faChevronRight} size="4x" />
+        </SlideBtn>
+      </SlideComponent>
       <ImgContainer
         ref={slideRef}
         style={{
@@ -106,3 +76,41 @@ function SwiperImage({ bgArr }) {
 }
 
 export default SwiperImage;
+
+const SlideBtn = styled.div`
+  z-index: 100;
+  padding: 10px;
+  display: flex;
+  color: #acacac;
+  &:hover {
+    color: #686868;
+  }
+`;
+const SlideComponent = styled.div`
+  position: absolute;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ImgContainer = styled.div`
+  display: flex;
+  overflow: hidden;
+`;
+
+const ImgBox = styled.div`
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  object-position: center;
+  object-fit: cover;
+  overflow: hidden;
+  img {
+    height: 40vw;
+    width: 30vw;
+  }
+`;
