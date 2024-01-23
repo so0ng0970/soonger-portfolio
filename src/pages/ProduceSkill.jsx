@@ -320,7 +320,7 @@ const RockContainer = styled.div`
   width: 100%;
   height: 500px;
   left: 300px;
-  bottom: -250px;
+  bottom: -260px;
   &.slide-in {
     animation: ${rockTransAnimation} 2s forwards;
   }
@@ -374,8 +374,8 @@ export const ArrowContainer = styled.div`
   display: flex;
   width: 100%;
   height: 100px;
-  left: 450px;
-  bottom: 150px;
+  left: 460px;
+  bottom: 120px;
 
   @media (max-width: 1130px) {
     background-size: 120px;
@@ -415,7 +415,7 @@ export const Name = styled.div`
 export const Body = styled.div`
   color: ${(props) => (props.rockClicked ? "#ffffff" : "#000000")};
   position: absolute;
-  top: -100px;
+  top: -50px;
   left: 0;
   display: flex;
   flex-direction: row;
@@ -562,8 +562,14 @@ export const StyledModal = styled.div`
   height: 80%;
   font-size: 18px;
   border-radius: 10px;
-  border: ${(props) =>
-    props.rockClicked ? "2px solid #ffffff" : "2px solid #515151"};
+  border-top: ${(props) =>
+    props.rockClicked ? "1px solid #ffffff" : "1px solid #515151"};
+  border-bottom: ${(props) =>
+    props.rockClicked ? "4px solid #ffffff" : "4px solid #515151"};
+  border-right: ${(props) =>
+    props.rockClicked ? "4px solid #ffffff" : "4px solid #515151"};
+  border-left: ${(props) =>
+    props.rockClicked ? "1px solid #ffffff" : "1px solid #515151"};
   line-height: 1.5;
   @media (max-width: 1122px) {
   }
