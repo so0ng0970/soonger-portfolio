@@ -23,14 +23,20 @@ function ProjectList({ currentProject, setCurrentProject }) {
         </Button>
       </ButtonContainer>
       <Body>
-        <ProjectName>{currentProject.name}</ProjectName>
         <ProjectContainer>
+          <ProjectSubContainer>
+            <ProjectName>{currentProject.name}</ProjectName>
+            <ProjectDescription>
+              {currentProject.description}
+            </ProjectDescription>
+          </ProjectSubContainer>
           <ProjectImage>
             <SwiperImage bgArr={currentProject.images} />
           </ProjectImage>
         </ProjectContainer>
         <DivContainer>
-          <p>프로젝트 소개 </p>
+          <Title>프로젝트 구현 </Title>
+          <br />
           <p>{currentProject.description}</p>
         </DivContainer>
       </Body>
@@ -83,13 +89,11 @@ export const BgContainer = styled.div`
   -webkit-scrollbar-button: none;
   background-image: url("assets/images/background4.jpg");
   background-size: 100% auto;
-
   position: absolute;
   right: -30px;
   display: flex;
   width: 100%;
   height: 100%;
-
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {
@@ -105,7 +109,7 @@ export const BgContainer = styled.div`
     width: 800px;
     height: 1000px;
     min-height: 0px;
-    top: -430px;
+    top: -550px;
     &.slide-in {
       animation: ${slideTransAnimation} 2s forwards;
     }
@@ -132,12 +136,41 @@ export const Body = styled.div`
 `;
 
 export const ProjectContainer = styled.div`
+  padding-left: 50px;
+  top: 20px;
+  width: 40%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+    padding-left: 0px;
+    font-size: 13px;
+    top: -20px;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ProjectSubContainer = styled.div`
+  position: relative;
+  display: flex;
+  width: 78%;
+  height: 150px;
+
+  flex-direction: column;
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
     font-size: 13px;
     width: 100%;
-    height: 400px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,9 +180,7 @@ export const ProjectName = styled.div`
   padding-left: 10px;
   border-left: 3px solid #eae7e0;
   font-size: 40px;
-  left: 100px;
-  top: 70px;
-  position: absolute;
+
   color: white;
   @media (max-width: 1100px) {
     font-size: 3vw;
@@ -158,43 +189,55 @@ export const ProjectName = styled.div`
   @media (max-width: 790px) {
     border-left: 3px solid #000000;
     color: #000000;
+  }
+`;
+export const ProjectDescription = styled.div`
+  margin-top: 20px;
+  font-size: 16px;
+  color: white;
+  @media (max-width: 1100px) {
+    font-size: 2vw;
+  }
+  @media (max-width: 790px) {
+    color: #000000;
     top: 120px;
   }
 `;
 export const ProjectImage = styled.div`
   position: relative;
   top: 50;
-  left: 100px;
-  margin-right: 50px;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
   height: 35vw;
   width: 25vw;
   overflow: hidden;
   @media (max-width: 1100px) {
-    top: -50px;
-    left: 50px;
   }
   @media (max-width: 790px) {
-    top: 100px;
-    left: 30px;
-
-    height: 400px;
-    width: 300px;
+    top: 20px;
+    height: 250px;
+    width: 200px;
   }
 `;
 export const DivContainer = styled.div`
   width: 50%;
   height: 80%;
-  margin-right: 50px;
+  left: -90px;
   position: relative;
   top: 30px;
+  @media (max-width: 1100px) {
+    left: -40px;
+  }
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
+    left: 0px;
+
+    color: white;
+    top: -60px;
     font-size: 13px;
-    width: 80%;
-    height: 400px;
+    width: 90%;
+    height: 550px;
   }
 `;
 export const ButtonContainer = styled.div`
@@ -242,6 +285,21 @@ export const Button = styled.button`
   }
   @media (max-width: 790px) {
     width: 230px;
+    height: 50px;
     font-size: 12px;
+  }
+`;
+export const Title = styled.div`
+  padding-left: 10px;
+  border-left: 4px solid #000000;
+  font-size: 25px;
+
+  color: #000000;
+  @media (max-width: 1100px) {
+  }
+  @media (max-width: 790px) {
+    border-left: 4px solid #ffffff;
+    color: white;
+    font-size: 20px;
   }
 `;

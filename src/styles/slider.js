@@ -113,8 +113,8 @@ const ImgBox = styled.div`
     height: 35vw;
     width: 25vw;
     @media (max-width: 790px) {
-      height: 400px;
-      width: 300px;
+      height: 250px;
+      width: 200px;
     }
   }
 `;
