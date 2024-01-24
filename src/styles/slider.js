@@ -110,7 +110,11 @@ const ImgBox = styled.div`
   object-fit: cover;
   overflow: hidden;
   img {
-    height: 40vw;
-    width: 30vw;
+    height: 35vw;
+    width: 25vw;
+    @media (max-width: 790px) {
+      height: 400px;
+      width: 300px;
+    }
   }
 `;

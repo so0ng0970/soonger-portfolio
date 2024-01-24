@@ -1,10 +1,13 @@
-import { ScrollAnimationContainer } from "../styles/ScrollAnimaiton";
+import React, { useState } from "react";
 import { Container } from "../styles/Container";
 import Produce from "./Produce";
 import ProduceSkill from "./ProduceSkill";
 import Project from "./Project";
 import ProjectList from "./ProjectList";
+import { projects } from "../component/projects";
 function Home() {
+  const [currentProject, setCurrentProject] = useState(projects[0]);
+
   return (
     <>
       <Container>
@@ -15,10 +18,13 @@ function Home() {
       </Container>
 
       <Container>
-        <Project />
+        <Project setCurrentProject={setCurrentProject} />
       </Container>
       <Container>
-        <ProjectList />
+        <ProjectList
+          currentProject={currentProject}
+          setCurrentProject={setCurrentProject}
+        />
       </Container>
     </>
   );

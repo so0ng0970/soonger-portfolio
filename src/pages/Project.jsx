@@ -1,35 +1,63 @@
 import styled, { keyframes } from "styled-components";
 import { Card, Row, Col } from "antd";
 import { useScrollAnimation } from "../component/userScrollAnimation";
-
-function Project() {
+import { projects } from "../component/projects";
+function Project({ setCurrentProject }) {
   return (
     <Container>
       <SeaComponent />
       <ProjectContainer>
         <CardComponent
+          onClick={() => {
+            setCurrentProject(projects[0]);
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
           number="01"
           backgroundImage="assets/images/project1.jpg"
           text="You & I Diary"
-          subText="- solo"
+          subText="- App"
         />
         <CardComponent
+          onClick={() => {
+            setCurrentProject(projects[1]);
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
           number="02"
           backgroundImage="assets/images/project2.jpg"
           text="MAAP"
-          subText="- solo"
+          subText="- App"
         />
         <CardComponent
+          onClick={() => {
+            setCurrentProject(projects[2]);
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
           number="03"
           backgroundImage="assets/images/project3.jpg"
           text="STOCK'S TALK"
-          subText="- member"
+          subText="- Web"
         />
         <CardComponent
+          onClick={() => {
+            setCurrentProject(projects[3]);
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }}
           number="04"
           backgroundImage="assets/images/project4.jpg"
           text="PORTFOLIO"
-          subText="- solo"
+          subText="- Web"
         />
       </ProjectContainer>
       <RockComponent />
@@ -66,9 +94,15 @@ export const RockComponent = () => {
   return <Rock ref={ref} className={isInViewport ? "slide-in" : ""} />;
 };
 
-export const CardComponent = ({ subText, backgroundImage, text, number }) => {
+export const CardComponent = ({
+  onClick,
+  subText,
+  backgroundImage,
+  text,
+  number,
+}) => {
   return (
-    <CardWrapper>
+    <CardWrapper onClick={onClick}>
       <CardContainer>
         <NumberComponent number={number} />
 

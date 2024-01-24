@@ -1,32 +1,38 @@
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+
 import { useScrollAnimation } from "../component/userScrollAnimation";
+import { projects } from "../component/projects";
 import SwiperImage from "../styles/slider";
-// const images = [
-//   "assets/images/background4.jpg",
-//   "assets/images/background4-mobile.png",
-//   "assets/images/profile.jpg",
-// ];
-const images = [
-  { img: "assets/images/background4.jpg" },
-  { img: "assets/images/background4-mobile.png" },
-  { img: "assets/images/profile.jpg" },
-];
-function ProjectList() {
+
+function ProjectList({ currentProject, setCurrentProject }) {
   return (
     <Container>
       {" "}
       <BgComponent />{" "}
       <ButtonContainer>
-        <Button>You & I Diary</Button>
-        <Button>MAAP</Button>
-        <Button>STOCK'S TALK</Button>
-        <Button>PORTFOLIO</Button>
+        <Button onClick={() => setCurrentProject(projects[0])}>
+          You & I Diary
+        </Button>
+        <Button onClick={() => setCurrentProject(projects[1])}>MAAP</Button>
+        <Button onClick={() => setCurrentProject(projects[2])}>
+          STOCK'S TALK
+        </Button>
+        <Button onClick={() => setCurrentProject(projects[3])}>
+          PORTFOLIO
+        </Button>
       </ButtonContainer>
       <Body>
-        <ProjectImage>
-          <SwiperImage bgArr={images} />
-        </ProjectImage>
-        <DivContainer></DivContainer>
+        <ProjectName>{currentProject.name}</ProjectName>
+        <ProjectContainer>
+          <ProjectImage>
+            <SwiperImage bgArr={currentProject.images} />
+          </ProjectImage>
+        </ProjectContainer>
+        <DivContainer>
+          <p>프로젝트 소개 </p>
+          <p>{currentProject.description}</p>
+        </DivContainer>
       </Body>
     </Container>
   );
@@ -61,6 +67,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
+  min-height: 800px;
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {
@@ -75,12 +82,14 @@ export const Container = styled.div`
 export const BgContainer = styled.div`
   -webkit-scrollbar-button: none;
   background-image: url("assets/images/background4.jpg");
-  background-size: cover;
+  background-size: 100% auto;
 
+  position: absolute;
+  right: -30px;
   display: flex;
   width: 100%;
-  height: 100vh;
-  min-height: 800px;
+  height: 100%;
+
   flex-direction: column;
   align-items: flex-start;
   &::-webkit-scrollbar {
@@ -91,7 +100,7 @@ export const BgContainer = styled.div`
   }
   @media (max-width: 790px) {
     background-image: url("assets/images/background4-mobile.png");
-
+    background-size: cover;
     position: absolute;
     width: 800px;
     height: 1000px;
@@ -105,12 +114,12 @@ export const BgContainer = styled.div`
 
 export const Body = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
+
   flex-direction: row;
-  justify-content: space-around;
+  padding: 50px 0px;
   align-items: center;
+  justify-content: space-between;
   /* background-color: #5d80917a; */
   width: 100%;
   height: 100%;
@@ -122,26 +131,64 @@ export const Body = styled.div`
   }
 `;
 
-export const ProjectImage = styled.div`
-  background-color: #5d80917a;
-  position: absolute;
-  top: 50;
-  left: 100px;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-  height: 40vw;
-  width: 30vw;
-  overflow: hidden;
+export const ProjectContainer = styled.div`
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
+    font-size: 13px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+export const ProjectName = styled.div`
+  padding-left: 10px;
+  border-left: 3px solid #eae7e0;
+  font-size: 40px;
+  left: 100px;
+  top: 70px;
+  position: absolute;
+  color: white;
+  @media (max-width: 1100px) {
+    font-size: 3vw;
+    left: 50px;
+  }
+  @media (max-width: 790px) {
+    border-left: 3px solid #000000;
+    color: #000000;
+    top: 120px;
+  }
+`;
+export const ProjectImage = styled.div`
+  position: relative;
+  top: 50;
+  left: 100px;
+  margin-right: 50px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  height: 35vw;
+  width: 25vw;
+  overflow: hidden;
+  @media (max-width: 1100px) {
+    top: -50px;
+    left: 50px;
+  }
+  @media (max-width: 790px) {
+    top: 100px;
+    left: 30px;
+
     height: 400px;
     width: 300px;
   }
 `;
 export const DivContainer = styled.div`
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: 80%;
+  margin-right: 50px;
+  position: relative;
+  top: 30px;
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
@@ -165,8 +212,10 @@ export const ButtonContainer = styled.div`
   }
   @media (max-width: 790px) {
     font-size: 13px;
-    width: 80%;
+    width: 100%;
     height: 400px;
+    right: 10px;
+    top: -140px;
   }
 `;
 export const Button = styled.button`
@@ -189,7 +238,10 @@ export const Button = styled.button`
   }
 
   @media (max-width: 977px) {
+    font-size: 12px;
   }
   @media (max-width: 790px) {
+    width: 230px;
+    font-size: 12px;
   }
 `;
