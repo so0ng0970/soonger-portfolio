@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { projects } from "../component/projects";
 import SwiperImage from "../styles/slider";
@@ -35,9 +35,25 @@ function ProjectList({ currentProject, setCurrentProject }) {
           </ProjectImage>
         </ProjectContainer>
         <DivContainer>
-          <Title>프로젝트 구현 </Title>
+          <Title>프로젝트 </Title>
+          <SiteContainer>
+            <SiteName
+              onClick={() => window.open(currentProject.notion, "_blank")}
+            >
+              Notion
+              <Arrow />
+            </SiteName>
+            <GitName
+              onClick={() => window.open(currentProject.github, "_blank")}
+            >
+              Git-Hub
+              <Arrow />
+            </GitName>
+          </SiteContainer>
           <br />
-          <p>{currentProject.description}</p>
+          {currentProject.implementation.map((item, index) => (
+            <Text key={index}>{item}</Text>
+          ))}
         </DivContainer>
       </Body>
     </Container>
@@ -82,7 +98,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     height: 100vh;
-    min-height: 900px;
+    min-height: 800px;
   }
 `;
 export const BgContainer = styled.div`
@@ -220,6 +236,7 @@ export const ProjectImage = styled.div`
   }
 `;
 export const DivContainer = styled.div`
+  white-space: pre-wrap;
   width: 50%;
   height: 80%;
   left: -90px;
@@ -302,4 +319,53 @@ export const Title = styled.div`
     color: white;
     font-size: 20px;
   }
+`;
+export const SiteContainer = styled.div`
+  margin-top: 15px;
+  flex: row;
+  display: flex;
+`;
+export const SiteName = styled.div`
+  font-size: 18px;
+  background-color: "#41986c";
+  width: 100px;
+  height: 22px;
+
+  padding-bottom: 5px;
+  border-bottom: 2px solid #303030;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  &:hover {
+    color: #5b5c5c;
+  }
+
+  @media (max-width: 1100px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
+export const GitName = styled(SiteName)`
+  width: 115px;
+  margin-left: 20px;
+`;
+export const Arrow = styled.div`
+  background-image: url("assets/images/arrow.png");
+  background-size: cover;
+  position: relative;
+  top: 0px;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+
+  @media (max-width: 1100px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
+export const Text = styled.p`
+  font-size: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap;
 `;
