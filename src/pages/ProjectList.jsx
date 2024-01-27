@@ -6,6 +6,8 @@ import { projects } from "../component/projects";
 import SwiperImage from "../styles/slider";
 
 function ProjectList({ currentProject, setCurrentProject }) {
+  const [hoverIndex, setHoverIndex] = useState(null);
+
   return (
     <Container>
       {" "}
@@ -31,6 +33,17 @@ function ProjectList({ currentProject, setCurrentProject }) {
             </ProjectDescription>
           </ProjectSubContainer>
           <ProjectImage>
+            {hoverIndex !== null && (
+              <HoverContainer>
+                <HoverTitleText>
+                  {currentProject.implement[hoverIndex]}
+                </HoverTitleText>
+
+                <HoverText>
+                  {currentProject.hoverMessages[hoverIndex]}
+                </HoverText>
+              </HoverContainer>
+            )}
             <SwiperImage bgArr={currentProject.images} />
           </ProjectImage>
         </ProjectContainer>
@@ -48,7 +61,7 @@ function ProjectList({ currentProject, setCurrentProject }) {
             </NameContainer>
           </TitleContainer>
           <br />
-          <br />
+
           {currentProject.content.map((item, index) => (
             <Text key={index}>{item}</Text>
           ))}
@@ -70,6 +83,32 @@ function ProjectList({ currentProject, setCurrentProject }) {
           {currentProject.implementation.map((item, index) => (
             <Text key={index}>{item}</Text>
           ))}
+          <br />
+          <TitleContainer>
+            <Title>구현 목록</Title>
+            <p> - 마우스를 올려보세요 ↓</p>
+          </TitleContainer>
+          <ImplementContainer>
+            {currentProject.implement.map((item, index) => (
+              <div>
+                <Implement
+                  key={index}
+                  onMouseEnter={() => setHoverIndex(index)}
+                  onMouseLeave={() => setHoverIndex(null)}
+                >
+                  {item}
+                </Implement>
+              </div>
+            ))}
+          </ImplementContainer>
+
+          <Divider />
+          <Stack>기술 스택</Stack>
+          <StackContainer>
+            {currentProject.stack.map((item, index) => (
+              <StackText key={index}>{item}</StackText>
+            ))}
+          </StackContainer>
         </DivContainer>
       </Body>
     </Container>
@@ -122,7 +161,7 @@ export const BgContainer = styled.div`
   background-image: url("assets/images/background4.jpg");
   background-size: 100% auto;
   position: absolute;
-  right: -30px;
+  right: 0px;
   display: flex;
   width: 100%;
   height: 100%;
@@ -151,7 +190,6 @@ export const BgContainer = styled.div`
 export const Body = styled.div`
   position: absolute;
   display: flex;
-
   flex-direction: row;
   padding: 50px 0px;
   align-items: center;
@@ -303,14 +341,14 @@ export const Button = styled.button`
 `;
 export const DivContainer = styled.div`
   white-space: pre-wrap;
-  width: 45%;
+  width: 50%;
   height: 80%;
   left: -100px;
   position: relative;
   top: 0px;
 
-  @media (max-width: 1100px) {
-    left: -40px;
+  @media (max-width: 1200px) {
+    left: -80px;
   }
   @media (max-width: 977px) {
   }
@@ -351,7 +389,7 @@ export const NameContainer = styled.div`
   font-size: 10px;
 `;
 export const SiteName = styled.div`
-  color: #272727;
+  color: #3d3d3d;
   font-size: 16px;
   background-color: "#41986c";
   width: 130px;
@@ -378,8 +416,13 @@ export const GitName = styled(SiteName)`
   width: 150px;
 `;
 export const SiteExplain = styled.p`
+  color: #292929;
   position: relative;
   top: -8px;
+
+  @media (max-width: 790px) {
+    color: white;
+  }
 `;
 
 export const Arrow = styled.div`
@@ -399,6 +442,84 @@ export const Arrow = styled.div`
   }
 `;
 export const Text = styled.div`
+  font-family: "Pretendard-SemiBold";
+  font-size: 1.2vw;
+  line-height: 1.8;
+  white-space: pre-wrap;
+`;
+export const Divider = styled.div`
+  display: flex;
+  height: 1px;
+  width: 100%;
+  border-bottom: 2px solid #979797;
+  margin: 30px 0px;
+`;
+export const Stack = styled(Title)`
+  font-size: 20px;
+
+  @media (max-width: 1100px) {
+  }
+
+  @media (max-width: 790px) {
+  }
+`;
+
+export const ImplementTitleContainer = styled(TitleContainer)`
+  justify-content: none;
+`;
+export const ImplementContainer = styled(TitleContainer)`
+  /* background-color: #000000d6; */
+  margin-top: 15px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: 100px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+export const Implement = styled.div`
+  padding: 5px;
+  position: relative;
+  font-family: "Pretendard-ExtraBold";
+  height: 25px;
+  border-bottom: 4px double #535353;
+  font-size: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: url("assets/images/arrow_cursor.png") 16 16, auto;
+`;
+const HoverContainer = styled.div`
+  white-space: pre-wrap;
+  z-index: 101;
+  background-color: #fdfdfdef;
+  position: absolute;
+  white-space: pre-wrap;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+export const HoverText = styled(Text)`
+  font-family: "Pretendard-ExtraBold";
+  font-size: 1.2vw;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  padding: 10px;
+`;
+export const HoverTitleText = styled(Text)`
+  font-family: "Pretendard-ExtraBold";
+  font-size: 1.3vw;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  margin-bottom: 50px;
+`;
+export const StackContainer = styled(TitleContainer)`
+  margin-top: 15px;
+  width: 100%;
+`;
+export const StackText = styled(Text)`
   font-size: 1.1vw;
   line-height: 1.8;
   white-space: pre-wrap;

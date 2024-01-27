@@ -221,7 +221,9 @@ const RockComponent = ({ onClick }) => {
 };
 
 const AppSectionTitle = ({ rockClicked }) => (
-  <BorderLine rockClicked={rockClicked}>App</BorderLine>
+  <BorderLine rockClicked={rockClicked}>
+    {rockClicked ? "Web" : "App"}
+  </BorderLine>
 );
 
 const EctSectionTitle = ({ rockClicked }) => (
