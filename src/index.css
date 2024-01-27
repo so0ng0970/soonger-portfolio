@@ -49,6 +49,12 @@
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: "NaNHoloGigawide-Ultra";
+  src: url("./fonts/NaNHoloGigawide-Ultra.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
 body {
   margin: 0;
   font-family: "SBAggroB";

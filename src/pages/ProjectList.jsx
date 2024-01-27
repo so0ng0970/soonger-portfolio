@@ -35,21 +35,37 @@ function ProjectList({ currentProject, setCurrentProject }) {
           </ProjectImage>
         </ProjectContainer>
         <DivContainer>
-          <Title>프로젝트 </Title>
-          <SiteContainer>
-            <SiteName
-              onClick={() => window.open(currentProject.notion, "_blank")}
-            >
-              Notion
-              <Arrow />
-            </SiteName>
-            <GitName
-              onClick={() => window.open(currentProject.github, "_blank")}
-            >
-              Git-Hub
-              <Arrow />
-            </GitName>
-          </SiteContainer>
+          <TitleContainer>
+            <Title>프로젝트 </Title>
+            <NameContainer>
+              <GitName
+                onClick={() => window.open(currentProject.github, "_blank")}
+              >
+                Git-Hub
+                <Arrow />
+              </GitName>
+              <SiteExplain>자세한 프로젝트 설명을 원한다면..</SiteExplain>
+            </NameContainer>
+          </TitleContainer>
+          <br />
+          <br />
+          {currentProject.content.map((item, index) => (
+            <Text key={index}>{item}</Text>
+          ))}
+          <br />
+          <br />
+          <TitleContainer>
+            <Title>개발 영역</Title>
+            <NameContainer>
+              <SiteName
+                onClick={() => window.open(currentProject.notion, "_blank")}
+              >
+                Notion
+                <Arrow />
+              </SiteName>
+              <SiteExplain>자세한 구현 내용을 원한다면..</SiteExplain>
+            </NameContainer>
+          </TitleContainer>
           <br />
           {currentProject.implementation.map((item, index) => (
             <Text key={index}>{item}</Text>
@@ -140,7 +156,7 @@ export const Body = styled.div`
   padding: 50px 0px;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #5d80917a; */
+  /* background-color: #25252599; */
   width: 100%;
   height: 100%;
   @media (max-width: 977px) {
@@ -235,32 +251,11 @@ export const ProjectImage = styled.div`
     width: 200px;
   }
 `;
-export const DivContainer = styled.div`
-  white-space: pre-wrap;
-  width: 50%;
-  height: 80%;
-  left: -90px;
-  position: relative;
-  top: 30px;
-  @media (max-width: 1100px) {
-    left: -40px;
-  }
-  @media (max-width: 977px) {
-  }
-  @media (max-width: 790px) {
-    left: 0px;
 
-    color: white;
-    top: -60px;
-    font-size: 13px;
-    width: 90%;
-    height: 550px;
-  }
-`;
 export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
-  /* background-color: #001a256e; */
+  /* background-color: #000000d6; */
   width: 60%;
   height: 150px;
   display: flex;
@@ -306,6 +301,36 @@ export const Button = styled.button`
     font-size: 12px;
   }
 `;
+export const DivContainer = styled.div`
+  white-space: pre-wrap;
+  width: 45%;
+  height: 80%;
+  left: -100px;
+  position: relative;
+  top: 0px;
+
+  @media (max-width: 1100px) {
+    left: -40px;
+  }
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+    left: 0px;
+
+    color: white;
+    top: -60px;
+    font-size: 13px;
+    width: 90%;
+    height: 550px;
+  }
+`;
+export const TitleContainer = styled.div`
+  display: flex;
+  height: 30px;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+`;
 export const Title = styled.div`
   padding-left: 10px;
   border-left: 4px solid #000000;
@@ -314,27 +339,28 @@ export const Title = styled.div`
   color: #000000;
   @media (max-width: 1100px) {
   }
+
   @media (max-width: 790px) {
     border-left: 4px solid #ffffff;
     color: white;
     font-size: 20px;
   }
 `;
-export const SiteContainer = styled.div`
-  margin-top: 15px;
-  flex: row;
-  display: flex;
+
+export const NameContainer = styled.div`
+  font-size: 10px;
 `;
 export const SiteName = styled.div`
-  font-size: 18px;
+  color: #272727;
+  font-size: 16px;
   background-color: "#41986c";
-  width: 100px;
-  height: 22px;
-
-  padding-bottom: 5px;
-  border-bottom: 2px solid #303030;
+  width: 130px;
+  height: 20px;
+  font-family: "NaNHoloGigawide-Ultra";
+  border-bottom: 2px solid #272727;
   position: relative;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
 
   &:hover {
@@ -342,14 +368,20 @@ export const SiteName = styled.div`
   }
 
   @media (max-width: 1100px) {
+    font-size: 13px;
+    height: 15px;
   }
   @media (max-width: 790px) {
   }
 `;
 export const GitName = styled(SiteName)`
-  width: 115px;
-  margin-left: 20px;
+  width: 150px;
 `;
+export const SiteExplain = styled.p`
+  position: relative;
+  top: -8px;
+`;
+
 export const Arrow = styled.div`
   background-image: url("assets/images/arrow.png");
   background-size: cover;
@@ -360,12 +392,14 @@ export const Arrow = styled.div`
   height: 20px;
 
   @media (max-width: 1100px) {
+    width: 15px;
+    height: 15px;
   }
   @media (max-width: 790px) {
   }
 `;
-export const Text = styled.p`
-  font-size: 18px;
-  line-height: 1.5;
+export const Text = styled.div`
+  font-size: 1.1vw;
+  line-height: 1.8;
   white-space: pre-wrap;
 `;
