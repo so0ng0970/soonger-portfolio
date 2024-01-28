@@ -186,13 +186,17 @@ export const Modal = ({ modalOpen, rockClicked, logo, description }) => (
   <StyledModal modalOpen={modalOpen} rockClicked={rockClicked}>
     {modalOpen && (
       <LogoBorderLine rockClicked={rockClicked}>
-        <p style={{ fontSize: "30px" }}>{logo}</p>
+        {" "}
+        <ModalTitleContainer>
+          <p style={{ fontSize: "30px" }}>{logo}</p>
+          <TextContainer>Welcome to my</TextContainer>
+        </ModalTitleContainer>
       </LogoBorderLine>
     )}
-
     <DescriptionContainer modalOpen={modalOpen}>
       <p>{description}</p>
     </DescriptionContainer>
+    <Portfolio>portfolio</Portfolio>
   </StyledModal>
 );
 export const SunComponent = ({ rockClicked }) => {
@@ -254,6 +258,50 @@ const CurvedTextComponent = ({ rockClicked }) => (
     <span>k</span>
   </CurvedTextStyle>
 );
+export const TextContainer = styled.div`
+  transform: rotate(90deg);
+  position: relative;
+  top: -10px;
+  font-size: 10px;
+  @media (max-width: 1140px) {
+  }
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
+export const Portfolio = styled.div`
+  padding-top: 3px;
+  padding-left: 7px;
+  width: 65px;
+  height: 16px;
+  background-color: #2f4752;
+  color: white;
+  transform: rotate(-90deg);
+  font-size: 10px;
+  position: relative;
+  border-radius: 5px 5px 0px 0px;
+  bottom: -40px;
+  left: -60px;
+  @media (max-width: 1140px) {
+  }
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
+export const ModalTitleContainer = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 977px) {
+  }
+  @media (max-width: 790px) {
+  }
+`;
 
 export const Container = styled.div`
   background-color: ${(props) => (props.rockClicked ? "#131313" : "#eae7e0")};
@@ -559,19 +607,16 @@ export const StyledModal = styled.div`
 
   /* left: 100px; */
   /* top: ${(props) => (props.modalOpen ? "120px" : "200px")}; */
-  padding: 10px;
-  width: 80%;
+  padding: 15px;
+  width: 70%;
   height: 80%;
   font-size: 18px;
-  border-radius: 10px;
-  border-top: ${(props) =>
-    props.rockClicked ? "1px solid #ffffff" : "1px solid #515151"};
-  border-bottom: ${(props) =>
-    props.rockClicked ? "4px solid #ffffff" : "4px solid #515151"};
-  border-right: ${(props) =>
-    props.rockClicked ? "4px solid #ffffff" : "4px solid #515151"};
-  border-left: ${(props) =>
-    props.rockClicked ? "1px solid #ffffff" : "1px solid #515151"};
+  border-radius: 5px;
+  box-shadow: ${(props) =>
+    props.rockClicked
+      ? " rgba(255, 255, 255, 0.15) 0px 2px 8px"
+      : "rgba(0, 0, 0, 0.15) 0px 2px 8px"};
+
   line-height: 1.5;
   @media (max-width: 1122px) {
   }
@@ -585,9 +630,8 @@ export const DescriptionContainer = styled.div`
   display: flex;
   position: relative;
   top: ${(props) => (props.modalOpen ? "10%" : "40%")};
-
-  justify-content: center;
-  height: 100%;
+  width: 100%;
+  height: 250px;
   @media (max-width: 790px) {
     top: ${(props) => (props.modalOpen ? "5%" : "40%")};
   }
