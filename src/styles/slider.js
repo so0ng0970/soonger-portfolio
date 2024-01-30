@@ -1,13 +1,17 @@
 import styled from "styled-components";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function SwiperImage({ bgArr }) {
   const [slideIndex, setSlideIndex] = useState(1);
+  useEffect(() => {
+    setSlideIndex(1);
+  }, [bgArr]);
 
   const slideRef = useRef(null);
 

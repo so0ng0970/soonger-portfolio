@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useScrollAnimation } from "../component/userScrollAnimation";
-import { projects } from "../component/projects";
+import { projects } from "../const/projects";
 import SwiperImage from "../styles/slider";
 
 function ProjectList({ currentProject, setCurrentProject }) {
@@ -153,7 +153,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     height: 100vh;
-    min-height: 800px;
+    min-height: 1200px;
   }
 `;
 export const BgContainer = styled.div`
@@ -219,7 +219,7 @@ export const ProjectContainer = styled.div`
   @media (max-width: 790px) {
     padding-left: 0px;
     font-size: 13px;
-    top: -20px;
+    top: -50px;
     width: 100%;
     height: 550px;
     display: flex;
@@ -308,7 +308,7 @@ export const ButtonContainer = styled.div`
     width: 100%;
     height: 400px;
     right: 10px;
-    top: -140px;
+    top: -150px;
   }
 `;
 export const Button = styled.button`
@@ -325,7 +325,7 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e4e2d6;
+  background-color: #ceccc1ed;
   &:hover {
     border-bottom: 2px solid #303030;
   }
@@ -356,7 +356,7 @@ export const DivContainer = styled.div`
     left: 0px;
 
     color: white;
-    top: -60px;
+    top: -200px;
     font-size: 13px;
     width: 90%;
     height: 550px;
@@ -410,6 +410,8 @@ export const SiteName = styled.div`
     height: 15px;
   }
   @media (max-width: 790px) {
+    color: #e7e7e7;
+    border-bottom: 2px solid #ffffff;
   }
 `;
 export const GitName = styled(SiteName)`
@@ -446,6 +448,9 @@ export const Text = styled.div`
   font-size: 1.2vw;
   line-height: 1.8;
   white-space: pre-wrap;
+  @media (max-width: 790px) {
+    font-size: 15px;
+  }
 `;
 export const Divider = styled.div`
   display: flex;
@@ -470,23 +475,29 @@ export const ImplementTitleContainer = styled(TitleContainer)`
 export const ImplementContainer = styled(TitleContainer)`
   /* background-color: #000000d6; */
   margin-top: 15px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   width: 100%;
   height: 100px;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 790px) {
+    margin-bottom: 10px;
+  }
 `;
 export const Implement = styled.div`
   padding: 5px;
   position: relative;
   font-family: "Pretendard-ExtraBold";
   height: 25px;
-  border-bottom: 4px double #535353;
+  border-bottom: 3px dashed #696969c0;
   font-size: 1.2vw;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: url("assets/images/arrow_cursor.png") 16 16, auto;
+  @media (max-width: 790px) {
+    font-size: 15px;
+  }
 `;
 const HoverContainer = styled.div`
   white-space: pre-wrap;
@@ -523,4 +534,7 @@ export const StackText = styled(Text)`
   font-size: 1.1vw;
   line-height: 1.8;
   white-space: pre-wrap;
+  @media (max-width: 790px) {
+    font-size: 15px;
+  }
 `;

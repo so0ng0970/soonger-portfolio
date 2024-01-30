@@ -4,7 +4,7 @@ import Produce from "./Produce";
 import ProduceSkill from "./ProduceSkill";
 import Project from "./Project";
 import ProjectList from "./ProjectList";
-import { projects } from "../component/projects";
+import { projects } from "../const/projects";
 import FloatingButton from "../component/floatingButton";
 import styled, { keyframes } from "styled-components";
 function Home() {
