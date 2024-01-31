@@ -1,17 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import { Card, Row, Col } from "antd";
+
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { projects } from "../const/projects";
-function Project({ setCurrentProject, currentProject }) {
-  const topRef = useRef(null);
-
-  useEffect(() => {
-    topRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [currentProject]);
-
+function Project({ setCurrentProject }) {
   return (
-    <Container ref={topRef}>
+    <Container>
       <SeaComponent />
       <ProjectContainer>
         <CardComponent
@@ -37,7 +30,7 @@ function Project({ setCurrentProject, currentProject }) {
           }}
           number="02"
           backgroundImage="assets/images/project2.jpg"
-          text="MAAP"
+          text="MAAP:"
           subText="- App"
         />
         <CardComponent

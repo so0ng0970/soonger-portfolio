@@ -16,7 +16,7 @@ function ProjectList({ currentProject, setCurrentProject }) {
         <Button onClick={() => setCurrentProject(projects[0])}>
           You & I Diary
         </Button>
-        <Button onClick={() => setCurrentProject(projects[1])}>MAAP</Button>
+        <Button onClick={() => setCurrentProject(projects[1])}>MAAP:</Button>
         <Button onClick={() => setCurrentProject(projects[2])}>
           STOCK'S TALK
         </Button>
