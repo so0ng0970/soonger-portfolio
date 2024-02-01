@@ -206,7 +206,7 @@ export const Body = styled.div`
 `;
 
 export const ProjectContainer = styled.div`
-  padding-left: 50px;
+  padding-left: 60px;
   top: 20px;
   width: 40%;
   height: 100%;
@@ -266,7 +266,7 @@ export const ProjectDescription = styled.div`
   font-size: 16px;
   color: white;
   @media (max-width: 1100px) {
-    font-size: 2vw;
+    font-size: 1.5vw;
   }
   @media (max-width: 790px) {
     color: #000000;
@@ -314,6 +314,7 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
   z-index: 1;
   font-size: 18px;
+  cursor: url("assets/images/cursor_4.png") 16 16, auto;
   font-family: "RubikMonoOne-Regular";
   border: none;
   border-radius: 20px;
@@ -393,6 +394,7 @@ export const NameContainer = styled.div`
   font-size: 10px;
 `;
 export const SiteName = styled.div`
+  cursor: url("assets/images/cursor_4.png") 16 16, auto;
   color: #3d3d3d;
   font-size: 16px;
   background-color: "#41986c";
@@ -452,6 +454,9 @@ export const Text = styled.div`
   font-size: 1.2vw;
   line-height: 1.8;
   white-space: pre-wrap;
+  @media (max-width: 1100px) {
+    font-size: 1.5vw;
+  }
   @media (max-width: 790px) {
     font-size: 15px;
   }
@@ -501,6 +506,9 @@ export const Implement = styled.div`
   justify-content: center;
   align-items: center;
   cursor: url("assets/images/arrow_cursor.png") 16 16, auto;
+  @media (max-width: 1100px) {
+    font-size: 1.3vw;
+  }
   @media (max-width: 790px) {
     font-size: 15px;
   }
@@ -540,6 +548,9 @@ export const StackText = styled(Text)`
   font-size: 1.1vw;
   line-height: 1.8;
   white-space: pre-wrap;
+  @media (max-width: 1100px) {
+    font-size: 1.3vw;
+  }
   @media (max-width: 790px) {
     font-size: 15px;
   }
