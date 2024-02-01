@@ -50,6 +50,7 @@ function ProjectList({ currentProject, setCurrentProject }) {
         <DivContainer>
           <TitleContainer>
             <Title>프로젝트 </Title>
+
             <NameContainer>
               <GitName
                 onClick={() => window.open(currentProject.github, "_blank")}
@@ -61,11 +62,9 @@ function ProjectList({ currentProject, setCurrentProject }) {
             </NameContainer>
           </TitleContainer>
           <br />
-
           {currentProject.content.map((item, index) => (
             <Text key={index}>{item}</Text>
           ))}
-          <br />
           <br />
           <TitleContainer>
             <Title>개발 영역</Title>
@@ -88,6 +87,7 @@ function ProjectList({ currentProject, setCurrentProject }) {
             <Title>구현 목록</Title>
             <p> - 마우스를 올려보세요 ↓</p>
           </TitleContainer>
+          <br />
           <ImplementContainer>
             {currentProject.implement.map((item, index) => (
               <div>
@@ -340,6 +340,10 @@ export const Button = styled.button`
   }
 `;
 export const DivContainer = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+
   white-space: pre-wrap;
   width: 50%;
   height: 80%;
@@ -457,7 +461,7 @@ export const Divider = styled.div`
   height: 1px;
   width: 100%;
   border-bottom: 2px solid #979797;
-  margin: 30px 0px;
+  margin: 20px 0px 50px 0px;
 `;
 export const Stack = styled(Title)`
   font-size: 20px;
@@ -475,10 +479,12 @@ export const ImplementTitleContainer = styled(TitleContainer)`
 export const ImplementContainer = styled(TitleContainer)`
   /* background-color: #000000d6; */
   margin-top: 15px;
-  margin-bottom: 40px;
+
   width: 100%;
   height: 100px;
+  line-height: 1.8;
   flex-wrap: wrap;
+  display: flex;
   justify-content: space-between;
   @media (max-width: 790px) {
     margin-bottom: 10px;
