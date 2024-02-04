@@ -83,10 +83,45 @@ export const projects = [
     github: "https://github.com/so0ng0970/map_marking",
   },
   {
+    name: "WTTR",
+    description:
+      "WTTR은 Flutter를 활용하여 현재 위치의 날씨를 다양한 이미지로 표현하는 App입니다",
+    images: Array.from({ length: 10 }, (_, i) => ({
+      img: `assets/project3/${i + 1}.png`,
+    })),
+    content: [
+      "- 'Open Weather'API를 통해 날씨 정보를 보여주는 Flutter로 제작한 App입니다.",
+      "- 날씨에 따라 변화하는 UI를 직접 그린 그림을 활용하여 제작하였습니다.",
+    ],
+    implementation: [
+      "- 날씨 API를 활용하는 네트워크 요청에서 'Dio' 라이브러리를 사용함으로써 복잡성을 줄였습니다.",
+      "- 모델 클래스와 @JsonSerializable() annotation를 사용해 JSON 코드를 자동 생성하며, API 응답 관리를 효율적이게 만들었습니다.",
+      "- Geolocator 패키지를 활용하여 사용자의 휴대폰에 위치 권한을 요청하였고 현재 위치 정보를 받아왔습니다.",
+    ],
+    implement: [
+      "API 데이터 관리",
+      "위치 정보 처리",
+      "날씨 화면 제",
+      "로딩 화면 제작",
+    ],
+    hoverMessages: [
+      "'flutter_naver_map' 패키지와 'geolocator' 패키지를 활용하여 네이버 지도 구현하였고, 사용자의 현재 위치를 초기 설정 값으로 지정하였습니다.",
+      "'Firebase Functions'와 네이버 소셜 로그인 API를 이용하여 네이버 로그인 기능을 구현하였습니다. 이후, 이를 파이어베이스 인증과 연동하였습니다.",
+      "'firebase_auth' 패키지를 사용하여 회원가입과 로그인 기능을 구현하였고, 이 과정에서 유효성 검사를 추가하여 사용자의 입력값이 올바른지 확인하였습니다.",
+      "'flutter_naver_map' 패키지를 사용하여 지도에 마커를 추가하는 기능을 구현하였습니다. 사용자가 지도의 특정 위치를 탭하면 'NMarker' 클래스를 통해 그 위치에 마커가 생성되며, 생성된 마커는 'NaverMapController'를 이용해 지도에 추가되도록 하였습니다.",
+      "'cloud_firestore', 'firebase_storage', 'image_picker' 패키지를 활용하여 글 쓰기, 수정, 삭제 기능을 구현하였습니다.",
+      "Firestore 데이터베이스와 'infinite_scroll_pagination' 패키지를 활용하여 '무한 스크롤' 기능을 이용한 글 보기 기능을 구현하였습니다.",
+    ],
+    stack: ["• Flutter", "• JsonSerializable", "• Dio", "• Geolocator"],
+    notion:
+      "https://animated-tractor-257.notion.site/WTTR-0462309b2c7f4c899aa50b19ae72d854",
+    github: "https://github.com/so0ng0970/WTTR",
+  },
+  {
     name: "STOCK'S TALK",
     description: "관심 주식 추적과 모의 투자 기능이 있는 주식 웹 서비스",
     images: Array.from({ length: 7 }, (_, i) => ({
-      img: `assets/project3/${i + 1}.png`,
+      img: `assets/project4/${i + 1}.png`,
     })),
     content: [
       "- 팀원들과 협업해서 만든 모의 주식 웹사이트입니다.",
@@ -117,48 +152,6 @@ export const projects = [
       "• React Query",
       "• Axios",
       "• Styled-components",
-    ],
-    notion:
-      "https://animated-tractor-257.notion.site/STOCK-S-TALK-c2309882527741e186acb0804bc94374",
-    github: "https://github.com/innovation-final/Front?tab=readme-ov-file",
-  },
-  {
-    name: "PORTFOLIO",
-    description: "포트폴리오 제작",
-    images: Array.from({ length: 5 }, (_, i) => ({
-      img: `assets/project4/${i + 1}.png`,
-    })),
-    content: [
-      "- 사용자가 원하는 정보나 추억을 지도 위의 마커로 남길 수 있게 Flutter로 제작한 App입니다.",
-      "- 지도 기반의 애플리케이션 제작을 하고 싶어서 만든 프로젝트입니다. 프로젝트 진행 중에 발생한 문제들은 메모장과 노션에 따로 정리하여 체계적으로 해결하였습니다.",
-    ],
-    implementation: [
-      "- 'flutter_naver_map' 패키지를 활용하여 지도 기능을 구현하였습니다. 패키지의 예제와 소스 코드를 참조하여 애플리케이션을 제작하였습니다.",
-      "- 코드의 중복을 최소화하고 유지보수를 용이하게 하기 위해, 컴포넌트 파일과 데이터를 모델로 분리하여 구조화하였습니다.",
-      "- 상태 관리는 'RiverPod-provider'를 활용하였고, 데이터는 'Cloud Firestore'를 통해 저장하였습니다.",
-    ],
-    implement: [
-      "네이버 지도 - 위치",
-      "네이버 소셜 로그인",
-      "로그인 & 회원가입",
-      "마커 생성",
-      "글 쓰기,글 수정, 글 삭제",
-      "무한 스크롤",
-    ],
-    hoverMessages: [
-      "'flutter_naver_map' 패키지와 'geolocator' 패키지를 활용하여 네이버 지도 구현하였고, 사용자의 현재 위치를 초기 설정 값으로 지정하였습니다.",
-      "'Firebase Functions'와 네이버 소셜 로그인 API를 이용하여 네이버 로그인 기능을 구현하였습니다. 이후, 이를 파이어베이스 인증과 연동하였습니다.",
-      "'firebase_auth' 패키지를 사용하여 회원가입과 로그인 기능을 구현하였고, 이 과정에서 유효성 검사를 추가하여 사용자의 입력값이 올바른지 확인하였습니다.",
-      "'flutter_naver_map' 패키지를 사용하여 지도에 마커를 추가하는 기능을 구현하였습니다. 사용자가 지도의 특정 위치를 탭하면 'NMarker' 클래스를 통해 그 위치에 마커가 생성되며, 생성된 마커는 'NaverMapController'를 이용해 지도에 추가되도록 하였습니다.",
-      "'cloud_firestore', 'firebase_storage', 'image_picker' 패키지를 활용하여 글 쓰기, 수정, 삭제 기능을 구현하였습니다.",
-      "Firestore 데이터베이스와 'infinite_scroll_pagination' 패키지를 활용하여 '무한 스크롤' 기능을 이용한 글 보기 기능을 구현하였습니다.",
-    ],
-    stack: [
-      "• Flutter",
-      "• Riverpod",
-      "• Flutter_naver_map",
-      "• JsonSerializable",
-      "• Firebase",
     ],
     notion:
       "https://animated-tractor-257.notion.site/STOCK-S-TALK-c2309882527741e186acb0804bc94374",

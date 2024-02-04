@@ -17,11 +17,9 @@ function ProjectList({ currentProject, setCurrentProject }) {
           You & I Diary
         </Button>
         <Button onClick={() => setCurrentProject(projects[1])}>MAAP:</Button>
-        <Button onClick={() => setCurrentProject(projects[2])}>
-          STOCK'S TALK
-        </Button>
+        <Button onClick={() => setCurrentProject(projects[2])}>WTTR</Button>
         <Button onClick={() => setCurrentProject(projects[3])}>
-          PORTFOLIO
+          STOCK'S TALK
         </Button>
       </ButtonContainer>
       <Body>

@@ -43,8 +43,8 @@ function Project({ setCurrentProject }) {
           }}
           number="03"
           backgroundImage="assets/images/project3.jpg"
-          text="STOCK'S TALK"
-          subText="- Web"
+          text="WTTL"
+          subText="- APP"
         />
         <CardComponent
           onClick={() => {
@@ -56,7 +56,7 @@ function Project({ setCurrentProject }) {
           }}
           number="04"
           backgroundImage="assets/images/project4.jpg"
-          text="PORTFOLIO"
+          text="STOCK'S TALK"
           subText="- Web"
         />
       </ProjectContainer>
