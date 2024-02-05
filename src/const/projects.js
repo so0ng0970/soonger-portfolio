@@ -94,7 +94,7 @@ export const projects = [
     ],
     implementation: [
       "- 날씨 API를 활용하는 네트워크 요청에서 'Dio' 라이브러리를 사용함으로써 복잡성을 줄였습니다.",
-      "- 모델 클래스와 @JsonSerializable() annotation를 사용해 JSON 코드를 자동 생성하며, API 응답 관리를 효율적이게 만들었습니다.",
+      "- 모델 클래스와 'JsonSerializable' 패키지를 사용해 JSON 코드를 자동 생성하며, API 응답 관리를 효율적이게 만들었습니다.",
       "- Geolocator 패키지를 활용하여 사용자의 휴대폰에 위치 권한을 요청하였고 현재 위치 정보를 받아왔습니다.",
     ],
     implement: [
@@ -104,12 +104,10 @@ export const projects = [
       "로딩 화면 제작",
     ],
     hoverMessages: [
-      "'flutter_naver_map' 패키지와 'geolocator' 패키지를 활용하여 네이버 지도 구현하였고, 사용자의 현재 위치를 초기 설정 값으로 지정하였습니다.",
-      "'Firebase Functions'와 네이버 소셜 로그인 API를 이용하여 네이버 로그인 기능을 구현하였습니다. 이후, 이를 파이어베이스 인증과 연동하였습니다.",
-      "'firebase_auth' 패키지를 사용하여 회원가입과 로그인 기능을 구현하였고, 이 과정에서 유효성 검사를 추가하여 사용자의 입력값이 올바른지 확인하였습니다.",
-      "'flutter_naver_map' 패키지를 사용하여 지도에 마커를 추가하는 기능을 구현하였습니다. 사용자가 지도의 특정 위치를 탭하면 'NMarker' 클래스를 통해 그 위치에 마커가 생성되며, 생성된 마커는 'NaverMapController'를 이용해 지도에 추가되도록 하였습니다.",
-      "'cloud_firestore', 'firebase_storage', 'image_picker' 패키지를 활용하여 글 쓰기, 수정, 삭제 기능을 구현하였습니다.",
-      "Firestore 데이터베이스와 'infinite_scroll_pagination' 패키지를 활용하여 '무한 스크롤' 기능을 이용한 글 보기 기능을 구현하였습니다.",
+      "'JsonSerializable' 패키지와 , 'Dio' 라이브러리를 활용하여 API 데이터 관리를 했습니다.",
+      "'geolocator' 패키지를 사용하여 위치 서비스와 권한 상태를 체크하여 사용자의 현재 위치를 불러왔습니다.",
+      "날씨 API ID 값을 기반으로 모델 클래스에 각각 다른 인스턴스를 리스트로 생성하고 API로부터 받은 날씨 ID와 일치하는 인스턴스를 통해 날씨 상태에 따른 다양한 UI를 사용자에게 제공하는 방식으로 구현하였습니다.",
+      "AnimatedBuilder 위젯과 Transform.rotate를 이용해 이미지 회전 애니메이션을 구현하며, 애니메이션 상태 관리는 SingleTickerProviderStateMixin을 사용한 애니메이션 컨트롤러를 통해 이루어졌습니다.",
     ],
     stack: ["• Flutter", "• JsonSerializable", "• Dio", "• Geolocator"],
     notion:
