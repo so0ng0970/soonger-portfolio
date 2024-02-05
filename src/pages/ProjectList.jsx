@@ -229,12 +229,14 @@ export const ProjectContainer = styled.div`
 export const ProjectSubContainer = styled.div`
   position: relative;
   display: flex;
-  width: 78%;
+  width: 65%;
   height: 150px;
 
   flex-direction: column;
-  @media (max-width: 977px) {
+  @media (max-width: 1100px) {
+    width: 65%;
   }
+
   @media (max-width: 790px) {
     font-size: 13px;
     width: 100%;
@@ -260,7 +262,7 @@ export const ProjectName = styled.div`
   }
 `;
 export const ProjectDescription = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 16px;
   color: white;
   @media (max-width: 1100px) {

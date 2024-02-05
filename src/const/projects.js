@@ -84,8 +84,7 @@ export const projects = [
   },
   {
     name: "WTTR",
-    description:
-      "WTTR은 Flutter를 활용하여 현재 위치의 날씨를 다양한 이미지로 표현하는 App입니다",
+    description: "WTTR은 현재 위치의 날씨를 다양한 이미지로 표현하는 App입니다",
     images: Array.from({ length: 10 }, (_, i) => ({
       img: `assets/project3/${i + 1}.png`,
     })),
@@ -101,7 +100,7 @@ export const projects = [
     implement: [
       "API 데이터 관리",
       "위치 정보 처리",
-      "날씨 화면 제",
+      "날씨 화면 제작",
       "로딩 화면 제작",
     ],
     hoverMessages: [
