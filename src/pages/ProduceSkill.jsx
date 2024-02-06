@@ -484,7 +484,7 @@ export const ModalLogoName = styled.p`
   @media (max-width: 1122px) {
   }
   @media (max-width: 750px) {
-    font-size: 25px;
+    font-size: 23px;
   }
 `;
 export const StyledModal = styled.div`
@@ -493,7 +493,6 @@ export const StyledModal = styled.div`
   display: flex;
   position: relative;
   padding: 20px;
-
   width: 75%;
   height: 82%;
   font-size: 19px;
@@ -510,7 +509,7 @@ export const StyledModal = styled.div`
   }
   @media (max-width: 790px) {
     top: -20px;
-    font-size: 14px;
+    font-size: 13px;
     width: 800px;
     height: 280px;
   }
