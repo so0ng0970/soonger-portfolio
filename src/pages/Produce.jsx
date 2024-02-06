@@ -326,7 +326,7 @@ export const ProfileImage = styled.div`
   }
   @media (max-width: 790px) {
     width: 200px;
-    height: 280px;
+    height: 250px;
   }
 `;
 
@@ -348,10 +348,11 @@ export const AllBoxContainer = styled.div`
   }
 
   @media (max-width: 790px) {
-    margin-top: 10px;
-    height: 430px;
+    position: relative;
+    margin-top: -40px;
+    height: 400px;
     width: 450px;
-
+    top: 50px;
     display: flex;
     flex-direction: column;
   }
@@ -372,7 +373,7 @@ export const BoxContainer = styled.div`
     margin-left: 15px;
   }
   @media (max-width: 790px) {
-    height: 280px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
