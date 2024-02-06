@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Container } from "../styles/Container";
 import Produce from "./Produce";
 import ProduceSkill from "./ProduceSkill";
@@ -9,6 +9,7 @@ import FloatingButton from "../component/floatingButton";
 import styled, { keyframes } from "styled-components";
 function Home() {
   const [currentProject, setCurrentProject] = useState(projects[0]);
+  const myRef = useRef(null);
 
   return (
     <>
@@ -20,10 +21,11 @@ function Home() {
       </Container>
 
       <Container>
-        <Project setCurrentProject={setCurrentProject} />
+        <Project setCurrentProject={setCurrentProject} ref={myRef} />
       </Container>
       <Container>
         <ProjectList
+          ref={myRef}
           currentProject={currentProject}
           setCurrentProject={setCurrentProject}
         />

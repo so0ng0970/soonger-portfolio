@@ -81,6 +81,15 @@ function ProjectList({ currentProject, setCurrentProject }) {
             <Text key={index}>{item}</Text>
           ))}
           <br />
+          {hoverIndex !== null && (
+            <MobileHoverContainer>
+              <HoverTitleText>
+                {currentProject.implement[hoverIndex]}
+              </HoverTitleText>
+
+              <HoverText>{currentProject.hoverMessages[hoverIndex]}</HoverText>
+            </MobileHoverContainer>
+          )}
           <TitleContainer>
             <Title>구현 목록</Title>
             <p> - 마우스를 올려보세요 ↓</p>
@@ -151,7 +160,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     height: 100vh;
-    min-height: 1200px;
+    min-height: 1500px;
   }
 `;
 export const BgContainer = styled.div`
@@ -259,6 +268,7 @@ export const ProjectName = styled.div`
   @media (max-width: 790px) {
     border-left: 3px solid #000000;
     color: #000000;
+    font-size: 20px;
   }
 `;
 export const ProjectDescription = styled.div`
@@ -270,7 +280,8 @@ export const ProjectDescription = styled.div`
   }
   @media (max-width: 790px) {
     color: #000000;
-    top: 120px;
+    font-size: 10px;
+    margin-top: 20px;
   }
 `;
 export const ProjectImage = styled.div`
@@ -359,12 +370,12 @@ export const DivContainer = styled.div`
   }
   @media (max-width: 790px) {
     left: 0px;
-
+    top: -100px;
     color: white;
-    top: -200px;
+
     font-size: 13px;
     width: 90%;
-    height: 550px;
+    height: 900px;
   }
 `;
 export const TitleContainer = styled.div`
@@ -482,9 +493,7 @@ export const ImplementTitleContainer = styled(TitleContainer)`
   justify-content: none;
 `;
 export const ImplementContainer = styled(TitleContainer)`
-  /* background-color: #000000d6; */
   margin-top: 15px;
-
   width: 100%;
   height: 100px;
   line-height: 1.8;
@@ -492,6 +501,7 @@ export const ImplementContainer = styled(TitleContainer)`
   display: flex;
   justify-content: space-between;
   @media (max-width: 790px) {
+    margin-top: 0px;
     margin-bottom: 10px;
   }
 `;
@@ -525,6 +535,32 @@ const HoverContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 790px) {
+    display: none;
+  }
+`;
+const MobileHoverContainer = styled.div`
+  display: none;
+  @media (max-width: 790px) {
+    top: 270px;
+    left: -5px;
+    white-space: pre-wrap;
+    z-index: 101;
+    background-color: #f0f0f0;
+    position: absolute;
+    white-space: pre-wrap;
+    width: 97%;
+    height: 250px;
+    display: flex;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    padding: 10px;
+    outline: 2px dashed #888888;
+    outline-offset: -10px;
+  }
 `;
 export const HoverText = styled(Text)`
   font-family: "Pretendard-ExtraBold";
@@ -532,6 +568,9 @@ export const HoverText = styled(Text)`
   line-height: 1.8;
   white-space: pre-wrap;
   padding: 10px;
+  @media (max-width: 790px) {
+    font-size: 15px;
+  }
 `;
 export const HoverTitleText = styled(Text)`
   font-family: "Pretendard-ExtraBold";
@@ -539,6 +578,10 @@ export const HoverTitleText = styled(Text)`
   line-height: 1.8;
   white-space: pre-wrap;
   margin-bottom: 50px;
+  @media (max-width: 790px) {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 `;
 export const StackContainer = styled(TitleContainer)`
   margin-top: 15px;
@@ -552,6 +595,6 @@ export const StackText = styled(Text)`
     font-size: 1.3vw;
   }
   @media (max-width: 790px) {
-    font-size: 15px;
+    font-size: 12px;
   }
 `;

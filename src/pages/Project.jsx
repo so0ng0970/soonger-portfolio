@@ -1,8 +1,8 @@
 import styled, { keyframes } from "styled-components";
-
+import React, { useRef } from "react";
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { projects } from "../const/projects";
-function Project({ setCurrentProject }) {
+function Project({ setCurrentProject, myRef }) {
   return (
     <Container>
       <SeaComponent />
@@ -10,10 +10,7 @@ function Project({ setCurrentProject }) {
         <CardComponent
           onClick={() => {
             setCurrentProject(projects[0]);
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
+            myRef.current.scrollIntoView({ behavior: "smooth" });
           }}
           number="01"
           backgroundImage="assets/images/project1.jpg"
@@ -148,7 +145,7 @@ export const Container = styled.div`
 
   @media (max-width: 790px) {
     width: 100%;
-    height: 1700px;
+    height: 1800px;
   }
 `;
 export const Sea = styled.div`
@@ -194,7 +191,7 @@ const ProjectContainer = styled.div`
     justify-content: space-between;
   }
   @media (max-width: 790px) {
-    height: 1300px;
+    height: 1400px;
 
     flex-direction: column;
   }
@@ -214,11 +211,14 @@ const CardContainer = styled.div`
 export const ProjectImage = styled.div`
   cursor: url("assets/images/cursor_3.png") 32 32, auto;
   background-image: url(${(props) => props.backgroundImage});
+
   background-size: cover;
   background-position: center;
+  object-position: center;
+  object-fit: cover;
   transform: scale(1);
   transition: transform 0.3s ease-in-out;
-  height: 90%;
+  height: 100%;
   width: 100%;
 
   &:hover {
@@ -264,6 +264,7 @@ export const ProjectImage = styled.div`
 `;
 const CardWrapper = styled.div`
   top: -140px;
+
   padding: 10px;
   position: relative;
   @media (min-width: 791px) {
@@ -274,7 +275,8 @@ const CardWrapper = styled.div`
   }
   @media (max-width: 790px) {
     top: -100px;
-    margin-bottom: 30px;
+    top: -170px;
+    margin-bottom: 70px;
   }
   /* @media (max-width: 1400px) {
     width: 80%;
