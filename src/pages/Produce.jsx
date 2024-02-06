@@ -54,7 +54,7 @@ function Produce() {
               />
               <ContainerComponent
                 IconComponent={MailOutlined}
-                text="soonger3300@gmail.com"
+                text="soong3003@gmail.com"
               />
               <LinkComponent IconComponent={GithubOutlined} text="Github" />
             </Box>
