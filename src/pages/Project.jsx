@@ -189,8 +189,10 @@ const ProjectContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  height: 30vw;
-  width: 22vw;
+  height: 25vw;
+  width: 20vw;
+  max-width: 500px;
+  max-height: 470px;
 
   @media (max-width: 1400px) {
   }
@@ -202,7 +204,6 @@ const CardContainer = styled.div`
 export const ProjectImage = styled.div`
   cursor: url("assets/images/cursor_3.png") 32 32, auto;
   background-image: url(${(props) => props.backgroundImage});
-
   background-size: cover;
   background-position: center;
   object-position: center;

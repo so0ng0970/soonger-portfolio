@@ -462,7 +462,7 @@ export const Arrow = styled.div`
 `;
 export const Text = styled.div`
   font-family: "Pretendard-ExtraBold";
-  font-size: 1.2vw;
+  font-size: 1.1vw;
   line-height: 1.8;
   white-space: pre-wrap;
   @media (max-width: 1100px) {
@@ -495,7 +495,7 @@ export const ImplementTitleContainer = styled(TitleContainer)`
 export const ImplementContainer = styled(TitleContainer)`
   margin-top: 15px;
   width: 100%;
-  height: 100px;
+  height: 85px;
   line-height: 1.8;
   flex-wrap: wrap;
   display: flex;
@@ -507,6 +507,7 @@ export const ImplementContainer = styled(TitleContainer)`
 `;
 export const Implement = styled.div`
   padding: 5px;
+  margin-bottom: 10px;
   position: relative;
   font-family: "Pretendard-ExtraBold";
   height: 25px;
