@@ -461,7 +461,7 @@ export const Arrow = styled.div`
   }
 `;
 export const Text = styled.div`
-  font-family: "Pretendard-SemiBold";
+  font-family: "Pretendard-ExtraBold";
   font-size: 1.2vw;
   line-height: 1.8;
   white-space: pre-wrap;
