@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useScrollAnimation } from "../component/userScrollAnimation";
 import { projects } from "../const/projects";
 import SwiperImage from "../styles/slider";

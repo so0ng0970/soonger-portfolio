@@ -21,11 +21,11 @@ function Home() {
       </Container>
 
       <Container>
-        <Project setCurrentProject={setCurrentProject} ref={myRef} />
+        <Project setCurrentProject={setCurrentProject} myRef={myRef} />
       </Container>
-      <Container>
+      <Container ref={myRef}>
         <ProjectList
-          ref={myRef}
+
           currentProject={currentProject}
           setCurrentProject={setCurrentProject}
         />

@@ -20,10 +20,7 @@ function Project({ setCurrentProject, myRef }) {
         <CardComponent
           onClick={() => {
             setCurrentProject(projects[1]);
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
+            myRef.current.scrollIntoView({ behavior: "smooth" });
           }}
           number="02"
           backgroundImage="assets/images/project2.jpg"
@@ -33,10 +30,7 @@ function Project({ setCurrentProject, myRef }) {
         <CardComponent
           onClick={() => {
             setCurrentProject(projects[2]);
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
+            myRef.current.scrollIntoView({ behavior: "smooth" });
           }}
           number="03"
           backgroundImage="assets/images/project3.jpg"
@@ -46,10 +40,7 @@ function Project({ setCurrentProject, myRef }) {
         <CardComponent
           onClick={() => {
             setCurrentProject(projects[3]);
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
+            myRef.current.scrollIntoView({ behavior: "smooth" });
           }}
           number="04"
           backgroundImage="assets/images/project4.jpg"
