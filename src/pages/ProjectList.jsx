@@ -323,6 +323,7 @@ export const ButtonContainer = styled.div`
   }
 `;
 export const Button = styled.button`
+  color: black;
   z-index: 1;
   font-size: 18px;
   cursor: url("assets/images/cursor_4.png") 16 16, auto;
@@ -503,6 +504,7 @@ export const ImplementContainer = styled(TitleContainer)`
   @media (max-width: 790px) {
     margin-top: 0px;
     margin-bottom: 10px;
+    height: 100px;
   }
 `;
 export const Implement = styled.div`
@@ -596,6 +598,6 @@ export const StackText = styled(Text)`
     font-size: 1.3vw;
   }
   @media (max-width: 790px) {
-    font-size: 12px;
+    font-size: 10px;
   }
 `;
