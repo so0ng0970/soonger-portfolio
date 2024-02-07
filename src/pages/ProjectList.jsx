@@ -108,14 +108,15 @@ function ProjectList({ currentProject, setCurrentProject }) {
               </div>
             ))}
           </ImplementContainer>
-
-          <Divider />
-          <Stack>기술 스택</Stack>
-          <StackContainer>
-            {currentProject.stack.map((item, index) => (
-              <StackText key={index}>{item}</StackText>
-            ))}
-          </StackContainer>
+          <br />
+          <Divider>
+            <Stack>기술 스택</Stack>
+            <StackContainer>
+              {currentProject.stack.map((item, index) => (
+                <StackText key={index}>{item}</StackText>
+              ))}
+            </StackContainer>
+          </Divider>
         </DivContainer>
       </Body>
     </Container>
@@ -138,10 +139,12 @@ const slideInAnimation = keyframes`
 `;
 const slideTransAnimation = keyframes`
   0% {
-    transform: translateY(-20%) ;
+    transform: translateY(-5%) ;
+   
   }
   100% {
-    transform: translateY(0%) ;
+    transform: translateY(5%) ;
+ 
   }
 `;
 export const Container = styled.div`
@@ -214,7 +217,7 @@ export const Body = styled.div`
 
 export const ProjectContainer = styled.div`
   padding-left: 60px;
-  top: 20px;
+  top: 10px;
   width: 40%;
   height: 100%;
   position: relative;
@@ -306,7 +309,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   /* background-color: #000000d6; */
   width: 60%;
-  height: 150px;
+  height: 120px;
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -325,16 +328,16 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
   color: black;
   z-index: 1;
-  font-size: 18px;
+  font-size: 16px;
   cursor: url("assets/images/cursor_4.png") 16 16, auto;
   font-family: "RubikMonoOne-Regular";
   border: none;
   border-radius: 20px;
   border-right: 2px solid #999999;
   border-bottom: 5px solid #303030;
-  width: 220px;
+  width: 200px;
   margin-left: 15px;
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -359,10 +362,9 @@ export const DivContainer = styled.div`
 
   white-space: pre-wrap;
   width: 50%;
-  height: 80%;
+  height: 87%;
   left: -100px;
   position: relative;
-  top: 0px;
 
   @media (max-width: 1200px) {
     left: -80px;
@@ -371,12 +373,12 @@ export const DivContainer = styled.div`
   }
   @media (max-width: 790px) {
     left: 0px;
-    top: -100px;
+    top: -80px;
     color: white;
 
     font-size: 13px;
     width: 90%;
-    height: 900px;
+    height: 950px;
   }
 `;
 export const TitleContainer = styled.div`
@@ -474,10 +476,11 @@ export const Text = styled.div`
   }
 `;
 export const Divider = styled.div`
+  padding-top: 30px;
   display: flex;
-  height: 1px;
+  flex-direction: column;
   width: 100%;
-  border-bottom: 2px solid #979797;
+  border-top: 2px solid #979797;
   margin: 20px 0px 50px 0px;
 `;
 export const Stack = styled(Title)`
@@ -494,9 +497,8 @@ export const ImplementTitleContainer = styled(TitleContainer)`
   justify-content: none;
 `;
 export const ImplementContainer = styled(TitleContainer)`
-  margin-top: 15px;
   width: 100%;
-  height: 85px;
+  margin-bottom: 40px;
   line-height: 1.8;
   flex-wrap: wrap;
   display: flex;
@@ -513,7 +515,7 @@ export const Implement = styled.div`
   position: relative;
   font-family: "Pretendard-ExtraBold";
   height: 25px;
-  border-bottom: 3px dashed #696969c0;
+  border-bottom: 2px dashed #696969c0;
   font-size: 1.2vw;
   display: flex;
   justify-content: center;

@@ -92,12 +92,15 @@ const sunTransAnimation = keyframes`
 `;
 
 const rockTransAnimation = keyframes`
+
+
   0% {
     transform: translateY(20%) ;
   }
   100% {
     transform: translateY(0%) ;
   }
+
 `;
 export const Modal = ({ modalOpen, rockClicked, logo, description }) => (
   <StyledModal modalOpen={modalOpen} rockClicked={rockClicked}>
@@ -249,6 +252,7 @@ const RockContainer = styled.div`
   bottom: -260px;
   &.slide-in {
     animation: ${rockTransAnimation} 2s forwards;
+    -webkit-backface-visibility: hidden;
   }
   img {
     position: absolute;
@@ -278,7 +282,7 @@ const RockContainer = styled.div`
     width: 220px;
     height: 450px;
     bottom: -350px;
-    left: 200px;
+    left: 130px;
     img {
       &:hover {
         width: 220px;
@@ -314,7 +318,7 @@ export const ArrowContainer = styled.div`
     transform: scaleX(-1);
     background-size: 120px;
     width: 300px;
-    left: 0px;
+    left: -60px;
     bottom: 30px;
   }
 `;
@@ -373,7 +377,7 @@ export const LogoBody = styled.div`
     margin-left: 80px;
     padding: 0px;
     flex-direction: row;
-    top: 240px;
+    top: 210px;
     width: 100%;
   }
 `;
@@ -463,7 +467,6 @@ export const Logo = styled.img`
 `;
 export const LogoName = styled.p`
   &:hover {
-    color: #929292;
     font-size: 23px;
   }
   font-size: 20px;
@@ -489,7 +492,7 @@ export const ModalLogoName = styled.p`
 `;
 export const StyledModal = styled.div`
   flex-direction: column;
-  background-color: ${(props) => (props.rockClicked ? "#292929" : "#ffffff8f")};
+  background-color: ${(props) => (props.rockClicked ? "#292929" : "#F4F4F3")};
   display: flex;
   position: relative;
   padding: 20px;
@@ -508,7 +511,7 @@ export const StyledModal = styled.div`
     font-size: 17px;
   }
   @media (max-width: 790px) {
-    top: -20px;
+    top: -40px;
     font-size: 13px;
     width: 800px;
     height: 280px;
@@ -518,6 +521,8 @@ export const DescriptionContainer = styled.div`
   display: flex;
   position: relative;
   justify-content: center;
+  font-family: "SBAggroM";
+
   top: ${(props) => (props.modalOpen ? "10%" : "40%")};
   width: 100%;
   height: 250px;

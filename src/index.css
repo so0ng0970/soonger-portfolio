@@ -37,6 +37,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: "SBAggroM";
+  src: url("./fonts/SBAggroM.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
   font-family: "OTF® Glusp";
   src: url("./fonts/OTF® Glusp.ttf") format("truetype");
   font-weight: 500;

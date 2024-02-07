@@ -26,7 +26,7 @@ export const CurvedTextStyle = styled.div`
    
     width: 200px;
     font-size: 22px;
-    left : 200px;
+    left : 130px;
     bottom: 70px;
  }
 

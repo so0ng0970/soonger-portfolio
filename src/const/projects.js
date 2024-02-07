@@ -132,9 +132,9 @@ export const projects = [
     implement: [
       "커뮤니티,계좌개설 CRUD",
       "좋아요,관심 종목",
-      "SSE(Server-Sent-Event) 알람,푸시 알림",
-      "계좌 정보, 뱃지 업적, 랭킹보드 정보",
-      "마이페이지 유저 정보 수정",
+      "SSE(Server-Sent-Event), 푸시 알림",
+      "계좌,뱃지 업적,랭킹보드",
+      "마이페이지 수정",
     ],
     hoverMessages: [
       "'react-query'의 'useMutation'과 'useQueryClient', 그리고 'react-router-dom'의 'useNavigate'와 'useParams'를 활용하여 기능을 구현하였습니다.",

@@ -33,6 +33,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
 `;
 
 const MainButton = styled.button`
@@ -41,6 +42,8 @@ const MainButton = styled.button`
   height: 60px;
   border-radius: 50%;
   background-color: #25252599;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-size: 24px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
