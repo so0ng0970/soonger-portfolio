@@ -307,14 +307,15 @@ export const ProjectImage = styled.div`
 export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
-  /* background-color: #000000d6; */
-  width: 60%;
-  height: 120px;
+
+  width: 57%;
+  height: 100px;
   display: flex;
   flex-direction: row;
   position: absolute;
+  justify-content: space-around;
   top: 0;
-  right: 0;
+  right: 50px;
   @media (max-width: 977px) {
   }
   @media (max-width: 790px) {
@@ -328,7 +329,7 @@ export const ButtonContainer = styled.div`
 export const Button = styled.button`
   color: black;
   z-index: 1;
-  font-size: 16px;
+  font-size: 15px;
   cursor: url("assets/images/cursor_4.png") 16 16, auto;
   font-family: "RubikMonoOne-Regular";
   border: none;

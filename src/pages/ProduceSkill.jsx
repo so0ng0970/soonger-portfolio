@@ -485,6 +485,7 @@ export const ModalLogoName = styled.p`
   font-size: 30px;
 
   @media (max-width: 1122px) {
+    font-size: 25px;
   }
   @media (max-width: 750px) {
     font-size: 23px;

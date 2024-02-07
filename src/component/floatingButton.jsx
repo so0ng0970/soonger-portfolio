@@ -17,7 +17,9 @@ const FloatingButton = () => {
         </>
       )}{" "}
       <MainButton onClick={toggle}>
-        <FontAwesomeIcon icon={isOpen ? faXmark : faUser} />
+        <IconWrapper>
+          <FontAwesomeIcon icon={isOpen ? faXmark : faUser} />
+        </IconWrapper>
       </MainButton>
     </ButtonWrapper>
   );
@@ -35,7 +37,12 @@ const ButtonWrapper = styled.div`
   align-items: flex-end;
   justify-content: center;
 `;
-
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 const MainButton = styled.button`
   border: none;
   width: 60px;
