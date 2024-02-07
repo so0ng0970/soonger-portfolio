@@ -44,6 +44,7 @@ const IconWrapper = styled.div`
   height: 100%;
 `;
 const MainButton = styled.button`
+  display: flex;
   border: none;
   width: 60px;
   height: 60px;
