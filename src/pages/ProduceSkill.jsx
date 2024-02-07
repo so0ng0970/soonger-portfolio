@@ -95,7 +95,7 @@ const rockTransAnimation = keyframes`
 
 
   0% {
-    transform: translateY(20%) ;
+    transform: translateY(10%) ;
   }
   100% {
     transform: translateY(0%) ;

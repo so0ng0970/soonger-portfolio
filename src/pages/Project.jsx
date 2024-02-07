@@ -90,14 +90,14 @@ export const CardComponent = ({
   number,
 }) => {
   return (
-    <CardWrapper onClick={onClick}>
+    <CardWrapper>
       <CardContainer>
         <NumberComponent number={number} />
 
         <TitleContainer>
           <TitleComponent text={text} subText={subText} />
         </TitleContainer>
-        <ProjectImage backgroundImage={backgroundImage} />
+        <ProjectImage onClick={onClick} backgroundImage={backgroundImage} />
       </CardContainer>
     </CardWrapper>
   );
