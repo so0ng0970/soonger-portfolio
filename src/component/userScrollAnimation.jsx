@@ -22,7 +22,7 @@ export const useScrollAnimation = () => {
     const options = { root: null, rootMargin: "0px", threshold: 0 };
 
     const observer = new IntersectionObserver(callback, options);
-    observer.observe(ref.current); // 요소 관찰 
+    observer.observe(ref.current); // 요소 관찰
 
     return () => {
       observer.disconnect(); // 컴포넌트 언마운트 시 관찰 중단
