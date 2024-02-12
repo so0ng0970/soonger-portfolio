@@ -25,7 +25,7 @@ export const projects = [
     hoverMessages: [
       "Firestore 데이터베이스와 Infinite_scroll_pagination 패키지를 활용한 '무한 스크롤' 구현했습니다.",
       "Google Sign-In 및 Firebase Auth 패키지를 활용하여 '구글 소셜 로그인' 구현했습니다.",
-      " Firebase Cloud Functions와 Firebase Messaging,flutter_local_notifications을 활용하여 '댓글 알림 기능' 구현했습니다.",
+      "Firebase Cloud Functions와 Firebase Messaging,flutter_local_notifications을 활용하여 '댓글 알림 기능' 구현했습니다.",
       "Image_picker, table_calendar, video_player 패키지를 활용하여 '사진과 동영상 불러오기, 달력 기능, 비디오 제어 기능'을 구현하였고, 달력에서 날짜를 선택하면 해당 날짜의 데이터를 Firestore에서 불러오는 기능을 구현했습니다.",
       "Cloud Firestore에서 데이터를 저장하며, 미디어 파일은 Firebase Storage에 보관 후 그 URL을 Firestore에 기록하고, '글 & 댓글 & 프로필 수정 및 삭제 기능' 구현했습니다.",
     ],
