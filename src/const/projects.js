@@ -2,7 +2,7 @@ export const projects = [
   {
     name: "You & I Diary",
     description:
-      "YOU & I Diary은 사용자 또는 다른 사용자와 함께 일상을 기록하는 App입니다",
+      "YOU & I Diary은 사용자 또는 다른 사용자와 함께 일상을 기록하는 App입니다.",
     images: Array.from({ length: 11 }, (_, i) => ({
       img: `assets/project1/${i + 1}.png`,
     })),
@@ -42,7 +42,7 @@ export const projects = [
   },
   {
     name: "MAAP:",
-    description: "MAAP은 지도에 마커를 통해 추억을 기록하는 App입니다",
+    description: "MAAP:은 지도에 마커를 통해 추억을 기록하는 App입니다.",
     images: Array.from({ length: 11 }, (_, i) => ({
       img: `assets/project2/${i + 1}.png`,
     })),
@@ -84,7 +84,7 @@ export const projects = [
   },
   {
     name: "WTTR",
-    description: "WTTR은 현재 위치의 날씨를 다양한 이미지로 표현하는 App입니다",
+    description: "WTTR은 현재 위치의 날씨를 다양한 이미지로 표현하는 App입니다.",
     images: Array.from({ length: 10 }, (_, i) => ({
       img: `assets/project3/${i + 1}.png`,
     })),
@@ -116,7 +116,7 @@ export const projects = [
   },
   {
     name: "STOCK'S TALK",
-    description: "관심 주식 추적과 모의 투자 기능이 있는 주식 웹 서비스",
+    description: "관심 주식 추적과 모의 투자 기능이 있는 주식 웹 서비스 입니다.",
     images: Array.from({ length: 7 }, (_, i) => ({
       img: `assets/project4/${i + 1}.png`,
     })),
