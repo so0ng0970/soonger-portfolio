@@ -10,7 +10,7 @@ const TypingText = () => {
     color: "black",
     speed: 100,
     content:
-      "안녕하세요, \n 저는 Flutter와 배우는 걸 \n 좋아하는 \n Developer 김승원 입니다.",
+      "안녕하세요, \n 저는 Flutter를 좋아하고 \n 목표를 향해 열심히 달리는 \n 개발자 김승원입니다.",
   };
 
   useEffect(() => {
